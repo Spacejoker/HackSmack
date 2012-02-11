@@ -1,0 +1,13 @@
+Setting up the project in ecplise:
+
+1) 
+Add all jars from lib folder to class path
+
+2) 
+unzip the appropriate folder from natives/natives.rar, i for example in: "C:\Dev\slick2d\lwjgl\native\windows"
+
+Using that path, add the following to the run configuration form Main.java (using your path):
+VM-argument: -Djava.library.path=C:\Dev\slick2d\lwjgl\native\windows
+
+3)
+Done, just run Main.java

@@ -1,3 +1,0 @@
-\select@language {swedish}
-\contentsline {section}{\numberline {1}Bakgrund}{3}
-\contentsline {section}{\numberline {2}Syfte}{3}

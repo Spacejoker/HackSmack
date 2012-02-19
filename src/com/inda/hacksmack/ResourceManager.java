@@ -32,7 +32,13 @@ import org.xml.sax.SAXException;
 public class ResourceManager {
 	  private static final String resourceFolder = "src/content/";
 	  private static ResourceManager _instance;
-	  static {  try {  _instance = new ResourceManager(); } catch (SlickException e) { throw new RuntimeException("Failed to load resources." + e.getMessage());}}
+	  static {  
+		  try {  
+			  _instance = new ResourceManager(); 
+			  } catch (SlickException e) { 
+			 throw new RuntimeException("Failed to load resources." + e.getMessage());
+			  }
+		  	}
 	  private HashMap<String, Image> imageMap;
 	  private HashMap<String, Sound> soundMap;
 	  private HashMap<String, SpriteSheet> tilesetMap;
@@ -160,20 +166,26 @@ public class ResourceManager {
 	  }
 	  
 	  public Image getImage(String id){
+		  if(!imageMap.containsKey(id)){
+				throw new RuntimeException("Tried to load an image that doesnt exist: " + id);
+			}
 		  return imageMap.get(id);
 	  }
 	  
 	  public Sound getSound(String id){
+		  if(!soundMap.containsKey(id)){
+				throw new RuntimeException("Tried to load a sound that doesnt exist: " + id);
+			}
 		  return soundMap.get(id);
 	  }
 
 
 
-	public SpriteSheet getTileset(String string) {
-		if(!tilesetMap.containsKey(string)){
-			throw new RuntimeException("Tried to load a tileset that doesnt exist: " + string);
+	public SpriteSheet getTileset(String id) {
+		if(!tilesetMap.containsKey(id)){
+			throw new RuntimeException("Tried to load a tileset that doesnt exist: " + id);
 		}
-		return tilesetMap.get(string);
+		return tilesetMap.get(id);
 	}
 
 

@@ -10,28 +10,31 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.TrueTypeFont;
 import org.newdawn.slick.tiled.TiledMap;
+import org.newdawn.slick.InputListener;
 
 import com.inda.hacksmack.model.GameState;
+import com.inda.hacksmack.input.InputHandler;
 
-public class Main extends BasicGame {
+public class Main extends BasicGame{
 
-	private static final String IMAGE_FOLDER = "content/images/";
 	Image bgImage;
-
 	public Main() {
 		super("HackSmack");
 	}
 
 	TrueTypeFont deprecatiedFont;
 	ResourceManager rm;
-	
+	InputHandler ih;
 	GameState gameState;
 	
 	@Override
 	public void init(GameContainer container) throws SlickException {
+		//container.getInput();
+		container.getInput().addListener(ih = InputHandler.getInstance());
 		rm = ResourceManager.getInstance();
+		
 		deprecatiedFont = new TrueTypeFont(new Font("Courier new", Font.BOLD, 24), false);
-
+		
 		bgImage = rm.getImage("background");
 
 		rm.getSound("fireball_0").play();
@@ -49,7 +52,7 @@ public class Main extends BasicGame {
 			TiledMap tileMap = gameState.getMap().getTileMap();
 			for (int x = 0; x < tileMap.getWidth(); x++) {
 				for (int y = 0; y < tileMap.getHeight(); y++) {
-					System.out.println(x + " " + y);
+					//System.out.println(x + " " + y);
 					Image tileImage = tileMap.getTileImage(x, y, 0);
 					if(tileImage != null){
 						tileImage.draw(x*32, y*32);
@@ -66,6 +69,8 @@ public class Main extends BasicGame {
 				}
 			}
 		}
+		
+		//container.getInput().poll(0, 0);
 	}
 
 	/**
@@ -75,9 +80,10 @@ public class Main extends BasicGame {
 	public void update(GameContainer container, int delta) throws SlickException {
 		synchronized (this.getClass()) {
 			// do something
+			//ih.printKeys();
 		}
 	}
-
+	
 	public static void main(String[] args) {
 		try {
 			AppGameContainer app = new AppGameContainer(new Main());

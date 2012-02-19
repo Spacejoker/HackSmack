@@ -6,6 +6,7 @@ import org.newdawn.slick.geom.Vector2f;
 
 import com.inda.hacksmack.ResourceManager;
 import com.inda.hacksmack.model.Enemy;
+import com.inda.hacksmack.model.EnemyTypeData;
 
 public class EnemyFactory {
 
@@ -16,13 +17,21 @@ public class EnemyFactory {
 		
 		Enemy enemy = new Enemy();
 		
-		enemy.setAnimation(new Animation(new Image[]{ResourceManager.getInstance().getImage("enemy_giant")}, 100));
+		EnemyTypeData typeData = ResourceManager.getInstance().getEnemyTypeData(id);
+		
+		String[] animationImageIds = typeData.getAnimationImageIds();
+		Image[] animationImages = new Image[animationImageIds.length];
+		for (int i = 0; i < animationImageIds.length; i++) {
+			animationImages[i] = ResourceManager.getInstance().getImage("enemy_giant");
+		}
+		
+		enemy.setAnimation(new Animation(animationImages, 100));
 		enemy.setPosition(position);
 		enemy.setPassable(false);
-		enemy.setMaxhealth(100);
+		enemy.setMaxhealth(typeData.getMaxhealth());
 		enemy.setDirection(new Vector2f(1,1));
-		enemy.setSpeed(0.1);
-		enemy.setRadius(32);
+		enemy.setSpeed(typeData.getSpeed());
+		enemy.setRadius(typeData.getRadius());
 		
 		return enemy;
 	}

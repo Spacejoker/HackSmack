@@ -15,4 +15,8 @@
   <!-- SOUND -->
 	<content type="sound" id="fireball_0">sounds/fireball.wav</content>
 	<content type="sound" id="fireball_1">sounds/fireball2.wav</content>
+	
+	<!-- ENEMY -->
+	<content type="enemy" id="enemy_giant" maxhealth="100" speed="0.1" radius="16" animationimages="enemy_giant;enemy_giant"/>
+	
 </resources>

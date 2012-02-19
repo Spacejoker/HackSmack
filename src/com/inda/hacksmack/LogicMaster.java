@@ -26,11 +26,9 @@ public class LogicMaster {
 			enemy.updateDirection(state.getPlayer());
 			
 			Vector2f position = enemy.getPosition();
-			System.out.println("Pos is :" + position);
+
 			position.x += enemy.getDirection().x * enemy.getSpeed() * delta;
 			position.y += enemy.getDirection().y * enemy.getSpeed() * delta;
-			System.out.println("new pos :" + position);
-			System.out.println("Direction: " + enemy.getDirection());
 		}
 	}
 

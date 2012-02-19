@@ -18,6 +18,7 @@ public abstract class Entity {
 	protected Vector2f position = new Vector2f();
 	protected double speed;
 	protected boolean passable;
+	protected double radius = 16;
 	
 	public void draw(){
 		animation.draw(position.x, position.y);
@@ -78,6 +79,12 @@ public abstract class Entity {
 	public void setPosition(Vector2f position) {
 		this.position = position;
 	}
-	
-	
+
+	public double getRadius() {
+		return radius;
+	}
+
+	public void setRadius(double radius) {
+		this.radius = radius;
+	}	
 }

@@ -22,6 +22,8 @@ public class EnemyFactory {
 		enemy.setMaxhealth(100);
 		enemy.setDirection(new Vector2f(1,1));
 		enemy.setSpeed(0.1);
+		enemy.setRadius(32);
+		
 		return enemy;
 	}
 }

@@ -19,12 +19,9 @@ public class GameState {
 	private List<Projectile> projectiles;
 	private Player player;
 	
-	
-	
 	public GameState() {
 		
 		//Loads a default map:
-		
 		this.map = new Map(ResourceManager.getInstance().getTiledMap("test"));
 		
 	}

@@ -27,6 +27,7 @@ public class Main extends BasicGame{
 	InputHandler ih;
 	GameState gameState;
 	Player player;
+	LogicMaster lm;
 	
 	@Override
 	public void init(GameContainer container) throws SlickException {
@@ -36,6 +37,7 @@ public class Main extends BasicGame{
 		ih.addEvent(player);
 		
 		rm = ResourceManager.getInstance();
+		lm = LogicMaster.getInstance();
 		
 		deprecatiedFont = new TrueTypeFont(new Font("Courier new", Font.BOLD, 24), false);
 		
@@ -64,7 +66,7 @@ public class Main extends BasicGame{
 	@Override
 	public void update(GameContainer container, int delta) throws SlickException {
 		synchronized (this.getClass()) {
-			// do something
+			lm.handleLogics(gameState, delta);
 		}
 	}
 	

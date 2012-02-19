@@ -7,7 +7,7 @@ import org.newdawn.slick.tiled.TiledMap;
 import com.inda.hacksmack.model.GameState;
 
 /**
- * Singleton 
+ * static?
  * 
  * @author Jensa
  */

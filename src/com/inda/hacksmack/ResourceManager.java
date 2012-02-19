@@ -145,5 +145,11 @@ public class ResourceManager {
 	  public Sound getSound(String id){
 		  return soundMap.get(id);
 	  }
-	  
+
+
+
+	public void getTiledMap(String string) {
+		throw new RuntimeException("Implement this");
 	}
+  
+}

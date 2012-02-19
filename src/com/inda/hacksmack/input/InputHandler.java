@@ -1,9 +1,10 @@
 package com.inda.hacksmack.input;
 
-import org.newdawn.slick.*;
-import org.newdawn.slick.SlickException;
-import org.newdawn.slick.Input;
 import java.util.ArrayList;
+
+import org.newdawn.slick.Input;
+import org.newdawn.slick.InputListener;
+import org.newdawn.slick.SlickException;
 
 public class InputHandler implements InputListener {
 	private final boolean DEBUG = false;

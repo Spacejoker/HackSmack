@@ -1,10 +1,7 @@
 package com.inda.hacksmack.model;
 
-import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.newdawn.slick.Input;
 
 import com.inda.hacksmack.input.InputEvent;
 

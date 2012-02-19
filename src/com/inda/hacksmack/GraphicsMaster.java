@@ -15,7 +15,19 @@ import com.inda.hacksmack.model.Item;
  */
 public class GraphicsMaster {
 
-	public static void drawState(GameState gameState, Graphics graphics) {
+	private static GraphicsMaster _instance;
+	private GraphicsMaster() {
+		
+	}
+	
+	public static GraphicsMaster getInstance(){
+		if(_instance == null){
+			_instance = new GraphicsMaster();
+		}
+		return _instance;
+	}
+	
+	public void drawState(GameState gameState, Graphics graphics) {
 		TiledMap tileMap = gameState.getMap().getTileMap();
 		for (int x = 0; x < tileMap.getWidth(); x++) {
 			for (int y = 0; y < tileMap.getHeight(); y++) {

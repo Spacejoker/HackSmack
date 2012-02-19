@@ -1,7 +1,5 @@
 package com.inda.hacksmack.model;
 
-import java.awt.Point;
-
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.geom.Vector2f;
 

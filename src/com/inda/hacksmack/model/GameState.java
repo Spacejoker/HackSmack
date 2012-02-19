@@ -3,14 +3,11 @@ package com.inda.hacksmack.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
 import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.tiled.TiledMap;
 
 import com.inda.hacksmack.ResourceManager;
 import com.inda.hacksmack.factory.EnemyFactory;
-import com.sun.org.apache.bcel.internal.generic.NEW;
 
 /**
  * Contains the GameState - this can be momentarily dumped and loaded to save/retrieve gamestate

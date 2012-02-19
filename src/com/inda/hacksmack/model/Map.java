@@ -1,15 +1,6 @@
 package com.inda.hacksmack.model;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-
-import org.newdawn.slick.Image;
-import org.newdawn.slick.SlickException;
-import org.newdawn.slick.SpriteSheet;
-import org.newdawn.slick.tiled.Layer;
 import org.newdawn.slick.tiled.TiledMap;
-
-import com.inda.hacksmack.ResourceManager;
 
 /**
  * Holds the structure of a map, regarding walls etc.

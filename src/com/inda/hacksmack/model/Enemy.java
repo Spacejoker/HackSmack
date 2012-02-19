@@ -1,6 +1,5 @@
 package com.inda.hacksmack.model;
 
-import org.newdawn.slick.geom.Vector2f;
 
 public class Enemy extends Entity {
 

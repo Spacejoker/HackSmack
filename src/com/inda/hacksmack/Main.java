@@ -14,17 +14,19 @@ public class Main extends BasicGame {
 
 	private static final String IMAGE_FOLDER = "content/images/";
 	Image bgImage;
-
 	public Main() {
 		super("HackSmack");
 	}
 	TrueTypeFont deprecatiedFont;
 	@Override
 	public void init(GameContainer container) throws SlickException {
-
+		ResourceManager rm = ResourceManager.getInstance();
 		deprecatiedFont = new TrueTypeFont(new Font("Courier new", Font.BOLD, 24), false);
 		
-		bgImage = new Image(IMAGE_FOLDER + "tmp.png");
+		bgImage = rm.getImage("background");
+
+			rm.getSound("fireball_0").play();
+
 	}
 
 	/**
@@ -35,6 +37,7 @@ public class Main extends BasicGame {
 		synchronized (this.getClass()) {
 			graphics.drawImage(bgImage, 0, 0);
 			deprecatiedFont.drawString(20, 20, "Inda ownage");
+			
 		}
 	}
 

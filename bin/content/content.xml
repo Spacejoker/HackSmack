@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+
+
+  <!-- TILESET -->
+ 
+  <!-- BACKGROUND -->
+	<content type="image" id="background">images/tmp.png</content>
+
+  <!-- ANIMATION -->
+
+  <!-- IMAGE -->
+
+  <!-- SOUND -->
+	<content type="sound" id="fireball_0">sounds/fireball.wav</content>
+	<content type="sound" id="fireball_1">sounds/fireball2.wav</content>
+</resources>

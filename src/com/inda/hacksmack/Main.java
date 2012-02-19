@@ -8,13 +8,12 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
-import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.TrueTypeFont;
-import org.newdawn.slick.tiled.TiledMap;
-import org.newdawn.slick.InputListener;
 
 import com.inda.hacksmack.model.GameState;
+import com.inda.hacksmack.model.Player;
 import com.inda.hacksmack.input.InputHandler;
+
 
 public class Main extends BasicGame{
 
@@ -27,11 +26,15 @@ public class Main extends BasicGame{
 	ResourceManager rm;
 	InputHandler ih;
 	GameState gameState;
+	Player player;
 	
 	@Override
 	public void init(GameContainer container) throws SlickException {
-		//container.getInput();
+		
 		container.getInput().addListener(ih = InputHandler.getInstance());
+		player = new Player();
+		ih.addEvent(player);
+		
 		rm = ResourceManager.getInstance();
 		
 		deprecatiedFont = new TrueTypeFont(new Font("Courier new", Font.BOLD, 24), false);
@@ -62,7 +65,6 @@ public class Main extends BasicGame{
 	public void update(GameContainer container, int delta) throws SlickException {
 		synchronized (this.getClass()) {
 			// do something
-			//ih.printKeys();
 		}
 	}
 	

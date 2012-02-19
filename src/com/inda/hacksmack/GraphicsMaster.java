@@ -5,6 +5,7 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.tiled.TiledMap;
 
 import com.inda.hacksmack.model.GameState;
+import com.inda.hacksmack.model.Item;
 
 /**
  * static?
@@ -31,6 +32,12 @@ public class GraphicsMaster {
 					tileImage.draw(x*32, y*32);
 				}
 			}
+		}
+		
+		
+		//draw all enteties:
+		for (Item item : gameState.getItems()) {
+			
 		}
 		
 		int objcnt = tileMap.getObjectCount(0);

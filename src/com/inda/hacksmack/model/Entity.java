@@ -17,9 +17,13 @@ public abstract class Entity {
 	protected int maxhealth;
 	protected Animation animation;
 	protected Vector2f direction;
-	protected Point position;
+	protected Vector2f position;
 	protected double speed;
 	protected boolean passable;
+	
+	public void draw(){
+		animation.draw(position.x, position.y);
+	}
 	
 	public int getHealth() {
 		return health;
@@ -69,11 +73,11 @@ public abstract class Entity {
 		this.passable = passable;
 	}
 
-	public Point getPosition() {
+	public Vector2f getPosition() {
 		return position;
 	}
 
-	public void setPosition(Point position) {
+	public void setPosition(Vector2f position) {
 		this.position = position;
 	}
 	

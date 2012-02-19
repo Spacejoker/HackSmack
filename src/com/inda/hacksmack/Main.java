@@ -49,7 +49,6 @@ public class Main extends BasicGame {
 			TiledMap tileMap = gameState.getMap().getTileMap();
 			for (int x = 0; x < tileMap.getWidth(); x++) {
 				for (int y = 0; y < tileMap.getHeight(); y++) {
-					System.out.println(x + " " + y);
 					Image tileImage = tileMap.getTileImage(x, y, 0);
 					if(tileImage != null){
 						tileImage.draw(x*32, y*32);

@@ -10,23 +10,32 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.TrueTypeFont;
 
+import com.inda.hacksmack.model.GameState;
+
 public class Main extends BasicGame {
 
 	private static final String IMAGE_FOLDER = "content/images/";
 	Image bgImage;
+
 	public Main() {
 		super("HackSmack");
 	}
+
 	TrueTypeFont deprecatiedFont;
+	ResourceManager rm;
+	
+	GameState gameState;
+	
 	@Override
 	public void init(GameContainer container) throws SlickException {
-		ResourceManager rm = ResourceManager.getInstance();
+		rm = ResourceManager.getInstance();
 		deprecatiedFont = new TrueTypeFont(new Font("Courier new", Font.BOLD, 24), false);
-		
+
 		bgImage = rm.getImage("background");
 
-			rm.getSound("fireball_0").play();
-
+		rm.getSound("fireball_0").play();
+		
+		gameState = new GameState(); // TODO: this shoulde be loaded in a controlled manner
 	}
 
 	/**
@@ -37,7 +46,7 @@ public class Main extends BasicGame {
 		synchronized (this.getClass()) {
 			graphics.drawImage(bgImage, 0, 0);
 			deprecatiedFont.drawString(20, 20, "Inda ownage");
-			
+			gameState.getMap().getImage().draw(50,50);
 		}
 	}
 
@@ -47,10 +56,10 @@ public class Main extends BasicGame {
 	@Override
 	public void update(GameContainer container, int delta) throws SlickException {
 		synchronized (this.getClass()) {
-			//do something
+			// do something
 		}
 	}
-	
+
 	public static void main(String[] args) {
 		try {
 			AppGameContainer app = new AppGameContainer(new Main());

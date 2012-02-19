@@ -4,13 +4,11 @@
 package com.inda.hacksmack;
 
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.FileInputStream;
-import java.io.File;
 import java.util.HashMap;
-
-import java.lang.RuntimeException;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -19,7 +17,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.Sound;
-
+import org.newdawn.slick.SpriteSheet;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -30,16 +28,19 @@ import org.xml.sax.SAXException;
  * Handles resources that are loaded from external sources. 
  */
 public class ResourceManager {
-	  private static final String resourceFolder = "bin/content/";
+	  private static final String resourceFolder = "src/content/";
 	  private static ResourceManager _instance;
 	  static {  try {  _instance = new ResourceManager(); } catch (SlickException e) { throw new RuntimeException("Failed to load resources." + e.getMessage());}}
 	  private HashMap<String, Image> imageMap;
 	  private HashMap<String, Sound> soundMap;
+	  private HashMap<String, SpriteSheet> tilesetMap;
 	  
 	  
 	  private ResourceManager() throws SlickException {
 		  	imageMap = new HashMap<String, Image>();
 		  	soundMap = new HashMap<String, Sound>();
+		  	tilesetMap = new HashMap<String, SpriteSheet>();
+		  	
 		  	InputStream is;
 		  	try{
 		  		File file = new File(resourceFolder + "content.xml");
@@ -100,7 +101,9 @@ public class ResourceManager {
 	        		}else if(type.equals("sound")){
 	        			
 	        			addToSoundMap(resourceElement.getAttribute("id"), resourceElement.getTextContent());
+	        		}else if(type.equals("tileset")){
 	        			
+	        			addToTilesetMap(resourceElement.getAttribute("id"), resourceElement.getTextContent());
 	        		}   else {
 	        			
 	        			throw new SlickException("Invalid resource type, type: " + type);
@@ -111,7 +114,23 @@ public class ResourceManager {
 	  }
 	  
 	  
-	  private void addToImageMap(String id, String path) throws SlickException{
+	  private void addToTilesetMap(String id, String path) throws SlickException {
+		  if(id == null || path == null)
+			  throw new SlickException("Image load failed. id:" +id + " path: "+ path);
+		  SpriteSheet tileset;
+		  try{
+			  
+			  tileset = new SpriteSheet(new Image(resourceFolder + path), 32, 32); // dirty image load but what the heck
+		  } catch (SlickException e){
+			  throw new SlickException("Tileset file doesnt exist. id: " + id + " path: "+ path, e);
+		  }
+		  
+		  this.tilesetMap.put(id, tileset);
+	}
+
+
+
+	private void addToImageMap(String id, String path) throws SlickException{
 		  if(id == null || path == null)
 			  throw new SlickException("Image load failed. id:" +id + " path: "+ path);
 		  Image image;
@@ -148,8 +167,11 @@ public class ResourceManager {
 
 
 
-	public void getTiledMap(String string) {
-		throw new RuntimeException("Implement this");
+	public SpriteSheet getTileset(String string) {
+		if(!tilesetMap.containsKey(string)){
+			throw new RuntimeException("Tried to load a tileset that doesnt exist: " + string);
+		}
+		return tilesetMap.get(string);
 	}
   
 }

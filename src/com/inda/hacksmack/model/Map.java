@@ -1,5 +1,7 @@
 package com.inda.hacksmack.model;
 
+import org.newdawn.slick.Image;
+import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.tiled.TiledMap;
 
 import com.inda.hacksmack.ResourceManager;
@@ -9,9 +11,14 @@ import com.inda.hacksmack.ResourceManager;
  * @author Jensa
  */
 public class Map {
-	TiledMap tileMap; // might be worth reusing this class from the framework
+	SpriteSheet tileSet; // might be worth reusing this class from the framework
 	
 	public Map() {
-		ResourceManager.getInstance().getTiledMap("testmap");
+		tileSet = ResourceManager.getInstance().getTileset("test");
+	}
+	
+	public Image getImage(){
+		
+		return tileSet.getSprite(5, 2);
 	}
 }

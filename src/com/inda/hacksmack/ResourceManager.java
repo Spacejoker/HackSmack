@@ -6,6 +6,7 @@ package com.inda.hacksmack;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
@@ -18,6 +19,7 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.Sound;
 import org.newdawn.slick.SpriteSheet;
+import org.newdawn.slick.tiled.TiledMap;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -172,6 +174,20 @@ public class ResourceManager {
 			throw new RuntimeException("Tried to load a tileset that doesnt exist: " + string);
 		}
 		return tilesetMap.get(string);
+	}
+
+
+
+	/**
+	 * TODO: Not cached
+	 */
+	public TiledMap getTiledMap(String id) {
+		try {
+			return new TiledMap(new FileInputStream("src/content/maps/test.tmx"));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		throw new RuntimeException("Could not load tiled map: " + id);
 	}
   
 }

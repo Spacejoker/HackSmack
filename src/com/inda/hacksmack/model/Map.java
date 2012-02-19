@@ -1,7 +1,12 @@
 package com.inda.hacksmack.model;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
 import org.newdawn.slick.Image;
+import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
+import org.newdawn.slick.tiled.Layer;
 import org.newdawn.slick.tiled.TiledMap;
 
 import com.inda.hacksmack.ResourceManager;
@@ -11,14 +16,20 @@ import com.inda.hacksmack.ResourceManager;
  * @author Jensa
  */
 public class Map {
-	SpriteSheet tileSet; // might be worth reusing this class from the framework
+
+	TiledMap tileMap;
 	
-	public Map() {
-		tileSet = ResourceManager.getInstance().getTileset("test");
+	public Map(TiledMap map) {
+		tileMap = map;
+//		try {
+//			tileMap = new TiledMap(new FileInputStream("src/content/maps/test.tmx"));
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		tileSet = ResourceManager.getInstance().getTileset("test");
 	}
-	
-	public Image getImage(){
-		
-		return tileSet.getSprite(5, 2);
+
+	public TiledMap getTileMap() {
+		return tileMap;
 	}
 }

@@ -2,6 +2,10 @@ package com.inda.hacksmack.model;
 
 import java.util.List;
 
+import org.newdawn.slick.Graphics;
+
+import com.inda.hacksmack.ResourceManager;
+
 /**
  * Contains the GameState - this can be momentarily dumped and loaded to save/retrieve gamestate
  * 
@@ -18,7 +22,10 @@ public class GameState {
 	
 	
 	public GameState() {
-		this.map = new Map();
+		
+		//Loads a default map:
+		
+		this.map = new Map(ResourceManager.getInstance().getTiledMap("test"));
 		
 	}
 	public Map getMap() {
@@ -50,5 +57,5 @@ public class GameState {
 	}
 	public void setPlayer(Player player) {
 		this.player = player;
-	}	
+	}
 }

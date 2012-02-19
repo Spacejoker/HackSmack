@@ -6,7 +6,7 @@ import org.newdawn.slick.Input;
 import java.util.ArrayList;
 
 public class InputHandler implements InputListener {
-	private final boolean DEBUG = true;
+	private final boolean DEBUG = false;
 	private ArrayList<InputEvent> events;
 	
 	private static InputHandler _instance;

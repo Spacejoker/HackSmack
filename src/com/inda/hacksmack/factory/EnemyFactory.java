@@ -21,7 +21,7 @@ public class EnemyFactory {
 		enemy.setPassable(false);
 		enemy.setMaxhealth(100);
 		enemy.setDirection(new Vector2f(1,1));
-		
+		enemy.setSpeed(0.1);
 		return enemy;
 	}
 }

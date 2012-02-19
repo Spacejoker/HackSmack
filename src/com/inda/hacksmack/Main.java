@@ -43,7 +43,7 @@ public class Main extends BasicGame{
 		
 		bgImage = rm.getImage("background");
 
-		rm.getSound("fireball_0").play();
+//		rm.getSound("fireball_0").play(); // soo loud :p
 		
 		gameState = new GameState(); // TODO: this shoulde be loaded in a controlled manner
 	}

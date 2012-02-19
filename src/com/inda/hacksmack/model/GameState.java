@@ -39,7 +39,7 @@ public class GameState {
 		TiledMap tileMap = map.getTileMap();
 		int objcnt = tileMap.getObjectCount(0);
 		for (int i = 0; i < objcnt; i++) {
-			String enemyId = tileMap.getObjectProperty(0, i, "image", "");
+			String enemyId = tileMap.getObjectProperty(0, i, "id", "");
 			Enemy newEnemy = EnemyFactory.newEnemy(enemyId, new Vector2f(tileMap.getObjectX(0, i), tileMap.getObjectY(0, i)));
 			enemies.add(newEnemy);
 		}

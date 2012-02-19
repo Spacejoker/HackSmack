@@ -16,8 +16,8 @@ public abstract class Entity {
 	protected int health;
 	protected int maxhealth;
 	protected Animation animation;
-	protected Vector2f direction;
-	protected Vector2f position;
+	protected Vector2f direction = new Vector2f();
+	protected Vector2f position = new Vector2f();
 	protected double speed;
 	protected boolean passable;
 	

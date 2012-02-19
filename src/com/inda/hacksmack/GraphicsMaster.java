@@ -4,6 +4,7 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.tiled.TiledMap;
 
+import com.inda.hacksmack.model.Enemy;
 import com.inda.hacksmack.model.GameState;
 import com.inda.hacksmack.model.Item;
 
@@ -37,16 +38,15 @@ public class GraphicsMaster {
 		
 		//draw all enteties:
 		for (Item item : gameState.getItems()) {
-			
+			System.out.println("draw item: " + item);
 		}
 		
-		int objcnt = tileMap.getObjectCount(0);
-		for (int i = 0; i < objcnt; i++) {
-			String imageName = tileMap.getObjectProperty(0, i, "image", "");
-			Image image = ResourceManager.getInstance().getImage(imageName);
-			
-			image.draw(tileMap.getObjectX(0, i), tileMap.getObjectY(0, i));
+		for (Enemy enemy : gameState.getEnemies()) {
+			enemy.draw();
 		}
+		
+//		gam
+		
 	}
 
 	

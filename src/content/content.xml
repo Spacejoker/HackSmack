@@ -10,6 +10,7 @@
   <!-- ANIMATION -->
 
   <!-- IMAGE -->
+	<content type="image" id="enemy_giant">images/enemy_giant.png</content>
 
   <!-- SOUND -->
 	<content type="sound" id="fireball_0">sounds/fireball.wav</content>

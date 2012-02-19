@@ -8,6 +8,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.TrueTypeFont;
 import org.newdawn.slick.tiled.TiledMap;
 
@@ -45,25 +46,7 @@ public class Main extends BasicGame {
 	@Override
 	public void render(GameContainer container, Graphics graphics) throws SlickException {
 		synchronized (this.getClass()) {
-			
-			TiledMap tileMap = gameState.getMap().getTileMap();
-			for (int x = 0; x < tileMap.getWidth(); x++) {
-				for (int y = 0; y < tileMap.getHeight(); y++) {
-					Image tileImage = tileMap.getTileImage(x, y, 0);
-					if(tileImage != null){
-						tileImage.draw(x*32, y*32);
-					}
-				}
-			}
-			
-			for (int x = 0; x < tileMap.getWidth(); x++) {
-				for (int y = 0; y < tileMap.getHeight(); y++) {
-					Image tileImage = tileMap.getTileImage(x, y, 1);
-					if(tileImage != null){
-						tileImage.draw(x*32, y*32);
-					}
-				}
-			}
+			GraphicsMaster.drawState(gameState, graphics);
 		}
 	}
 

@@ -2,7 +2,7 @@ package com.inda.hacksmack.model;
 
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.geom.Vector2f;
-
+import java.math.*;
 /**
  * Base class for everything that can be shown and interacted with on screen
  * 
@@ -21,7 +21,8 @@ public abstract class Entity {
 	protected double radius = 16;
 	
 	public void draw(){
-		animation.draw(position.x, position.y);
+			animation.getCurrentFrame().setRotation((float) ( direction.getTheta()-90));
+			animation.draw(position.x, position.y);
 	}
 	
 	public int getHealth() {

@@ -3,9 +3,10 @@ package com.inda.hacksmack.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.newdawn.slick.Image;
 import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.tiled.TiledMap;
-
+import org.newdawn.slick.Animation;
 import com.inda.hacksmack.ResourceManager;
 import com.inda.hacksmack.factory.EnemyFactory;
 
@@ -42,7 +43,11 @@ public class GameState {
 		}
 		
 		player = new Player();
-		player.setPosition(new Vector2f(100, 100));
+		player.setSpeed(200);
+		Image []frame = new Image[1];
+		frame[0] = ResourceManager.getInstance().getImage("player");
+		player.setAnimation(new Animation(frame, 1));
+		player.setPosition(new Vector2f(200, 200));
 	}
 
 	public Map getMap() {

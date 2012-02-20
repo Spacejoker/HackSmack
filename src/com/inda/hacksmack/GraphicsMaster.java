@@ -57,7 +57,8 @@ public class GraphicsMaster {
 			enemy.draw();
 		}
 		
-//		gam
+		gameState.getPlayer().draw();
+
 		
 	}
 

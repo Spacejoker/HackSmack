@@ -11,7 +11,7 @@
 
   <!-- IMAGE -->
 	<content type="image" id="enemy_giant">images/enemy_giant.png</content>
-
+	<content type="image" id="player">images/player.png</content>
   <!-- SOUND -->
 	<content type="sound" id="fireball_0">sounds/fireball.wav</content>
 	<content type="sound" id="fireball_1">sounds/fireball2.wav</content>

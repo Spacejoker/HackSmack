@@ -22,14 +22,13 @@ public class LogicMaster {
 	
 	public void handleLogics(GameState state, int delta){
 		timepassed += delta;
-		//make each enemy set up a direction:
 		Player player = state.getPlayer();
-		Vector2f pp = state.getPlayer().getPosition();
-		
-
-		pp.add(new Vector2f(player.getDirection()).normalise().scale((float) (player.getSpeed() * delta/(float)1000)));
 		
 		
+		//Move the player
+		player.getPosition().add(new Vector2f(player.getDirection()).normalise().scale((float) (player.getSpeed() * delta/(float)1000)));
+		
+		//make each enemy set up a direction:
 		System.out.println(player.getDirection() + " " + player.getSpeed() + " " + delta);
 		
 		for (Enemy enemy : state.getEnemies()) {

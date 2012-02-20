@@ -2,11 +2,17 @@ package com.inda.hacksmack.model;
 
 
 public class Enemy extends Entity {
-
+	private double defaultspeed;
 	/**
 	 * The AI is in this method -> just walk towards the player for now
 	 * @param player
 	 */
+	
+	public void setSpeed(double speed){
+		this.speed = speed;
+		defaultspeed = speed;
+	}	
+	
 	public void updateDirection(Player player) {
 		float py = player.getPosition().y;
 		float px = player.getPosition().x;
@@ -26,8 +32,11 @@ public class Enemy extends Entity {
 		}
 		
 		if(Math.sqrt(Math.pow(position.x - player.getPosition().x, 2) + Math.pow(position.y - player.getPosition().y, 2)) < player.getRadius() + radius){
-			direction.x = 0;
-			direction.y = 0;
+			
+			speed = 0;
+		} else {
+			speed = defaultspeed;
 		}
+		
 	}
 }

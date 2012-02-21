@@ -7,6 +7,7 @@ import org.newdawn.slick.tiled.TiledMap;
 import com.inda.hacksmack.model.Enemy;
 import com.inda.hacksmack.model.GameState;
 import com.inda.hacksmack.model.Item;
+import com.inda.hacksmack.model.Projectile;
 
 /**
  * static?
@@ -59,6 +60,9 @@ public class GraphicsMaster {
 		
 		gameState.getPlayer().draw();
 
+		for(Projectile proj : gameState.getProjectiles()){
+			proj.draw();
+		}
 		
 	}
 

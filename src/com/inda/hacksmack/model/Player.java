@@ -3,20 +3,28 @@ package com.inda.hacksmack.model;
 import java.util.ArrayList;
 
 
+import org.newdawn.slick.Animation;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.geom.Vector2f;
 
 import java.util.List;
 
+import com.inda.hacksmack.ResourceManager;
 import com.inda.hacksmack.input.InputEvent;
 
 public class Player extends Entity implements InputEvent {
 	
+	private GameState gamestate;
 	private List<Item> inventory = new ArrayList<Item>();
 	private double weaponDamage;
 	private int ammoLeft;
 	private Vector2f mouseposition = new Vector2f();
 	private Vector2f lookdirection = new Vector2f();
 	//add more properties as needed
+	
+	public void setGameState(GameState gamestate){
+		this.gamestate = gamestate;
+	}
 	
 	public List<Item> getInventory() {
 		return inventory;
@@ -88,13 +96,13 @@ public class Player extends Entity implements InputEvent {
 
 	@Override
 	public void mouseClicked(int button, int x, int y, int clickCount) {
-		// TODO Auto-generated method stub
+	
 		
 	}
 
 	@Override
 	public void mouseDragged(int oldx, int oldy, int newx, int newy) {
-		// TODO Auto-generated method stub
+		mouseposition.set(newx, newy);
 		
 	}
 
@@ -106,13 +114,19 @@ public class Player extends Entity implements InputEvent {
 
 	@Override
 	public void mousePressed(int button, int x, int y) {
-		// TODO Auto-generated method stub
+		Projectile proj = new Projectile();
+		proj.setSpeed(400);
+		Image []frame2 = new Image[1];
+		frame2[0] = ResourceManager.getInstance().getImage("ball");
+		proj.setAnimation(new Animation(frame2, 1));
+		proj.setPosition(new Vector2f(position));
+		proj.setDirection(new Vector2f(lookdirection));
+		gamestate.getProjectiles().add(proj);
 		
 	}
 
 	@Override
 	public void mouseReleased(int button, int x, int y) {
-		// TODO Auto-generated method stub
 		
 	}
 

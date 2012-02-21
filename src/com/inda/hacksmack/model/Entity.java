@@ -2,7 +2,7 @@ package com.inda.hacksmack.model;
 
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.geom.Vector2f;
-import java.math.*;
+
 /**
  * Base class for everything that can be shown and interacted with on screen
  * 

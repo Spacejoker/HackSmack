@@ -43,11 +43,15 @@ public class GameState {
 		}
 		
 		player = new Player();
+		player.setGameState(this);
 		player.setSpeed(200);
 		Image []frame = new Image[1];
 		frame[0] = ResourceManager.getInstance().getImage("player");
 		player.setAnimation(new Animation(frame, 1));
 		player.setPosition(new Vector2f(200, 200));
+		
+	
+		
 	}
 
 	public Map getMap() {
@@ -61,6 +65,7 @@ public class GameState {
 	public List<Enemy> getEnemies() {
 		return enemies;
 	}
+
 
 	public void setEnemies(List<Enemy> enemies) {
 		this.enemies = enemies;

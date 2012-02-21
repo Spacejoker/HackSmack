@@ -1,6 +1,5 @@
 package com.inda.hacksmack.model;
 
-import org.newdawn.slick.Image;
 
 public class EnemyTypeData {
 

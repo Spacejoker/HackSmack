@@ -3,16 +3,17 @@ package com.inda.hacksmack.model;
 
 public class Enemy extends Entity {
 	private double defaultspeed;
-	/**
-	 * The AI is in this method -> just walk towards the player for now
-	 * @param player
-	 */
 	
 	public void setSpeed(double speed){
 		this.speed = speed;
 		defaultspeed = speed;
 	}	
 	
+	/**
+	 * The AI is in this method -> just walk towards the player for now
+	 * @param player
+	 */
+
 	public void updateDirection(Player player) {
 		float py = player.getPosition().y;
 		float px = player.getPosition().x;

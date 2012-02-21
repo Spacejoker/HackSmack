@@ -4,6 +4,10 @@
 
   <!-- TILESET -->
 	<content type="tileset" id="test">tilesets/test.png</content>
+	
+  <!-- TILESET -->
+	<content type="map" id="test">maps/test.tmx</content>
+	
   <!-- BACKGROUND -->
 	<content type="image" id="background">images/tmp.png</content>
 

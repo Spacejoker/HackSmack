@@ -10,6 +10,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -41,17 +42,19 @@ public class ResourceManager {
 			throw new RuntimeException("Failed to load resources." + e.getMessage());
 		}
 	}
-	private HashMap<String, Image> imageMap;
-	private HashMap<String, Sound> soundMap;
-	private HashMap<String, SpriteSheet> tilesetMap;
-	private HashMap<String, EnemyTypeData> enemyTypeDataMap;
+	private Map<String, Image> imageMap;
+	private Map<String, Sound> soundMap;
+	private Map<String, SpriteSheet> tilesetMap;
+	private Map<String, EnemyTypeData> enemyTypeDataMap;
+	private Map<String, TiledMap> mapMap;
+	
 
 	private ResourceManager() throws SlickException {
 		imageMap = new HashMap<String, Image>();
 		soundMap = new HashMap<String, Sound>();
 		tilesetMap = new HashMap<String, SpriteSheet>();
 		enemyTypeDataMap = new HashMap<String, EnemyTypeData>();
-
+		mapMap = new HashMap<String, TiledMap>();
 		InputStream is;
 		try {
 			File file = new File(resourceFolder + "content.xml");
@@ -112,6 +115,8 @@ public class ResourceManager {
 					addToTilesetMap(resourceElement.getAttribute("id"), resourceElement.getTextContent());
 				} else if (type.equals("enemy")) {
 					addToEnemyMap(resourceElement.getAttribute("id"), resourceElement);
+				} else if (type.equals("map")) {
+					addToMapMap(resourceElement.getAttribute("id"), resourceElement);
 				} else {
 
 					throw new SlickException("Invalid resource type, type: " + type);
@@ -119,6 +124,24 @@ public class ResourceManager {
 				}
 			}
 		}
+	}
+
+	/**
+	 * Abused name >.>
+	 * @throws SlickException 
+	 */
+	private void addToMapMap(String id, Element path) throws SlickException {
+		
+		if (id == null || path == null)
+			throw new SlickException("Image load failed. id:" + id + " path: " + path);
+		TiledMap map;
+		try {
+			map = new TiledMap(resourceFolder + path);
+		} catch (SlickException e) {
+			throw new SlickException("Image file doesnt exist. id: " + id + " path: " + path, e);
+		}
+
+		this.mapMap.put(id, map);
 	}
 
 	private void addToEnemyMap(String id, Element resourceElement) {
@@ -199,16 +222,11 @@ public class ResourceManager {
 		return enemyTypeDataMap.get(id);
 	}
 
-	/**
-	 * TODO: Not cached
-	 */
 	public TiledMap getTiledMap(String id) {
-		try {
-			return new TiledMap(new FileInputStream("src/content/maps/test.tmx"));
-		} catch (Exception e) {
-			e.printStackTrace();
+		if(!mapMap.containsKey(id)){
+			throw new RuntimeException("Could not load tiled map: " + id);
 		}
-		throw new RuntimeException("Could not load tiled map: " + id);
+		return mapMap.get(id);
 	}
 
 }

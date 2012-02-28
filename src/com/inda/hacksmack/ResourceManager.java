@@ -116,7 +116,7 @@ public class ResourceManager {
 				} else if (type.equals("enemy")) {
 					addToEnemyMap(resourceElement.getAttribute("id"), resourceElement);
 				} else if (type.equals("map")) {
-					addToMapMap(resourceElement.getAttribute("id"), resourceElement);
+					addToMapMap(resourceElement.getAttribute("id"), resourceElement.getTextContent());
 				} else {
 
 					throw new SlickException("Invalid resource type, type: " + type);
@@ -130,7 +130,7 @@ public class ResourceManager {
 	 * Abused name >.>
 	 * @throws SlickException 
 	 */
-	private void addToMapMap(String id, Element path) throws SlickException {
+	private void addToMapMap(String id, String path) throws SlickException {
 		
 		if (id == null || path == null)
 			throw new SlickException("Image load failed. id:" + id + " path: " + path);

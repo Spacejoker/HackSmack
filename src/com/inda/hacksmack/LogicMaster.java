@@ -43,7 +43,8 @@ public class LogicMaster {
 		
 		for(Projectile proj : state.getProjectiles()){
 			proj.getPosition().add(new Vector2f(proj.getDirection()).normalise().scale((float) (proj.getSpeed() * delta/(float)1000)));
-			System.out.println(proj.toString());
+			
+//			System.out.println(proj.toString());
 		}
 	}
 

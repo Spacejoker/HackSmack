@@ -29,6 +29,30 @@ public class GraphicsMaster {
 	}
 	
 	public void drawState(GameState gameState, Graphics graphics) {
+		
+		drawMap(gameState);
+		
+		//draw all enteties:
+		for (Item item : gameState.getItems()) {
+			System.out.println("draw item: " + item);
+		}
+		
+		for (Enemy enemy : gameState.getEnemies()) {
+			enemy.draw();
+		}
+		
+		gameState.getPlayer().draw();
+
+		for(Projectile proj : gameState.getProjectiles()){
+			proj.draw();
+		}
+		
+	}
+
+	/**
+	 * Draws the map onto screen - no scrolling supported
+	 */
+	private void drawMap(GameState gameState) {
 		TiledMap tileMap = gameState.getMap().getTileMap();
 		for (int x = 0; x < tileMap.getWidth(); x++) {
 			for (int y = 0; y < tileMap.getHeight(); y++) {
@@ -47,23 +71,6 @@ public class GraphicsMaster {
 				}
 			}
 		}
-		
-		
-		//draw all enteties:
-		for (Item item : gameState.getItems()) {
-			System.out.println("draw item: " + item);
-		}
-		
-		for (Enemy enemy : gameState.getEnemies()) {
-			enemy.draw();
-		}
-		
-		gameState.getPlayer().draw();
-
-		for(Projectile proj : gameState.getProjectiles()){
-			proj.draw();
-		}
-		
 	}
 
 	

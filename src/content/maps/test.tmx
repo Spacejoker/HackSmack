@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="32" height="23" tilewidth="32" tileheight="32">
  <tileset firstgid="1" name="test" tilewidth="32" tileheight="32">
-  <image source="src/content/tilesets/test.png" width="1024" height="2016"/>
+  <image source="../tilesets/test.png" width="1024" height="2016"/>
  </tileset>
  <layer name="Tile Layer 1" width="32" height="23">
   <data encoding="base64" compression="gzip">
@@ -33,4 +33,9 @@
    </properties>
   </object>
  </objectgroup>
+  <layer name="Tile Layer 3" width="32" height="23">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NiYGBgGmA8UGDU/lH7R+0fmfYzDkL7GZEwrctNSv0/1O2HmTFq/6j9Q9V+xmFmPyMWTA/7BxIDAAZ7MimACwAA
+  </data>
+ </layer>
 </map>

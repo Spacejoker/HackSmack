@@ -10,7 +10,7 @@
  </layer>
  <layer name="Tile Layer 2" width="32" height="23">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgIB2IszMwSACxJDsZmqkAzIH2WgCxJZn2TwXqmzZAbgeBrUC7t9HYfhs2+uobBaNgOAD1ASwXRsHwBkkDXLY2kWH/aH0wvMBofA4uAAB2L1LEgAsAAA==
+   H4sIAAAAAAAAC2NgIB2IszMwSACxJDsZmqkAzIH2WgCxJZn2TwXqmzZAbgeBrUC7t9HYfhs2+uobBaNgOAD1ASwXkEEYI2E80O4btZ80kETFspUc+5vIsB9XfTAUw3/UfurV70PV/4MNAAAJ/IRwgAsAAA==
   </data>
  </layer>
  <objectgroup name="Object Layer 1" width="32" height="23">
@@ -33,4 +33,9 @@
    </properties>
   </object>
  </objectgroup>
+ <layer name="Tile Layer 3" width="32" height="23">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NiYGBgGmA8UGDU/lH7R+0fmfYzDkL7GZEwrctNSv0/1O2HmTFq/6j9Q9V+xmFmPyMWTA/7BxIDAAZ7MimACwAA
+  </data>
+ </layer>
 </map>

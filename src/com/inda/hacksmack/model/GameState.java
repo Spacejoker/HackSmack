@@ -17,6 +17,7 @@ import com.inda.hacksmack.factory.EnemyFactory;
  */
 public class GameState {
 
+	private GameMode gameMode = GameMode.GAMEPLAY;
 	private Map map;
 	private List<Enemy> enemies = new ArrayList<Enemy>();
 	private List<Item> items = new ArrayList<Item>();
@@ -94,4 +95,14 @@ public class GameState {
 	public void setPlayer(Player player) {
 		this.player = player;
 	}
+
+	public GameMode getGameMode() {
+		return gameMode;
+	}
+
+	public void setGameMode(GameMode gameMode) {
+		this.gameMode = gameMode;
+	}
+	
+	
 }

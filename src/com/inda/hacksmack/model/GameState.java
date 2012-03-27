@@ -9,6 +9,8 @@ import org.newdawn.slick.tiled.TiledMap;
 import org.newdawn.slick.Animation;
 import com.inda.hacksmack.ResourceManager;
 import com.inda.hacksmack.factory.EnemyFactory;
+import com.inda.hacksmack.model.cutscene.CutScene;
+import com.inda.hacksmack.model.cutscene.IntroCutScene;
 
 /**
  * Contains the GameState - this can be momentarily dumped and loaded to save/retrieve gamestate
@@ -18,6 +20,7 @@ import com.inda.hacksmack.factory.EnemyFactory;
 public class GameState {
 
 	private GameMode gameMode = GameMode.GAMEPLAY;
+	private CutScene cutScene = new IntroCutScene();
 	private Map map;
 	private List<Enemy> enemies = new ArrayList<Enemy>();
 	private List<Item> items = new ArrayList<Item>();
@@ -49,10 +52,7 @@ public class GameState {
 		Image []frame = new Image[1];
 		frame[0] = ResourceManager.getInstance().getImage("player");
 		player.setAnimation(new Animation(frame, 1));
-		player.setPosition(new Vector2f(200, 200));
-		
-	
-		
+		player.setPosition(new Vector2f(200, 200));	
 	}
 
 	public Map getMap() {
@@ -103,6 +103,12 @@ public class GameState {
 	public void setGameMode(GameMode gameMode) {
 		this.gameMode = gameMode;
 	}
-	
-	
+
+	public CutScene getCutScene() {
+		return cutScene;
+	}
+
+	public void setCutScene(CutScene cutScene) {
+		this.cutScene = cutScene;
+	}
 }

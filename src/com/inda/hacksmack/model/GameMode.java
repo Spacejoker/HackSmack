@@ -1,6 +1,6 @@
 package com.inda.hacksmack.model;
 
 public enum GameMode {
-	GAMEPLAY, MENU;
+	GAMEPLAY, MENU, CUT_SCENE;
 
 }

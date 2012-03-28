@@ -58,7 +58,7 @@ public class Main extends BasicGame{
 	public static void main(String[] args) {
 		try {
 			AppGameContainer app = new AppGameContainer(new Main());
-			app.setDisplayMode(1024, 720, false);
+			app.setDisplayMode(HackSmackConstants.SCREEN_WIDTH, HackSmackConstants.SCREEN_HEIGHT, false);
 			app.setShowFPS(true);
 			app.start();
 		} catch (Exception e) {

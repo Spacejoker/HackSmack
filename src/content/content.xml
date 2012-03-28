@@ -15,7 +15,10 @@
 	<content type="image" id="enemy_giant">images/enemy_giant.png</content>
 	<content type="image" id="player">images/player.png</content>
 	<content type="image" id="ball">images/ball.png</content>
-
+	<content type="image" id="intro_walk_1">images/intro/intro_walk_1.png</content>
+	<content type="image" id="intro_walk_2">images/intro/intro_walk_2.png</content>
+	<content type="image" id="intro_walk_3">images/intro/intro_walk_3.png</content>
+	
   <!-- SOUND -->
 	<content type="sound" id="fireball_0">sounds/fireball.wav</content>
 	<content type="sound" id="fireball_1">sounds/fireball2.wav</content>

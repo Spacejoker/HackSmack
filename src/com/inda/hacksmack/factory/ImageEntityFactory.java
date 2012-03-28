@@ -14,12 +14,31 @@ public class ImageEntityFactory {
 	 */
 	public static ImageEntity newImageEntity(String id, Vector2f position){
 		
-		ImageEntity image = new ImageEntity();
+		ImageEntity entity = new ImageEntity();
 		
-		image.setPosition(position);
-		image.setAnimation(new Animation(new Image[]{ResourceManager.getInstance().getImage(id)}, 1));
+		entity.setPosition(position);
+		entity.setAnimation(new Animation(new Image[]{ResourceManager.getInstance().getImage(id)}, 1));
 		
-		return image;
+		return entity;
 		
 	}
+	
+	public static ImageEntity newImageEntity(String[] ids, Vector2f position, int animationSpeed){
+		
+		ImageEntity entity = new ImageEntity();
+		
+		entity.setPosition(position);
+		
+		Image[] images = new Image[ids.length];
+		for (int i = 0; i < ids.length; i++) {
+			images[i] = ResourceManager.getInstance().getImage(ids[i]);
+		}
+		
+		entity.setAnimation(new Animation(images, animationSpeed));
+		
+		
+		return entity;
+		
+	}
+	
 }

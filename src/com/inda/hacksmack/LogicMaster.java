@@ -8,6 +8,7 @@ import com.inda.hacksmack.model.GameState;
 import com.inda.hacksmack.model.Projectile;
 
 public class LogicMaster {
+	@SuppressWarnings("unused")
 	private double timepassed = 0;
 	private static LogicMaster _instance;
 	
@@ -43,9 +44,9 @@ public class LogicMaster {
 		
 		for(Projectile proj : state.getProjectiles()){
 			proj.getPosition().add(new Vector2f(proj.getDirection()).normalise().scale((float) (proj.getSpeed() * delta/(float)1000)));
-			
 //			System.out.println(proj.toString());
 		}
+		//primitive collisiondetection
 	}
 
 }

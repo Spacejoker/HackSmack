@@ -4,6 +4,10 @@ package com.inda.hacksmack.model;
 public class Enemy extends Entity {
 	private double defaultspeed;
 	
+	public Enemy(){
+		passable = false;
+	}
+	
 	public void setSpeed(double speed){
 		this.speed = speed;
 		defaultspeed = speed;

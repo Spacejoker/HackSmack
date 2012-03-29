@@ -121,6 +121,7 @@ public class Player extends Entity implements InputEvent {
 		proj.setAnimation(new Animation(frame2, 1));
 		proj.setPosition(new Vector2f(position));
 		proj.setDirection(new Vector2f(lookdirection));
+		proj.setDamage(getWeaponDamage());
 		gamestate.getProjectiles().add(proj);
 		
 	}

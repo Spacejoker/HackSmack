@@ -7,6 +7,7 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 
 import com.inda.hacksmack.input.InputHandler;
+import com.inda.hacksmack.model.GameMode;
 import com.inda.hacksmack.model.GameState;
 
 
@@ -31,6 +32,7 @@ public class Main extends BasicGame{
 		ih.addEvent(gameState.getPlayer());
 		
 		lm = LogicMaster.getInstance();
+		gameState.setGameMode(GameMode.CUT_SCENE);
 	}
 
 	/**
@@ -56,7 +58,7 @@ public class Main extends BasicGame{
 	public static void main(String[] args) {
 		try {
 			AppGameContainer app = new AppGameContainer(new Main());
-			app.setDisplayMode(1024, 720, false);
+			app.setDisplayMode(HackSmackConstants.SCREEN_WIDTH, HackSmackConstants.SCREEN_HEIGHT, false);
 			app.setShowFPS(true);
 			app.start();
 		} catch (Exception e) {

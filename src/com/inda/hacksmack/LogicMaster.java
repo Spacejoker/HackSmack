@@ -1,5 +1,9 @@
 package com.inda.hacksmack;
 
+import java.util.Iterator;
+import java.util.List;
+
+import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Vector2f;
 
 import com.inda.hacksmack.model.Enemy;
@@ -9,6 +13,7 @@ import com.inda.hacksmack.model.GameState;
 import com.inda.hacksmack.model.Projectile;
 
 public class LogicMaster {
+	@SuppressWarnings("unused")
 	private double timepassed = 0;
 	private static LogicMaster _instance;
 
@@ -43,12 +48,23 @@ public class LogicMaster {
 				position.x += enemy.getDirection().x * enemy.getSpeed() * delta;
 				position.y += enemy.getDirection().y * enemy.getSpeed() * delta;
 			}
-
-			for (Projectile proj : state.getProjectiles()) {
+			for (Iterator <Projectile>it = state.getProjectiles().iterator(); it.hasNext();) {
+				Projectile proj = it.next();
 				proj.getPosition().add(new Vector2f(proj.getDirection()).normalise().scale((float) (proj.getSpeed() * delta / (float) 1000)));
-
+				for(Enemy enemy : state.getEnemies()){
+					if(proj.getPosition().distance(enemy.getPosition()) < proj.getRadius() + enemy.getRadius()){
+						//En fiende har träffats, gör dmg.
+						System.out.println("Did " + proj.getDamage() + " points of dmg!");
+						enemy.setHealth((int)(enemy.getHealth()-proj.getDamage()));
+						it.remove();
+						break;
+					}}
+						
+						
+					
 				// System.out.println(proj.toString());
 			}
+			
 			break;
 			
 		case CUT_SCENE:

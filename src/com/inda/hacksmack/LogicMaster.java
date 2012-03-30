@@ -35,6 +35,7 @@ public class LogicMaster {
 			Player player = state.getPlayer();
 
 			// Move the player
+			
 			player.getPosition().add(new Vector2f(player.getDirection()).normalise().scale((float) (player.getSpeed() * delta / (float) 1000)));
 
 			// make each enemy set up a direction:
@@ -51,12 +52,15 @@ public class LogicMaster {
 			for (Iterator <Projectile>it = state.getProjectiles().iterator(); it.hasNext();) {
 				Projectile proj = it.next();
 				proj.getPosition().add(new Vector2f(proj.getDirection()).normalise().scale((float) (proj.getSpeed() * delta / (float) 1000)));
-				for(Enemy enemy : state.getEnemies()){
+				for(Iterator <Enemy>e = state.getEnemies().iterator(); e.hasNext();){
+					Enemy enemy = e.next();
 					if(proj.getPosition().distance(enemy.getPosition()) < proj.getRadius() + enemy.getRadius()){
 						//En fiende har träffats, gör dmg.
-						System.out.println("Did " + proj.getDamage() + " points of dmg!");
+						//System.out.println("Did " + proj.getDamage() + " points of dmg! " + (int)(enemy.getHealth()-proj.getDamage()) + " hp left!");
 						enemy.setHealth((int)(enemy.getHealth()-proj.getDamage()));
 						it.remove();
+						if(enemy.getHealth() <= 0)
+							e.remove();
 						break;
 					}}
 						

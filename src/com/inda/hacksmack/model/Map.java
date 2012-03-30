@@ -11,13 +11,15 @@ import com.inda.hacksmack.HackSmackConstants;
 public class Map {
 
 	TiledMap tileMap;
-	
+	int width;
+	int height;
 	boolean[][] passableTile;
 	
 	public Map(TiledMap map) {
 		tileMap = map;
-		int width = map.getWidth();
-		int height = map.getHeight();
+		width = map.getWidth();
+		height = map.getHeight();
+		System.out.println("map: " + width +" " +  height);
 		passableTile = new boolean[width][height];
 		for (int i = 0; i < height; i++) {
 			for (int j = 0; j < width; j++) {
@@ -33,6 +35,14 @@ public class Map {
 		return tileMap;
 	}
 
+	public int getHeight(){
+		return height;
+	}
+	
+	public int getWidth(){
+		return width;
+	}
+	
 	public boolean[][] getPassableTile() {
 		return passableTile;
 	}

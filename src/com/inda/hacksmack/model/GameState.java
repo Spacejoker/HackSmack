@@ -49,7 +49,7 @@ public class GameState {
 		player = new Player();
 		player.setGameState(this);
 		player.setSpeed(200);
-		player.setWeaponDamage(1);
+		player.setWeaponDamage(50);
 		Image []frame = new Image[1];
 		frame[0] = ResourceManager.getInstance().getImage("player");
 		player.setAnimation(new Animation(frame, 1));

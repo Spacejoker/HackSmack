@@ -1,9 +1,6 @@
 package com.inda.hacksmack;
 
 import java.util.Iterator;
-import java.util.List;
-
-import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Vector2f;
 
 import com.inda.hacksmack.model.Enemy;
@@ -56,7 +53,7 @@ public class LogicMaster {
 					Enemy enemy = e.next();
 					if(proj.getPosition().distance(enemy.getPosition()) < proj.getRadius() + enemy.getRadius()){
 						//En fiende har träffats, gör dmg.
-						//System.out.println("Did " + proj.getDamage() + " points of dmg! " + (int)(enemy.getHealth()-proj.getDamage()) + " hp left!");
+						System.out.println("Did " + proj.getDamage() + " points of dmg! " + (int)(enemy.getHealth()-proj.getDamage()) + " hp left!");
 						enemy.setHealth((int)(enemy.getHealth()-proj.getDamage()));
 						it.remove();
 						if(enemy.getHealth() <= 0)

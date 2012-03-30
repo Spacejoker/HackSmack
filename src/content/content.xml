@@ -18,6 +18,9 @@
 	<content type="image" id="intro_walk_1">images/intro/intro_walk_1.png</content>
 	<content type="image" id="intro_walk_2">images/intro/intro_walk_2.png</content>
 	<content type="image" id="intro_walk_3">images/intro/intro_walk_3.png</content>
+	<content type="image" id="conversation_1">images/intro/conversation_1.png</content>
+	<content type="image" id="conversation_2">images/intro/conversation_2.png</content>
+	<content type="image" id="space_artifact">images/intro/space_artifact.png</content>
 	
   <!-- SOUND -->
 	<content type="sound" id="fireball_0">sounds/fireball.wav</content>

@@ -3,12 +3,15 @@ package com.inda.hacksmack.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.newdawn.slick.Animation;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.tiled.TiledMap;
-import org.newdawn.slick.Animation;
+
 import com.inda.hacksmack.ResourceManager;
 import com.inda.hacksmack.factory.EnemyFactory;
+import com.inda.hacksmack.factory.ItemFactory;
+import com.inda.hacksmack.model.Item.ItemType;
 import com.inda.hacksmack.model.cutscene.CutScene;
 import com.inda.hacksmack.model.cutscene.IntroCutScene;
 
@@ -41,9 +44,15 @@ public class GameState {
 		TiledMap tileMap = map.getTileMap();
 		int objcnt = tileMap.getObjectCount(0);
 		for (int i = 0; i < objcnt; i++) {
-			String enemyId = tileMap.getObjectProperty(0, i, "id", "");
-			Enemy newEnemy = EnemyFactory.newEnemy(enemyId, new Vector2f(tileMap.getObjectX(0, i), tileMap.getObjectY(0, i)));
-			enemies.add(newEnemy);
+			String type = tileMap.getObjectProperty(0, i, "type", "");
+			String id = tileMap.getObjectProperty(0, i, "id", "");
+			if(type.equals("enemy")){
+				Enemy newEnemy = EnemyFactory.newEnemy(id, new Vector2f(tileMap.getObjectX(0, i), tileMap.getObjectY(0, i)));
+				enemies.add(newEnemy);
+			} else if(type.equals("gem")){
+				Item item = ItemFactory.newItemEntity(id, new Vector2f(tileMap.getObjectX(0, i), tileMap.getObjectY(0, i)), ItemType.GEM);
+				items.add(item);
+			}
 		}
 		
 		player = new Player();

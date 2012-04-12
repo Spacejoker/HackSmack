@@ -5,6 +5,10 @@ package com.inda.hacksmack.model;
  * @author Jensa
  */
 public class Item extends Entity {
+	
+	public enum ItemType{GEM, ANIMATION}
+	ItemType type;
+	
 	boolean canBePicked;
 
 	public boolean getCanBePicked() {
@@ -14,5 +18,12 @@ public class Item extends Entity {
 	public void setCanBePicked(boolean canBePicked) {
 		this.canBePicked = canBePicked;
 	}
-	
+
+	public ItemType getType() {
+		return type;
+	}
+
+	public void setType(ItemType type) {
+		this.type = type;
+	}
 }

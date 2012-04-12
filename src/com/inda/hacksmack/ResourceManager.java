@@ -7,13 +7,16 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+import org.newdawn.slick.Animation;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.Sound;
@@ -25,6 +28,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import com.inda.hacksmack.model.AnimationTypeData;
 import com.inda.hacksmack.model.EnemyTypeData;
 
 /**
@@ -45,7 +49,7 @@ public class ResourceManager {
 	private Map<String, SpriteSheet> tilesetMap;
 	private Map<String, EnemyTypeData> enemyTypeDataMap;
 	private Map<String, TiledMap> mapMap;
-	
+	private Map<String, AnimationTypeData> animationMap = new HashMap<String, AnimationTypeData>();
 
 	private ResourceManager() throws SlickException {
 		imageMap = new HashMap<String, Image>();
@@ -102,19 +106,17 @@ public class ResourceManager {
 				String type = resourceElement.getAttribute("type");
 
 				if (type.equals("image")) {
-
 					addToImageMap(resourceElement.getAttribute("id"), resourceElement.getTextContent());
-
 				} else if (type.equals("sound")) {
-
 					addToSoundMap(resourceElement.getAttribute("id"), resourceElement.getTextContent());
 				} else if (type.equals("tileset")) {
-
 					addToTilesetMap(resourceElement.getAttribute("id"), resourceElement.getTextContent());
 				} else if (type.equals("enemy")) {
 					addToEnemyMap(resourceElement.getAttribute("id"), resourceElement);
 				} else if (type.equals("map")) {
 					addToMapMap(resourceElement.getAttribute("id"), resourceElement.getTextContent());
+				} else if (type.equals("animation")){
+					addToAnimationMap(resourceElement.getAttribute("id"), resourceElement);
 				} else {
 
 					throw new SlickException("Invalid resource type, type: " + type);
@@ -124,12 +126,25 @@ public class ResourceManager {
 		}
 	}
 
+	private void addToAnimationMap(String id, Element resourceElement) {
+		
+		NodeList elementsByTagName = resourceElement.getElementsByTagName("image");
+		
+		String[] imageIds = new String[elementsByTagName.getLength()]; 
+		for (int i = 0; i < elementsByTagName.getLength(); i++) {
+			imageIds[i] = elementsByTagName.item(i).getTextContent();
+		}
+		
+		animationMap.put(id, new AnimationTypeData(imageIds, id, Integer.valueOf(resourceElement.getAttribute("speed"))));
+	}
+
 	/**
 	 * Abused name >.>
-	 * @throws SlickException 
+	 * 
+	 * @throws SlickException
 	 */
 	private void addToMapMap(String id, String path) throws SlickException {
-		
+
 		if (id == null || path == null)
 			throw new SlickException("Image load failed. id:" + id + " path: " + path);
 		TiledMap map;
@@ -146,8 +161,8 @@ public class ResourceManager {
 		int maxhealth = Integer.parseInt(resourceElement.getAttribute("maxhealth"));
 		double speed = Double.parseDouble(resourceElement.getAttribute("speed"));
 		double radius = Double.parseDouble(resourceElement.getAttribute("radius"));
-		String[] imageData = resourceElement.getAttribute("animationimages").split(";");	
-		
+		String[] imageData = resourceElement.getAttribute("animationimages").split(";");
+
 		enemyTypeDataMap.put(id, new EnemyTypeData(imageData, maxhealth, speed, radius, id));
 	}
 
@@ -212,8 +227,8 @@ public class ResourceManager {
 		}
 		return tilesetMap.get(id);
 	}
-	
-	public EnemyTypeData getEnemyTypeData(String id){
+
+	public EnemyTypeData getEnemyTypeData(String id) {
 		if (!enemyTypeDataMap.containsKey(id)) {
 			throw new RuntimeException("Tried to load enemy type data that doesnt exist: " + id);
 		}
@@ -221,10 +236,27 @@ public class ResourceManager {
 	}
 
 	public TiledMap getTiledMap(String id) {
-		if(!mapMap.containsKey(id)){
+		if (!mapMap.containsKey(id)) {
 			throw new RuntimeException("Could not load tiled map: " + id);
 		}
 		return mapMap.get(id);
 	}
+	
+	public AnimationTypeData getAnimationData(String id) {
+		if (!animationMap.containsKey(id)) {
+			throw new RuntimeException("Could not load animation: " + id);
+		}
+		return animationMap.get(id);
+	}
 
+	/**
+	 * Utility to load an array of images
+	 */
+	public Image[] getImages(String[] imageIds) {
+		Image[] images = new Image[imageIds.length];
+		for (int i = 0; i < imageIds.length; i++) {
+			images[i] = getImage(imageIds[i]);
+		}
+		return images;
+	}
 }

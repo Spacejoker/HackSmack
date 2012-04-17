@@ -69,6 +69,13 @@ public class Enemy extends Entity {
 	public void setWalkAnimation(Animation walkAnimation) {
 		this.walkAnimation = walkAnimation;
 	}
+
+	/**
+	 * should be enemy-specific or something?
+	 */
+	public String getDeathAnimationId() {
+		return "explosion";
+	}
 	
 	
 }

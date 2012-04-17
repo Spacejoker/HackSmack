@@ -162,8 +162,9 @@ public class ResourceManager {
 		double speed = Double.parseDouble(resourceElement.getAttribute("speed"));
 		double radius = Double.parseDouble(resourceElement.getAttribute("radius"));
 		String[] imageData = resourceElement.getAttribute("animationimages").split(";");
+		String[] walkData = resourceElement.getAttribute("walkimages").split(";");
 
-		enemyTypeDataMap.put(id, new EnemyTypeData(imageData, maxhealth, speed, radius, id));
+		enemyTypeDataMap.put(id, new EnemyTypeData(imageData, maxhealth, speed, radius, id, walkData));
 	}
 
 	private void addToTilesetMap(String id, String path) throws SlickException {

@@ -22,10 +22,19 @@ public class EnemyFactory {
 		String[] animationImageIds = typeData.getAnimationImageIds();
 		Image[] animationImages = new Image[animationImageIds.length];
 		for (int i = 0; i < animationImageIds.length; i++) {
-			animationImages[i] = ResourceManager.getInstance().getImage("enemy_giant");
+			animationImages[i] = ResourceManager.getInstance().getImage(animationImageIds[i]);
+		}
+		
+		
+		String[] walkImageIds = typeData.getWalkImageIds();
+		Image[] walkImages = new Image[walkImageIds.length];
+		for (int i = 0; i < walkImageIds.length; i++) {
+			System.out.println("Walk image: " + walkImageIds[i]);
+			walkImages[i] = ResourceManager.getInstance().getImage(walkImageIds[i]);
 		}
 		
 		enemy.setAnimation(new Animation(animationImages, 100));
+		enemy.setWalkAnimation(new Animation(walkImages, 100));
 		enemy.setPosition(position);
 		enemy.setPassable(false);
 		

@@ -34,7 +34,7 @@ public class GameState {
 	 * Loads a default map
 	 */
 	public GameState() {
-		this("level_1");
+		this("level_2");
 	}
 
 	public GameState(String mapName) {

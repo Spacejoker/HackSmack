@@ -45,8 +45,31 @@ public class LogicMaster {
 			}
 			
 			// Move the player
-			player.getPosition().add(new Vector2f(player.getDirection()).normalise().scale((float) (player.getSpeed() * delta / (float) 1000)));
+			//player.getPosition().add(new Vector2f(player.getDirection()).normalise().scale((float) (player.getSpeed() * delta / (float) 1000)));
 
+			Vector2f temp = (new Vector2f(player.getPosition())).add(new Vector2f(player.getDirection()).normalise().scale((float) (player.getSpeed() * delta / (float) 1000))) ;
+
+			boolean krock = false;
+			for(Enemy enemy : state.getEnemies()){
+				if(enemy.getPosition().distance(temp) < player.getRadius() + enemy.getRadius() ){
+				//	System.out.println("Krock!");
+					krock = true;
+				}
+					
+			}
+			
+			//Kollar om man krockar med banan.
+			//System.out.println(state.getMap().getWidth() * (player.getPosition().x/ HackSmackConstants.SCREEN_WIDTH)+" " + (state.getMap().getHeight()*(player.getPosition().y/HackSmackConstants.SCREEN_HEIGHT)) );
+
+			if(!state.getMap().collidesWithMap(temp, player.getRadius())){
+				krock = true;
+			}
+				
+			if(!krock){
+				player.getPosition().set(temp);
+			}
+			
+			
 			// make each enemy set up a direction:
 			// System.out.println(player.getDirection() + " " + player.getSpeed() + " " + delta);
 
@@ -57,7 +80,13 @@ public class LogicMaster {
 
 				position.x += enemy.getDirection().x * enemy.getSpeed() * delta;
 				position.y += enemy.getDirection().y * enemy.getSpeed() * delta;
+				
+				
+				
+				
+				
 			}
+				
 			for (Iterator <Projectile>it = state.getProjectiles().iterator(); it.hasNext();) {
 				Projectile proj = it.next();
 				proj.getPosition().add(new Vector2f(proj.getDirection()).normalise().scale((float) (proj.getSpeed() * delta / (float) 1000)));

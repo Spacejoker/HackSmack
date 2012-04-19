@@ -27,6 +27,7 @@
 	</content>
 	
   <!-- IMAGE -->
+	<content type="image" id="crosshair">images/crosshair.png</content>
 	<content type="image" id="enemy_giant">images/enemy_giant.png</content>
 	<content type="image" id="player">images/player.png</content>
 	<content type="image" id="ball">images/ball.png</content>

@@ -10,8 +10,24 @@
 	<content type="image" id="background">images/tmp.png</content>
 
   <!-- ANIMATION -->
-
+	<content type="animation" id="explosion" speed="50">
+		<images>
+			<image>exp_0</image>
+			<image>exp_1</image>
+			<image>exp_2</image>
+			<image>exp_3</image>
+			<image>exp_4</image>
+			<image>exp_5</image>
+			<image>exp_6</image>
+			<image>exp_7</image>
+			<image>exp_8</image>
+			<image>exp_9</image>
+			<image>exp_10</image>
+		</images>
+	</content>
+	
   <!-- IMAGE -->
+	<content type="image" id="crosshair">images/crosshair.png</content>
 	<content type="image" id="enemy_giant">images/enemy_giant.png</content>
 	<content type="image" id="player">images/player.png</content>
 	<content type="image" id="ball">images/ball.png</content>
@@ -21,12 +37,24 @@
 	<content type="image" id="conversation_1">images/intro/conversation_1.png</content>
 	<content type="image" id="conversation_2">images/intro/conversation_2.png</content>
 	<content type="image" id="space_artifact">images/intro/space_artifact.png</content>
+	<content type="image" id="gem">images/gem.png</content>
+	<content type="image" id="exp_0">images/explosion/0.png</content>
+	<content type="image" id="exp_1">images/explosion/1.png</content>
+	<content type="image" id="exp_2">images/explosion/2.png</content>
+	<content type="image" id="exp_3">images/explosion/3.png</content>
+	<content type="image" id="exp_4">images/explosion/4.png</content>
+	<content type="image" id="exp_5">images/explosion/5.png</content>
+	<content type="image" id="exp_6">images/explosion/6.png</content>
+	<content type="image" id="exp_7">images/explosion/7.png</content>
+	<content type="image" id="exp_8">images/explosion/8.png</content>
+	<content type="image" id="exp_9">images/explosion/9.png</content>
+	<content type="image" id="exp_10">images/explosion/10.png</content>
 	
   <!-- SOUND -->
 	<content type="sound" id="fireball_0">sounds/fireball.wav</content>
 	<content type="sound" id="fireball_1">sounds/fireball2.wav</content>
 	
   <!-- ENEMY -->
-	<content type="enemy" id="enemy_giant" maxhealth="100" speed="0.1" radius="16" animationimages="enemy_giant;enemy_giant"/>
+	<content type="enemy" id="enemy_giant" maxhealth="100" speed="0.1" radius="16" animationimages="enemy_giant;enemy_giant" walkimages="gem;enemy_giant"/>
 	
 </resources>

@@ -16,20 +16,30 @@
  <objectgroup name="Object Layer 1" width="32" height="23">
   <object name="slime_1" type="slime" x="288" y="192" width="32" height="32">
    <properties>
-    <property name="image" value="enemy_giant"/>
+    <property name="id" value="enemy_giant"/>
     <property name="level" value="1"/>
+    <property name="type" value="enemy"/>
    </properties>
   </object>
-  <object name="slime_1" type="slime" x="642" y="256" width="32" height="32">
+  <object name="slime_1" type="slime" x="646" y="256" width="32" height="32">
    <properties>
-    <property name="image" value="enemy_giant"/>
+    <property name="id" value="enemy_giant"/>
     <property name="level" value="1"/>
+    <property name="type" value="enemy"/>
    </properties>
   </object>
   <object name="slime_1" type="slime" x="162" y="578" width="32" height="32">
    <properties>
-    <property name="image" value="enemy_giant"/>
+    <property name="id" value="enemy_giant"/>
     <property name="level" value="1"/>
+    <property name="type" value="enemy"/>
+   </properties>
+  </object>
+  <object name="slime_1" type="slime" x="946" y="654" width="32" height="32">
+   <properties>
+    <property name="id" value="gem"/>
+    <property name="level" value="1"/>
+    <property name="type" value="gem"/>
    </properties>
   </object>
  </objectgroup>

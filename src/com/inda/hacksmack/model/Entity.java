@@ -7,6 +7,7 @@ import org.newdawn.slick.geom.Vector2f;
  * Base class for everything that can be shown and interacted with on screen
  * 
  * Holds basic properties for all enteties
+ * 
  * @author Jensa
  */
 public abstract class Entity {
@@ -19,12 +20,16 @@ public abstract class Entity {
 	protected double speed;
 	protected boolean passable;
 	protected double radius = 16;
-	
-	public void draw(){
-			animation.getCurrentFrame().setRotation((float) ( direction.getTheta()-90));
-			animation.draw(position.x, position.y);
+
+	/**
+	 * Draws whatever is returned by getAnimation() - could be overridden by subclasses to allow for more flexible animation handling
+	 */
+	public void draw() {
+		Animation curAnimation = getAnimation();
+		curAnimation.getCurrentFrame().setRotation((float) (direction.getTheta() - 90));
+		curAnimation.draw(position.x, position.y);
 	}
-	
+
 	public int getHealth() {
 		return health;
 	}
@@ -87,5 +92,5 @@ public abstract class Entity {
 
 	public void setRadius(double radius) {
 		this.radius = radius;
-	}	
+	}
 }

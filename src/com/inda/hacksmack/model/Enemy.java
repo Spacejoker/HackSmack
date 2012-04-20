@@ -1,8 +1,15 @@
 package com.inda.hacksmack.model;
 
+import org.newdawn.slick.Animation;
 
+
+/**
+ * An enemy in the game which is alive and kicking (hopefully!)
+ */
 public class Enemy extends Entity {
+	
 	private double defaultspeed;
+	private Animation walkAnimation;
 	
 	public Enemy(){
 		passable = false;
@@ -42,6 +49,33 @@ public class Enemy extends Entity {
 		} else {
 			speed = defaultspeed;
 		}
-		
 	}
+	
+	/**
+	 * Returns the correct animation for walking / standing / attacking etc
+	 */
+	@Override
+	public Animation getAnimation() {
+		if(Math.abs(speed) > 0.01){
+			return walkAnimation;
+		}
+		return animation;
+	}
+
+	public Animation getWalkAnimation() {
+		return walkAnimation;
+	}
+
+	public void setWalkAnimation(Animation walkAnimation) {
+		this.walkAnimation = walkAnimation;
+	}
+
+	/**
+	 * should be enemy-specific or something?
+	 */
+	public String getDeathAnimationId() {
+		return "explosion";
+	}
+	
+	
 }

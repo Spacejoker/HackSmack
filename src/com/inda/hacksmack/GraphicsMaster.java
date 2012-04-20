@@ -40,7 +40,8 @@ public class GraphicsMaster {
 
 			// draw all enteties:
 			for (Item item : gameState.getItems()) {
-				 System.out.println("draw item: " + item);
+//				 System.out.println("draw item: " + item);
+				 item.draw();
 			}
 
 			for (Enemy enemy : gameState.getEnemies()) {

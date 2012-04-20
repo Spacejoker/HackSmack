@@ -3,19 +3,20 @@ package com.inda.hacksmack.model;
 
 public class EnemyTypeData {
 
-	String[] animationImageIds;
+	String[] animationImageIds, walkImageIds;
 	int maxhealth;
 	double speed;
 	double radius;
 	String id;
 	
-	public EnemyTypeData(String[] animationImageIds, int maxhealth, double speed, double radius, String id) {
+	public EnemyTypeData(String[] animationImageIds, int maxhealth, double speed, double radius, String id, String[] walkImageIds) {
 		super();
 		this.animationImageIds = animationImageIds;
 		this.maxhealth = maxhealth;
 		this.speed = speed;
 		this.radius = radius;
 		this.id = id;
+		this.walkImageIds = walkImageIds;
 	}
 	
 	public int getMaxhealth() {
@@ -47,6 +48,14 @@ public class EnemyTypeData {
 	}
 	public void setAnimationImageIds(String[] animationImageIds) {
 		this.animationImageIds = animationImageIds;
+	}
+
+	public String[] getWalkImageIds() {
+		return walkImageIds;
+	}
+
+	public void setWalkImageIds(String[] walkImageIds) {
+		this.walkImageIds = walkImageIds;
 	}
 	
 	

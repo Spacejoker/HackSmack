@@ -10,11 +10,15 @@ import com.inda.hacksmack.input.InputHandler;
 import com.inda.hacksmack.model.GameMode;
 import com.inda.hacksmack.model.GameState;
 
-
-public class Main extends BasicGame{
+/**
+ * Application entry point - this is where you bootstrap the application/game
+ * @author jensa
+ *
+ */
+public class Main extends BasicGame {
 
 	public Main() {
-		super("HackSmack");
+		super("Hack Smack");
 	}
 
 	private InputHandler ih;
@@ -33,6 +37,7 @@ public class Main extends BasicGame{
 		
 		lm = LogicMaster.getInstance();
 		gameState.setGameMode(GameMode.CUT_SCENE);
+		container.setMouseCursor(ResourceManager.getInstance().getImage("crosshair"), 0, 0);
 	}
 
 	/**

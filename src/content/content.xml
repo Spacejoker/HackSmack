@@ -50,6 +50,7 @@
 	<content type="image" id="exp_9">images/explosion/9.png</content>
 	<content type="image" id="exp_10">images/explosion/10.png</content>
 	<content type="image" id="healthbar-bg">images/healthbar-bg.png</content>
+	<content type="image" id="battery-bg">images/battery.png</content>
 	
   <!-- SOUND -->
 	<content type="sound" id="fireball_0">sounds/fireball.wav</content>

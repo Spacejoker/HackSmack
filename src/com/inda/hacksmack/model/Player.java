@@ -20,7 +20,7 @@ public class Player extends Entity implements InputEvent {
 	private int ammoLeft;
 	private Vector2f mouseposition = new Vector2f();
 	private Vector2f lookdirection = new Vector2f();
-	private float shield, maxShield;
+	private float shield, maxShield, heatLevel, batteryPower;
 	//add more properties as needed
 	
 	public void setGameState(GameState gamestate){
@@ -165,5 +165,21 @@ public class Player extends Entity implements InputEvent {
 	
 	public float getShieldPercentage(){
 		return (float) (((double)shield) / maxShield);
+	}
+
+	public float getHeatLevel() {
+		return heatLevel;
+	}
+
+	public void setHeatLevel(float heatLevel) {
+		this.heatLevel = heatLevel;
+	}
+
+	public float getBatteryPower() {
+		return batteryPower;
+	}
+
+	public void setBatteryPower(float batteryPower) {
+		this.batteryPower = batteryPower;
 	}
 }

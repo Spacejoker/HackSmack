@@ -50,7 +50,7 @@ public class GameState {
 				Enemy newEnemy = EnemyFactory.newEnemy(id, new Vector2f(tileMap.getObjectX(0, i), tileMap.getObjectY(0, i)));
 				enemies.add(newEnemy);
 			} else if(type.equals("gem")){
-				Item item = ItemFactory.newItemEntity(id, new Vector2f(tileMap.getObjectX(0, i), tileMap.getObjectY(0, i)), ItemType.GEM);
+				Item item = ItemFactory.newItemEntity(id, new Vector2f(tileMap.getObjectX(0, i), tileMap.getObjectY(0, i)), ItemType.GEM, true);
 				items.add(item);
 			}
 		}

@@ -40,11 +40,11 @@ public class Map {
 
 		if(!isPassableTile((int)(width*(x)/HackSmackConstants.SCREEN_WIDTH), (int)(height*(y)/HackSmackConstants.SCREEN_HEIGHT)))
 			return false;
-		if(!isPassableTile((int)(width*(x+r)/HackSmackConstants.SCREEN_WIDTH), (int)(height*(y+r)/HackSmackConstants.SCREEN_HEIGHT)))
+		if(!isPassableTile((int)(width*(x+2*r)/HackSmackConstants.SCREEN_WIDTH), (int)(height*(y+2*r)/HackSmackConstants.SCREEN_HEIGHT)))
 			return false;
-		if(!isPassableTile((int)(width*(x+r)/HackSmackConstants.SCREEN_WIDTH), (int)(height*(y)/HackSmackConstants.SCREEN_HEIGHT)))
+		if(!isPassableTile((int)(width*(x+2*r)/HackSmackConstants.SCREEN_WIDTH), (int)(height*(y)/HackSmackConstants.SCREEN_HEIGHT)))
 			return false;
-		if(!isPassableTile((int)(width*(x)/HackSmackConstants.SCREEN_WIDTH), (int)(height*(y+r)/HackSmackConstants.SCREEN_HEIGHT)))
+		if(!isPassableTile((int)(width*(x)/HackSmackConstants.SCREEN_WIDTH), (int)(height*(y+2*r)/HackSmackConstants.SCREEN_HEIGHT)))
 			return false;
 			
 		return true;

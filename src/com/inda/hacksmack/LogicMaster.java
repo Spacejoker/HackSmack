@@ -199,6 +199,7 @@ public class LogicMaster {
 						//En fiende har tr?ffats, g?r dmg.
 						//System.out.println("Did " + proj.getDamage() + " points of dmg! " + (int)(enemy.getHealth()-proj.getDamage()) + " hp left!");
 						enemy.setHealth((int)(enemy.getHealth()-proj.getDamage()));
+						proj.explode();
 						it.remove();
 						if(enemy.getHealth() <= 0){
 							e.remove();
@@ -214,6 +215,7 @@ public class LogicMaster {
 				}
 				//Kollar krock med väggen
 				if(!state.getMap().collidesWithMap(proj.getPosition(), proj.getRadius())){
+					proj.explode();
 					it.remove();
 				}
 				//Kollar krock med spelaren!
@@ -222,7 +224,7 @@ public class LogicMaster {
 					if(player.getHealth() <= 0){
 						//TODO: spelaren dör, game over.
 					}
-					
+					proj.explode();
 					it.remove();
 				}
 			}

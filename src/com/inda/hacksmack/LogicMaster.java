@@ -220,7 +220,7 @@ public class LogicMaster {
 			HealthBar healthBar = state.getHealthBar();
 
 			healthBar.setHealthPercentage(player.getHpPercentage());
-			healthBar.setShieldPercentage(player.getHpPercentage());
+			healthBar.setShieldPercentage(player.getShieldPercentage());
 
 			break;
 

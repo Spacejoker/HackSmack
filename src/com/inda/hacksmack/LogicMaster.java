@@ -71,7 +71,7 @@ public class LogicMaster {
 						if(enemy.getHealth() <= 0){
 							e.remove();
 							
-							// add death animation
+							// add death animation, let the remains be on the floor for a while after as well
 							Item item = AnimationFactory.newAnimation(enemy.getDeathAnimationId(), enemy.getPosition());
 							item.getAnimation().setLooping(false);
 							item.setDestroyTime((long) (System.currentTimeMillis() + 4000));

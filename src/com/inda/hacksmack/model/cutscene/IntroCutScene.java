@@ -99,7 +99,7 @@ public class IntroCutScene implements CutScene {
 		if (time > exptime) {
 			if (!addedSmall) {
 				for (int i = 0; i < 44; i++) {
-					Item item = ItemFactory.newItemEntity("gem", new Vector2f(gemMid), ItemType.GEM);
+					Item item = ItemFactory.newItemEntity("gem", new Vector2f(gemMid), ItemType.GEM, true);
 					float theta = (float) (RandomUtil.getInstance().getRandom().nextInt());
 					item.setDirection(new Vector2f(theta));
 					item.setSpeed((RandomUtil.getInstance().getRandom().nextFloat()+0.1) /2.0 );

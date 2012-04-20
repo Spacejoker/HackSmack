@@ -20,6 +20,7 @@ public class Player extends Entity implements InputEvent {
 	private int ammoLeft;
 	private Vector2f mouseposition = new Vector2f();
 	private Vector2f lookdirection = new Vector2f();
+	private float shield, maxShield;
 	//add more properties as needed
 	
 	public void setGameState(GameState gamestate){
@@ -114,14 +115,13 @@ public class Player extends Entity implements InputEvent {
 
 	@Override
 	public void mousePressed(int button, int x, int y) {
-		Projectile proj = new Projectile();
+		Projectile proj = new Projectile(this, getWeaponDamage());
 		proj.setSpeed(400);
 		Image []frame2 = new Image[1];
 		frame2[0] = ResourceManager.getInstance().getImage("ball");
 		proj.setAnimation(new Animation(frame2, 1));
 		proj.setPosition(new Vector2f(position));
 		proj.setDirection(new Vector2f(lookdirection));
-		proj.setDamage(getWeaponDamage());
 		gamestate.getProjectiles().add(proj);
 		
 	}
@@ -143,5 +143,27 @@ public class Player extends Entity implements InputEvent {
 		return true;
 	}
 
+	public float getShield() {
+		return shield;
+	}
 
+	public void setShield(float shield) {
+		this.shield = shield;
+	}
+
+	public float getMaxShield() {
+		return maxShield;
+	}
+
+	public void setMaxShield(float maxShield) {
+		this.maxShield = maxShield;
+	}
+
+	public float getHpPercentage(){
+		return (float) (((double)health) / maxhealth);
+	}
+	
+	public float getShieldPercentage(){
+		return (float) (((double)shield) / maxShield);
+	}
 }

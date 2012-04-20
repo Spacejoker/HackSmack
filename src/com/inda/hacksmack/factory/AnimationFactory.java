@@ -6,8 +6,6 @@ import org.newdawn.slick.geom.Vector2f;
 
 import com.inda.hacksmack.ResourceManager;
 import com.inda.hacksmack.model.AnimationTypeData;
-import com.inda.hacksmack.model.Enemy;
-import com.inda.hacksmack.model.EnemyTypeData;
 import com.inda.hacksmack.model.Item;
 import com.inda.hacksmack.model.Item.ItemType;
 

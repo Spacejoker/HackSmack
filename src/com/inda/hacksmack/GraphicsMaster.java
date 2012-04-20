@@ -1,5 +1,6 @@
 package com.inda.hacksmack;
 
+import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.tiled.TiledMap;
@@ -7,9 +8,11 @@ import org.newdawn.slick.tiled.TiledMap;
 import com.inda.hacksmack.model.Enemy;
 import com.inda.hacksmack.model.Entity;
 import com.inda.hacksmack.model.GameState;
+import com.inda.hacksmack.model.HealthBar;
 import com.inda.hacksmack.model.Item;
 import com.inda.hacksmack.model.Projectile;
 import com.inda.hacksmack.model.cutscene.CutScene;
+import com.inda.hacksmack.util.GraphUtil;
 
 /**
  * static?
@@ -54,6 +57,18 @@ public class GraphicsMaster {
 				proj.draw();
 			}
 
+			/**
+			 * Draw the healthbar - fancy stuff from ugly code
+			 */
+			HealthBar healthBar = gameState.getHealthBar();
+			if(healthBar.getShieldPart() != null){
+				graphics.fill(healthBar.getShieldPart(),GraphUtil.getColorAsGradient(Color.blue));
+			}
+			if(healthBar .getRedPart() != null){
+				graphics.fill(healthBar.getRedPart(), GraphUtil.getColorAsGradient(Color.red));
+			}
+			healthBar.getBg().draw();
+			
 			break;
 		case MENU:
 			

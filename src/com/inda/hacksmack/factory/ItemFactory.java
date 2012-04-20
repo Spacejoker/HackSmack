@@ -13,14 +13,14 @@ public class ItemFactory {
 	/**
 	 * id = image id
 	 */
-	public static Item newItemEntity(String id, Vector2f position, ItemType type){
+	public static Item newItemEntity(String id, Vector2f position, ItemType type, boolean pickable){
 		
 		Item entity = new Item();
 		
 		entity.setPosition(position);
 		entity.setAnimation(new Animation(new Image[]{ResourceManager.getInstance().getImage(id)}, 1));
 		entity.setType(type);
-		
+		entity.setCanBePicked(pickable);
 		return entity;
 		
 	}

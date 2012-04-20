@@ -27,6 +27,7 @@
 	</content>
 	
   <!-- IMAGE -->
+	<content type="image" id="crosshair">images/crosshair.png</content>
 	<content type="image" id="enemy_giant">images/enemy_giant.png</content>
 	<content type="image" id="player">images/player.png</content>
 	<content type="image" id="ball">images/ball.png</content>
@@ -48,12 +49,13 @@
 	<content type="image" id="exp_8">images/explosion/8.png</content>
 	<content type="image" id="exp_9">images/explosion/9.png</content>
 	<content type="image" id="exp_10">images/explosion/10.png</content>
+	<content type="image" id="healthbar-bg">images/healthbar-bg.png</content>
 	
   <!-- SOUND -->
 	<content type="sound" id="fireball_0">sounds/fireball.wav</content>
 	<content type="sound" id="fireball_1">sounds/fireball2.wav</content>
 	
   <!-- ENEMY -->
-	<content type="enemy" id="enemy_giant" maxhealth="100" speed="0.1" radius="16" animationimages="enemy_giant;enemy_giant" walkimages="gem;enemy_giant"/>
+	<content type="enemy" id="enemy_giant" maxhealth="100" speed="100" radius="16" animationimages="enemy_giant;enemy_giant" walkimages="gem;enemy_giant"/>
 	
 </resources>

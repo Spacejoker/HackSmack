@@ -37,7 +37,6 @@ public class EnemyFactory {
 		enemy.setWalkAnimation(new Animation(walkImages, 100));
 		enemy.setPosition(position);
 		enemy.setPassable(false);
-		
 		enemy.setMaxhealth(typeData.getMaxhealth());
 		enemy.setHealth(enemy.getMaxhealth());
 		enemy.setDirection(new Vector2f(1,1));

@@ -6,9 +6,10 @@ package com.inda.hacksmack.model;
  */
 public class Item extends Entity {
 	
-	public enum ItemType{GEM, ANIMATION}
+	public enum ItemType{GEM, ANIMATION, END}
 	ItemType type;
 	boolean canBePicked;
+	{this.setPassable(true);}
 
 	private long destroyTime = Long.MAX_VALUE;
 

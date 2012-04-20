@@ -213,6 +213,9 @@ public class ResourceManager {
 	}
 
 	public Sound getSound(String id) {
+		if(HackSmackConstants.devMode){
+			soundMap.get("silence");
+		}
 		if (!soundMap.containsKey(id)) {
 			throw new RuntimeException("Tried to load a sound that doesnt exist: " + id);
 		}

@@ -30,6 +30,7 @@ public class GameState {
 	private List<Projectile> projectiles = new ArrayList<Projectile>();
 	private Player player;
 	private HealthBar healthBar = new HealthBar();
+	private HeatAndBatteryBar heatAndBatteryBar = new HeatAndBatteryBar();
 
 	/**
 	 * Loads a default map
@@ -130,5 +131,12 @@ public class GameState {
 	public void setHealthBar(HealthBar healthBar) {
 		this.healthBar = healthBar;
 	}
-	
+
+	public HeatAndBatteryBar getHeatAndBatteryBar() {
+		return heatAndBatteryBar;
+	}
+
+	public void setHeatAndBatteryBar(HeatAndBatteryBar heatAndBatteryBar) {
+		this.heatAndBatteryBar = heatAndBatteryBar;
+	}
 }

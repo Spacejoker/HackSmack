@@ -3,12 +3,16 @@ package com.inda.hacksmack.model;
 import java.util.ArrayList;
 
 
+import org.lwjgl.Sys;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.geom.Vector2f;
 
+import sun.net.www.content.text.plain;
+
 import java.util.List;
 
+import com.inda.hacksmack.HackSmackConstants;
 import com.inda.hacksmack.ResourceManager;
 import com.inda.hacksmack.input.InputEvent;
 
@@ -20,7 +24,8 @@ public class Player extends Entity implements InputEvent {
 	private int ammoLeft;
 	private Vector2f mouseposition = new Vector2f();
 	private Vector2f lookdirection = new Vector2f();
-	private float shield, maxShield, heatLevel, batteryPower;
+	private float shield, maxShield, heatLevel = 0, batteryPower = 100;
+	private long lastHeatDecrease = System.currentTimeMillis();
 	//add more properties as needed
 	
 	public void setGameState(GameState gamestate){
@@ -115,15 +120,21 @@ public class Player extends Entity implements InputEvent {
 
 	@Override
 	public void mousePressed(int button, int x, int y) {
-		Projectile proj = new Projectile(this, getWeaponDamage());
-		proj.setSpeed(400);
-		Image []frame2 = new Image[1];
-		frame2[0] = ResourceManager.getInstance().getImage("ball");
-		proj.setAnimation(new Animation(frame2, 1));
-		proj.setPosition(new Vector2f(position));
-		proj.setDirection(new Vector2f(lookdirection));
-		gamestate.getProjectiles().add(proj);
 		
+		if(heatLevel <= 100 - HackSmackConstants.WEAPON_HEAT_PER_SHOT){
+			Projectile proj = new Projectile(this, getWeaponDamage());
+			proj.setSpeed(400);
+			Image []frame2 = new Image[1];
+			frame2[0] = ResourceManager.getInstance().getImage("ball");
+			proj.setAnimation(new Animation(frame2, 1));
+			proj.setPosition(new Vector2f(position));
+			proj.setDirection(new Vector2f(lookdirection));
+			gamestate.getProjectiles().add(proj);
+			
+			heatLevel += HackSmackConstants.WEAPON_HEAT_PER_SHOT;
+		} else {
+			// overheated gun, break it?
+		}
 	}
 
 	@Override
@@ -181,5 +192,23 @@ public class Player extends Entity implements InputEvent {
 
 	public void setBatteryPower(float batteryPower) {
 		this.batteryPower = batteryPower;
+	}
+
+	public long getLastHeatDecrease() {
+		return lastHeatDecrease;
+	}
+
+	public void setLastHeatDecrease(long lastHeatDecrease) {
+		this.lastHeatDecrease = lastHeatDecrease;
+	}
+
+	public void updateHeatLevel() {
+		long diff = System.currentTimeMillis() - lastHeatDecrease;
+		int cnt = (int) (diff / HackSmackConstants.MILLIS_BETWEEN_HEAT_DECREASE);
+		if(cnt > 0){
+			heatLevel -= cnt;
+			heatLevel = Math.max(0, heatLevel);
+			lastHeatDecrease = System.currentTimeMillis();
+		}
 	}
 }

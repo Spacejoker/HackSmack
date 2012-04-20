@@ -9,6 +9,7 @@ import com.inda.hacksmack.model.Enemy;
 import com.inda.hacksmack.model.Entity;
 import com.inda.hacksmack.model.GameState;
 import com.inda.hacksmack.model.HealthBar;
+import com.inda.hacksmack.model.HeatAndBatteryBar;
 import com.inda.hacksmack.model.Item;
 import com.inda.hacksmack.model.Projectile;
 import com.inda.hacksmack.model.cutscene.CutScene;
@@ -58,7 +59,7 @@ public class GraphicsMaster {
 			}
 
 			/**
-			 * Draw the healthbar - fancy stuff from ugly code
+			 * Draw the healthbar and heat/battery bar - fancy stuff from ugly code
 			 */
 			HealthBar healthBar = gameState.getHealthBar();
 			if(healthBar.getShieldPart() != null){
@@ -68,6 +69,15 @@ public class GraphicsMaster {
 				graphics.fill(healthBar.getRedPart(), GraphUtil.getColorAsGradient(Color.red));
 			}
 			healthBar.getBg().draw();
+			
+			HeatAndBatteryBar batteryBar = gameState.getHeatAndBatteryBar();
+			if(batteryBar.getShieldPart() != null){
+				graphics.fill(batteryBar.getShieldPart(),GraphUtil.getColorAsGradient(Color.blue));
+			}
+			if(batteryBar.getRedPart() != null){
+				graphics.fill(batteryBar.getRedPart(), GraphUtil.getColorAsGradient(Color.red));
+			}
+			batteryBar.getBg().draw(batteryBar.getPosition().x, batteryBar.getPosition().y);
 			
 			break;
 		case MENU:

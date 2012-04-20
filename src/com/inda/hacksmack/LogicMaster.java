@@ -9,6 +9,7 @@ import com.inda.hacksmack.model.Enemy;
 import com.inda.hacksmack.model.GameMode;
 import com.inda.hacksmack.model.GameState;
 import com.inda.hacksmack.model.HealthBar;
+import com.inda.hacksmack.model.HeatAndBatteryBar;
 import com.inda.hacksmack.model.Item;
 import com.inda.hacksmack.model.Item.ItemType;
 import com.inda.hacksmack.model.Player;
@@ -216,12 +217,22 @@ public class LogicMaster {
 			/**
 			 * Update health bar levels
 			 */
-
 			HealthBar healthBar = state.getHealthBar();
-
+			
 			healthBar.setHealthPercentage(player.getHpPercentage());
 			healthBar.setShieldPercentage(player.getShieldPercentage());
-
+			healthBar.updateMe();
+			
+			//update heat bar
+			
+			HeatAndBatteryBar heatAndBatteryBar = state.getHeatAndBatteryBar();
+			
+			heatAndBatteryBar.setHeat(player.getHeatLevel());
+			heatAndBatteryBar.setBattery(player.getBatteryPower());
+			heatAndBatteryBar.updateMe();
+			
+			player.updateHeatLevel();
+			
 			break;
 
 		case CUT_SCENE:

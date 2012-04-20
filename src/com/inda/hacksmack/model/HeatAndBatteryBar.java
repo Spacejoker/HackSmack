@@ -13,111 +13,65 @@ import com.inda.hacksmack.ResourceManager;
  */
 public class HeatAndBatteryBar {
 
-	double heat = 100;
-	double batter = 100;
-	
-	Image characterImage = null;
+	float heat = 100;
+	float battery = 100;
 
-	Vector2f position = new Vector2f(126, 128);
+	float height = 182;
+	float heatx = 5, heatWidth = 20;
+	float batteryx = 120, batteryWidth = 49;
 
-	double mindegree = 0;
-	double maxdegree = 7*210.0/360.0;
+	Vector2f position = new Vector2f(40, 450);
 
-	double shieldmin = 1*210.0/360.0;
-	double shieldmax = 7*210.0/360.0;
+	Polygon heatPart = new Polygon();
+	Polygon batteryPart = new Polygon();
 
-	Polygon healthPart = new Polygon();
-	Polygon shieldPart = new Polygon();
-	
 	Image bg = null;
-	
+
 	public HeatAndBatteryBar() {
-		setHealthPercentage(100);
 		updateMe();
-		bg = ResourceManager.getInstance().getImage("healthbar-bg");
+		bg = ResourceManager.getInstance().getImage("battery-bg");
 	}
 
 	public void updateMe() {
-		double mod = 1.0/60.0;
-		double rad = 100;
 		
-		healthPart = new Polygon();
-		shieldPart = new Polygon();
+		heatPart = new Polygon();
+		batteryPart = new Polygon();
 
-		if(heat > 0){
-			double start = (maxdegree -  mindegree) * (100-heat) / 100.0 + mindegree;
-			
-			for (double degree = start; degree >= start; degree += mod) {
-				if (degree < maxdegree) {
-					float x = (float) (Math.cos(degree) * rad + position.x);
-					float y = (float) (Math.sin(degree) * rad*-1 + position.y);
-					healthPart.addPoint(x, y);
-				} else {
-					mod = Math.abs(mod)*-1;
-					rad = 80;
-				}
-			}
+		if (heat > 0) {
+			float initx = position.x + 19;
+			float inity = position.y + 57;
+			heatPart.addPoint(initx, inity + height*(1 - heat/100));
+			heatPart.addPoint(initx + heatWidth, inity + height*(1 - heat/100));
+			heatPart.addPoint(initx + heatWidth, inity + height);
+			heatPart.addPoint(initx, inity + height);
 		} else {
-			healthPart = null;
+			heatPart = null;
 		}
-		
-		rad = 120;
-		mod = Math.abs(mod);
-		if(batter > 0){
-			double start = (shieldmax -  shieldmin) * (100-batter) / 100.0 + shieldmin;
-			
-			for (double degree = start; degree >= start; degree += mod) {
-				if (degree < shieldmax) {
-					float x = (float) (Math.cos(degree) * rad + position.x);
-					float y = (float) (Math.sin(degree) * rad*-1 + position.y);
-					shieldPart.addPoint(x, y);
-				} else {
-					mod = Math.abs(mod)*-1;
-					rad = 104;
-				}
-			}
+		if (battery > 0) {
+			float initx = position.x + 39;
+			float inity = position.y + 57;
+			batteryPart.addPoint(initx , inity);
+			batteryPart.addPoint(initx + batteryWidth, inity);
+			batteryPart.addPoint(initx + batteryWidth, inity + height);
+			batteryPart.addPoint(initx , inity + height);
 		} else {
-			shieldPart = null;
+			batteryPart = null;
 		}
 	}
 
 	public Polygon getRedPart() {
-		return healthPart;
+		return heatPart;
 	}
 
 	public void setP(Polygon p) {
-		this.healthPart = p;
+		this.heatPart = p;
 	}
 
-	public Image getCharacterImage() {
-		return characterImage;
-	}
-
-	public void setCharacterImage(Image characterImage) {
-		this.characterImage = characterImage;
-	}
-
-	public double getMindegree() {
-		return mindegree;
-	}
-
-	public void setMindegree(double mindegree) {
-		this.mindegree = mindegree;
-	}
-
-	public double getMaxdegree() {
-		return maxdegree;
-	}
-
-	public void setMaxdegree(double maxdegree) {
-		this.maxdegree = maxdegree;
-	}
-
-	public double getHealthPercentage() {
+	public float getHealthPercentage() {
 		return heat;
 	}
 
-	public void setHealthPercentage(double percentage) {
+	public void setHealthPercentage(float percentage) {
 		this.heat = percentage;
 	}
 
@@ -130,11 +84,11 @@ public class HeatAndBatteryBar {
 	}
 
 	public Polygon getHealthPart() {
-		return healthPart;
+		return heatPart;
 	}
 
 	public void setHealthPart(Polygon healthPart) {
-		this.healthPart = healthPart;
+		this.heatPart = healthPart;
 	}
 
 	public Image getBg() {
@@ -146,26 +100,31 @@ public class HeatAndBatteryBar {
 	}
 
 	public double getShieldPercentage() {
-		return batter;
-	}
-
-	public void setShieldPercentage(double shieldPercentage) {
-		this.batter = shieldPercentage;
-	}
-
-	public double getShieldmax() {
-		return shieldmax;
-	}
-
-	public void setShieldmax(double shieldmax) {
-		this.shieldmax = shieldmax;
+		return battery;
 	}
 
 	public Polygon getShieldPart() {
-		return shieldPart;
+		return batteryPart;
 	}
 
 	public void setShieldPart(Polygon shieldPart) {
-		this.shieldPart = shieldPart;
+		this.batteryPart = shieldPart;
 	}
+
+	public float getHeat() {
+		return heat;
+	}
+
+	public void setHeat(float heat) {
+		this.heat = heat;
+	}
+
+	public float getBattery() {
+		return battery;
+	}
+
+	public void setBattery(float battery) {
+		this.battery = battery;
+	}
+	
 }

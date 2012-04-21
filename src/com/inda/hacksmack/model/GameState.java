@@ -29,6 +29,8 @@ public class GameState {
 	private List<Item> items = new ArrayList<Item>();
 	private List<Projectile> projectiles = new ArrayList<Projectile>();
 	private Player player;
+	private HealthBar healthBar = new HealthBar();
+	private HeatAndBatteryBar heatAndBatteryBar = new HeatAndBatteryBar();
 
 	/**
 	 * Loads a default map
@@ -50,7 +52,7 @@ public class GameState {
 				Enemy newEnemy = EnemyFactory.newEnemy(id, new Vector2f(tileMap.getObjectX(0, i), tileMap.getObjectY(0, i)));
 				enemies.add(newEnemy);
 			} else if(type.equals("gem")){
-				Item item = ItemFactory.newItemEntity(id, new Vector2f(tileMap.getObjectX(0, i), tileMap.getObjectY(0, i)), ItemType.GEM);
+				Item item = ItemFactory.newItemEntity(id, new Vector2f(tileMap.getObjectX(0, i), tileMap.getObjectY(0, i)), ItemType.GEM, true);
 				items.add(item);
 			}
 		}
@@ -120,5 +122,21 @@ public class GameState {
 
 	public void setCutScene(CutScene cutScene) {
 		this.cutScene = cutScene;
+	}
+
+	public HealthBar getHealthBar() {
+		return healthBar;
+	}
+
+	public void setHealthBar(HealthBar healthBar) {
+		this.healthBar = healthBar;
+	}
+
+	public HeatAndBatteryBar getHeatAndBatteryBar() {
+		return heatAndBatteryBar;
+	}
+
+	public void setHeatAndBatteryBar(HeatAndBatteryBar heatAndBatteryBar) {
+		this.heatAndBatteryBar = heatAndBatteryBar;
 	}
 }

@@ -10,7 +10,9 @@ public interface HackSmackConstants {
 	public static final float WEAPON_HEAT_PER_SHOT = 25;
 	public static final float MILLIS_BETWEEN_HEAT_DECREASE = 80;
 
-	public static final float FOG_OF_WAR_DISTANCE = 100;
+	public static final float FOG_OF_WAR_DISTANCE = 200;
+
+	public static final int TILE_SIZE = 32;
 	
 	public boolean devMode = true;
 }

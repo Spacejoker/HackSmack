@@ -146,13 +146,14 @@ public class GameState {
 
 	public void drawFogOfWar(Graphics graphics) {
 		graphics.setColor(Color.black);
-		for (int i = 0; i < HackSmackConstants.SCREEN_WIDTH; i++) {
-			for (int j = 0; j < HackSmackConstants.SCREEN_HEIGHT; j++) {
+		int tileSize = HackSmackConstants.TILE_SIZE;
+		for (int i = 0; i < HackSmackConstants.SCREEN_WIDTH; i += tileSize) {
+			for (int j = 0; j < HackSmackConstants.SCREEN_HEIGHT; j += tileSize) {
 				
 				float xdiff = player.getPosition().x - i;
 				float ydiff = player.getPosition().y - j;
 				if(xdiff*xdiff + ydiff*ydiff > HackSmackConstants.FOG_OF_WAR_DISTANCE * HackSmackConstants.FOG_OF_WAR_DISTANCE ){
-					graphics.fillRect(i, j, 1, 1);
+					graphics.fillRect(i, j, tileSize, tileSize);
 				}
 			}
 		}

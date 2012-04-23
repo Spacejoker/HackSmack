@@ -58,6 +58,9 @@ public class GraphicsMaster {
 				proj.draw();
 			}
 
+			//draw fog of war:
+//			gameState.drawFogOfWar(graphics);
+			
 			/**
 			 * Draw the healthbar and heat/battery bar - fancy stuff from ugly code
 			 */
@@ -78,6 +81,7 @@ public class GraphicsMaster {
 				graphics.fill(batteryBar.getRedPart(), GraphUtil.getColorAsGradient(Color.red));
 			}
 			batteryBar.getBg().draw(batteryBar.getPosition().x, batteryBar.getPosition().y);
+			
 			
 			break;
 		case MENU:

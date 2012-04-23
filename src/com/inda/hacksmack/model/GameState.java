@@ -3,11 +3,15 @@ package com.inda.hacksmack.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.lwjgl.util.Rectangle;
 import org.newdawn.slick.Animation;
+import org.newdawn.slick.Color;
+import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.tiled.TiledMap;
 
+import com.inda.hacksmack.HackSmackConstants;
 import com.inda.hacksmack.ResourceManager;
 import com.inda.hacksmack.factory.EnemyFactory;
 import com.inda.hacksmack.factory.ItemFactory;
@@ -138,5 +142,19 @@ public class GameState {
 
 	public void setHeatAndBatteryBar(HeatAndBatteryBar heatAndBatteryBar) {
 		this.heatAndBatteryBar = heatAndBatteryBar;
+	}
+
+	public void drawFogOfWar(Graphics graphics) {
+		graphics.setColor(Color.black);
+		for (int i = 0; i < HackSmackConstants.SCREEN_WIDTH; i++) {
+			for (int j = 0; j < HackSmackConstants.SCREEN_HEIGHT; j++) {
+				
+				float xdiff = player.getPosition().x - i;
+				float ydiff = player.getPosition().y - j;
+				if(xdiff*xdiff + ydiff*ydiff > HackSmackConstants.FOG_OF_WAR_DISTANCE * HackSmackConstants.FOG_OF_WAR_DISTANCE ){
+					graphics.fillRect(i, j, 1, 1);
+				}
+			}
+		}
 	}
 }

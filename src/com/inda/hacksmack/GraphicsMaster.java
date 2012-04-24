@@ -22,6 +22,7 @@ import com.inda.hacksmack.util.GraphUtil;
  */
 public class GraphicsMaster {
 
+	private static final int TILE_SIZE = HackSmackConstants.TILE_SIZE;
 	private static GraphicsMaster _instance;
 
 	private GraphicsMaster() {
@@ -58,6 +59,9 @@ public class GraphicsMaster {
 				proj.draw();
 			}
 
+			//draw fog of war:
+			gameState.drawFogOfWar(graphics);
+			
 			/**
 			 * Draw the healthbar and heat/battery bar - fancy stuff from ugly code
 			 */
@@ -78,6 +82,7 @@ public class GraphicsMaster {
 				graphics.fill(batteryBar.getRedPart(), GraphUtil.getColorAsGradient(Color.red));
 			}
 			batteryBar.getBg().draw(batteryBar.getPosition().x, batteryBar.getPosition().y);
+			
 			
 			break;
 		case MENU:
@@ -106,7 +111,7 @@ public class GraphicsMaster {
 			for (int y = 0; y < tileMap.getHeight(); y++) {
 				Image tileImage = tileMap.getTileImage(x, y, 0);
 				if (tileImage != null) {
-					tileImage.draw(x * 32, y * 32);
+					tileImage.draw(x * TILE_SIZE, y * 32);
 				}
 			}
 		}

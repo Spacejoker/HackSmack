@@ -5,6 +5,8 @@
 	<content type="tileset" id="test">tilesets/test.png</content>
 	
 	<content type="map" id="test">maps/test.tmx</content>
+	<content type="map" id="level_1">maps/level_1.tmx</content>
+	<content type="map" id="level_2">maps/level_2.tmx</content>
 	
   <!-- BACKGROUND -->
 	<content type="image" id="background">images/tmp.png</content>

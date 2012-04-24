@@ -11,4 +11,5 @@ public interface HackSmackConstants {
 	public static final float MILLIS_BETWEEN_HEAT_DECREASE = 80;
 	
 	public boolean devMode = true;
+	
 }

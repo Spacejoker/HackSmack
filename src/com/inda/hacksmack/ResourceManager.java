@@ -215,7 +215,7 @@ public class ResourceManager {
 	}
 
 	public Sound getSound(String id) {
-		if(HackSmackConstants.devMode){
+		if(HackSmackConstants.noSound){
 			soundMap.get("silence");
 		}
 		if (!soundMap.containsKey(id)) {

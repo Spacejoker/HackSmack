@@ -13,7 +13,7 @@ import org.newdawn.slick.geom.Vector2f;
 public abstract class Entity {
 
 	protected int health;
-	protected int maxhealth;
+	protected int maxhealth = 100;
 	protected Animation animation;
 	protected Vector2f direction = new Vector2f();
 	protected Vector2f position = new Vector2f();

@@ -1,6 +1,5 @@
 package com.inda.hacksmack.model;
 
-import com.inda.hacksmack.HackSmackConstants;
 import com.inda.hacksmack.ResourceManager;
 
 public class Projectile extends Entity {
@@ -8,9 +7,7 @@ public class Projectile extends Entity {
 	double damage;
 	Entity source;
 	{
-		if (!HackSmackConstants.devMode) {
-			ResourceManager.getInstance().getSound("fireball_0").play();
-		}
+			ResourceManager.getInstance().getSound("fireball_0").play(1.0f, 0.5f);
 	}
 
 	public Projectile(Entity source, double damage) {
@@ -19,9 +16,7 @@ public class Projectile extends Entity {
 	}
 
 	public void explode() {
-		if (!HackSmackConstants.devMode) {
-			ResourceManager.getInstance().getSound("fireball_1").play();
-		}
+			ResourceManager.getInstance().getSound("fireball_1").play(1.0f, 0.5f);
 	}
 
 	public Entity getSource() {

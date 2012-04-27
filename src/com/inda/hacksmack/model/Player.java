@@ -3,12 +3,10 @@ package com.inda.hacksmack.model;
 import java.util.ArrayList;
 
 
-import org.lwjgl.Sys;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.geom.Vector2f;
 
-import sun.net.www.content.text.plain;
 
 import java.util.List;
 
@@ -25,6 +23,7 @@ public class Player extends Entity implements InputEvent {
 	private Vector2f mouseposition = new Vector2f();
 	private Vector2f lookdirection = new Vector2f();
 	private float shield=100, maxShield=100, heatLevel = 0, batteryPower = 100;
+
 	private long lastHeatDecrease = System.currentTimeMillis();
 	//add more properties as needed
 	
@@ -171,7 +170,8 @@ public class Player extends Entity implements InputEvent {
 	}
 
 	public float getHpPercentage(){
-		return (float) (((double)health) / maxhealth);
+		float part = (float) (((double)health) / maxhealth) * 100.0f;
+		return part;
 	}
 	
 	public float getShieldPercentage(){

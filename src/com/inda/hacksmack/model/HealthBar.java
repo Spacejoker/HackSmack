@@ -38,6 +38,7 @@ public class HealthBar {
 	}
 
 	public void updateMe() {
+		System.out.println("in");
 		double mod = 1.0/60.0;
 		double rad = 100;
 		
@@ -79,6 +80,7 @@ public class HealthBar {
 		} else {
 			shieldPart = null;
 		}
+		System.out.println("out");
 	}
 
 	public Polygon getRedPart() {

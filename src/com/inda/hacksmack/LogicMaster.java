@@ -110,7 +110,7 @@ public class LogicMaster {
 			//
 
 			for (Enemy enemy : state.getEnemies()) {
-				enemy.updateDirection(state.getPlayer());
+				enemy.updateDirection(state.getPlayer(), state, delta);
 
 				temp = (new Vector2f(enemy.getPosition())).add(new Vector2f(enemy.getDirection()).normalise().scale((float) (enemy.getSpeed() * delta / (float) 1000)));
 
@@ -147,7 +147,7 @@ public class LogicMaster {
 			//
 
 			for (Enemy enemy : state.getEnemies()) {
-				enemy.updateDirection(state.getPlayer());
+				enemy.updateDirection(state.getPlayer(), state, delta);
 
 				temp = (new Vector2f(enemy.getPosition())).add(new Vector2f(enemy.getDirection()).normalise().scale((float) (enemy.getSpeed() * delta / (float) 1000)));
 
@@ -201,15 +201,21 @@ public class LogicMaster {
 					proj.explode();
 					it.remove();
 				}
+				
 				// Kollar krock med spelaren!
-				if (proj.getSource() != player) {
+				if (proj.getSource() != player && proj.getPosition().distance(player.getPosition()) < proj.getRadius() + player.getRadius()) {
+					System.out.println(player.getHealth() + " " + proj.getDamage());
 					player.setHealth((int) (player.getHealth() - proj.getDamage()));
+					System.out.println("Hit!");
 					if (player.getHealth() <= 0) {
-						// TODO: spelaren d�r, game over.
+						System.out.println("DU DOG!");
+					// 	TODO: spelaren d�r, game over.
+						
 					}
 					proj.explode();
 					it.remove();
 				}
+				
 			}
 
 			/**

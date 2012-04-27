@@ -1,6 +1,10 @@
 package com.inda.hacksmack.model;
 
 import org.newdawn.slick.Animation;
+import org.newdawn.slick.Image;
+import org.newdawn.slick.geom.Vector2f;
+
+import com.inda.hacksmack.ResourceManager;
 
 
 /**
@@ -10,7 +14,8 @@ public class Enemy extends Entity {
 	
 	private double defaultspeed;
 	private Animation walkAnimation;
-	
+	boolean playerNoticed = false;
+	int time = 0;
 	public Enemy(){
 		passable = false;
 	}
@@ -25,29 +30,57 @@ public class Enemy extends Entity {
 	 * @param player
 	 */
 
-	public void updateDirection(Player player) {
-		float py = player.getPosition().y;
-		float px = player.getPosition().x;
-		float ey = position.y;
-		float ex = position.x;
+	public void updateDirection(Player player, GameState state, int tick) {
 		
-		direction.x = px - ex;
-		direction.y = py - ey;
 		
-		direction.normalise();
-		
-		if(direction.x*direction.x + direction.y * direction.y > 0.1){
-			direction.normalise();
-		} else {
-			direction.x = 0;
-			direction.y = 0;
-		}
-		
-		if(Math.sqrt(Math.pow(position.x - player.getPosition().x, 2) + Math.pow(position.y - player.getPosition().y, 2)) < player.getRadius() + radius){
+		if(playerNoticed){
+			float py = player.getPosition().y;
+			float px = player.getPosition().x;
+			float ey = position.y;
+			float ex = position.x;
 			
-			speed = 0;
+			direction.x = px - ex;
+			direction.y = py - ey;
+			
+			direction.normalise();
+			
+			if(direction.x*direction.x + direction.y * direction.y > 0.1){
+				direction.normalise();
+			} else {
+				direction.x = 0;
+				direction.y = 0;
+			}
+			
+			if(Math.sqrt(Math.pow(position.x - player.getPosition().x, 2) + Math.pow(position.y - player.getPosition().y, 2)) < player.getRadius() + radius){
+				
+				speed = 0;
+			} else {
+				speed = defaultspeed;
+			}
+			
+			if(time > 1000){
+				Projectile proj = new Projectile(this, getWeaponDamage());
+				
+				proj.setSpeed(400);
+				Image []frame2 = new Image[1];
+				frame2[0] = ResourceManager.getInstance().getImage("ball");
+				proj.setAnimation(new Animation(frame2, 1));
+				proj.setPosition(new Vector2f(position));
+				proj.setDirection(new Vector2f(direction));
+				state.getProjectiles().add(proj);
+				
+				time = 0;
+			} else {
+				time +=tick;
+			}
+			
 		} else {
-			speed = defaultspeed;
+			speed = 0;
+			
+			if(player.position.distance(position) < 300){
+				playerNoticed = true;
+				ResourceManager.getInstance().getSound("scream").play();
+			}
 		}
 	}
 	
@@ -62,6 +95,11 @@ public class Enemy extends Entity {
 		return animation;
 	}
 
+	int getWeaponDamage(){
+		return 50;
+		
+	}
+	
 	public Animation getWalkAnimation() {
 		return walkAnimation;
 	}

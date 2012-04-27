@@ -9,7 +9,6 @@ import org.newdawn.slick.SlickException;
 import com.inda.hacksmack.input.InputHandler;
 import com.inda.hacksmack.model.GameMode;
 import com.inda.hacksmack.model.GameState;
-import com.inda.hacksmack.model.cutscene.EndCutScene;
 import com.inda.hacksmack.model.cutscene.IntroSplashCutScene;
 
 /**
@@ -23,7 +22,6 @@ public class Main extends BasicGame {
 		super("Hack Smack");
 	}
 
-	private InputHandler ih;
 	
 	public static GameState gameState;
 	private LogicMaster lm;
@@ -32,7 +30,7 @@ public class Main extends BasicGame {
 	@Override
 	public void init(GameContainer container) throws SlickException {
 
-		container.getInput().addListener(ih = InputHandler.getInstance());
+		container.getInput().addListener(InputHandler.getInstance());
 		
 		gameState = new GameState(); // TODO: this shoulde be loaded in a controlled manner
 		

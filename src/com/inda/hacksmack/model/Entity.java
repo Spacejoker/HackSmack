@@ -25,6 +25,7 @@ public abstract class Entity {
 	/**
 	 * Draws whatever is returned by getAnimation() - could be overridden by subclasses to allow for more flexible animation handling
 	 */
+
 	public void draw() {
 		Animation curAnimation = getAnimation();
 		curAnimation.getCurrentFrame().setRotation((float) (direction.getTheta() - 90));

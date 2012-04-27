@@ -30,7 +30,11 @@
 	
   <!-- IMAGE -->
 	<content type="image" id="crosshair">images/crosshair.png</content>
+
 	<content type="image" id="enemy_giant">images/enemy_giant.png</content>
+	<content type="image" id="enemy_giant2">images/enemy_giant2.png</content>
+	<content type="image" id="enemy_giant3">images/enemy_giant3.png</content>
+
 	<content type="image" id="player">images/player.png</content>
 	<content type="image" id="ball">images/ball.png</content>
 	<content type="image" id="intro_walk_1">images/intro/intro_walk_1.png</content>
@@ -67,6 +71,6 @@
 	<content type="sound" id="music">sounds/DST_ElectriKaos.ogg</content> 
 	
   <!-- ENEMY -->
-	<content type="enemy" id="enemy_giant" maxhealth="100" speed="100" radius="16" animationimages="enemy_giant;enemy_giant" walkimages="gem;enemy_giant"/>
+	<content type="enemy" id="enemy_giant" maxhealth="100" speed="100" radius="16" animationimages="enemy_giant;enemy_giant;" walkimages="enemy_giant2;enemy_giant;"/>
 	
 </resources>

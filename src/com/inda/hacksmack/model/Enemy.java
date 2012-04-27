@@ -89,7 +89,7 @@ public class Enemy extends Entity {
 	 */
 	@Override
 	public Animation getAnimation() {
-		if(Math.abs(speed) > 0.01){
+		if(Math.abs(speed) > 1){
 			return walkAnimation;
 		}
 		return animation;

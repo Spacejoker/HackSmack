@@ -47,6 +47,9 @@ public class InputHandler implements InputListener {
 		for(InputEvent e: events)
 			if(e.isAcceptingEvents())
 				e.keyPressed(key, c);
+		if(key == Input.KEY_ESCAPE){
+			System.exit(0);
+		}
 
 	}
 	

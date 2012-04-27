@@ -18,8 +18,6 @@ import com.inda.hacksmack.input.InputHandler;
 import com.inda.hacksmack.model.Item.ItemType;
 import com.inda.hacksmack.model.cutscene.CutScene;
 import com.inda.hacksmack.model.cutscene.EndCutScene;
-import com.inda.hacksmack.model.cutscene.IntroCutScene;
-import com.inda.hacksmack.model.cutscene.IntroSplashCutScene;
 
 /**
  * Contains the GameState - this can be momentarily dumped and loaded to save/retrieve gamestate
@@ -38,7 +36,7 @@ public class GameState {
 	private HealthBar healthBar = new HealthBar();
 	private HeatAndBatteryBar heatAndBatteryBar = new HeatAndBatteryBar();
 	int mapNr = 0;
-	String[] mapNames = new String[]{"level_1"};//, "level_2"};
+	String[] mapNames = new String[]{"level_1", "level_2"};
 
 	static int gamestates = 0;
 	int gamestate = gamestates;

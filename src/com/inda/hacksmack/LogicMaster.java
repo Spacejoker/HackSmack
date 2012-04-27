@@ -256,6 +256,7 @@ public class LogicMaster {
 		case END_SCENE:
 		case DEATH_SCENE:
 		case CUT_SCENE:
+			state.getPlayer().setAcceptsEvents(false);
 			if(state.getCutScene().done()){
 				//TODO: ladda om om jox för spelet.
 				state.setGameMode(GameMode.GAMEPLAY);

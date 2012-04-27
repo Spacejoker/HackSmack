@@ -22,8 +22,13 @@ public class Player extends Entity implements InputEvent {
 	private int ammoLeft;
 	private Vector2f mouseposition = new Vector2f();
 	private Vector2f lookdirection = new Vector2f();
-	private float shield=100, maxShield=100, heatLevel = 0, batteryPower = 100;
+	private float shield=100, maxShield=50, heatLevel = 0, batteryPower = 100;
+	private boolean acceptsEvents = true;
 
+	public void setAcceptsEvents(boolean value){
+		acceptsEvents = value;
+	}
+	
 	private long lastHeatDecrease = System.currentTimeMillis();
 	//add more properties as needed
 	
@@ -149,8 +154,7 @@ public class Player extends Entity implements InputEvent {
 
 	@Override
 	public boolean isAcceptingEvents() {
-		// TODO Auto-generated method stub
-		return true;
+		return acceptsEvents;
 	}
 
 	public float getShield() {
@@ -206,7 +210,7 @@ public class Player extends Entity implements InputEvent {
 		long diff = System.currentTimeMillis() - lastHeatDecrease;
 		int cnt = (int) (diff / HackSmackConstants.MILLIS_BETWEEN_HEAT_DECREASE);
 		if(cnt > 0){
-			heatLevel -= cnt;
+			heatLevel -= cnt*2;
 			heatLevel = Math.max(0, heatLevel);
 			lastHeatDecrease = System.currentTimeMillis();
 			shield = Math.max(maxShield, shield += cnt);

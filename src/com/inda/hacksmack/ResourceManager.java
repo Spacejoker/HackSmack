@@ -172,7 +172,7 @@ public class ResourceManager {
 		SpriteSheet tileset;
 		try {
 
-			tileset = new SpriteSheet(new Image(resourceFolder + path), 32, 32); // dirty image load but what the heck
+			tileset = new SpriteSheet(new Image(resourceFolder + path), HackSmackConstants.TILE_SIZE, HackSmackConstants.TILE_SIZE); // dirty image load but what the heck
 		} catch (SlickException e) {
 			throw new SlickException("Tileset file doesnt exist. id: " + id + " path: " + path, e);
 		}
@@ -214,9 +214,10 @@ public class ResourceManager {
 		return imageMap.get(id);
 	}
 
+	
 	public Sound getSound(String id) {
 		if(HackSmackConstants.noSound){
-			soundMap.get("silence");
+			return soundMap.get("silence");
 		}
 		if (!soundMap.containsKey(id)) {
 			throw new RuntimeException("Tried to load a sound that doesnt exist: " + id);

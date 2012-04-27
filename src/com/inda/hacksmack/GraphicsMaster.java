@@ -87,7 +87,8 @@ public class GraphicsMaster {
 		case MENU:
 			
 			break;
-			
+		case DEATH_SCENE:
+		case SPLASH_SCREEN:
 		case CUT_SCENE:
 			
 			CutScene cutScene = gameState.getCutScene();
@@ -110,7 +111,7 @@ public class GraphicsMaster {
 			for (int y = 0; y < tileMap.getHeight(); y++) {
 				Image tileImage = tileMap.getTileImage(x, y, 0);
 				if (tileImage != null) {
-					tileImage.draw(x * TILE_SIZE, y * 32);
+					tileImage.getScaledCopy(HackSmackConstants.TILE_SIZE, HackSmackConstants.TILE_SIZE).draw(x * TILE_SIZE, y * TILE_SIZE);
 				}
 			}
 		}
@@ -119,7 +120,7 @@ public class GraphicsMaster {
 			for (int y = 0; y < tileMap.getHeight(); y++) {
 				Image tileImage = tileMap.getTileImage(x, y, 1);
 				if (tileImage != null) {
-					tileImage.draw(x * 32, y * 32);
+					tileImage.getScaledCopy(HackSmackConstants.TILE_SIZE, HackSmackConstants.TILE_SIZE).draw(x * TILE_SIZE, y * TILE_SIZE);
 				}
 			}
 		}

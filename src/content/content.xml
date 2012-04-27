@@ -37,8 +37,12 @@
 	<content type="image" id="intro_walk_2">images/intro/intro_walk_2.png</content>
 	<content type="image" id="intro_walk_3">images/intro/intro_walk_3.png</content>
 	<content type="image" id="conversation_1">images/intro/conversation_1.png</content>
+	<content type="image" id="conversation_1">images/intro/conversation_1.png</content>
 	<content type="image" id="conversation_2">images/intro/conversation_2.png</content>
 	<content type="image" id="space_artifact">images/intro/space_artifact.png</content>
+	<content type="image" id="splashscreen">images/splashscreen.png</content>
+	<content type="image" id="deathscreen">images/deathscreen.png</content>
+	<content type="image" id="endscreen">images/endscreen.png</content>
 	<content type="image" id="gem">images/gem.png</content>
 	<content type="image" id="exp_0">images/explosion/0.png</content>
 	<content type="image" id="exp_1">images/explosion/1.png</content>

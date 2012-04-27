@@ -12,8 +12,11 @@ import com.inda.hacksmack.model.HealthBar;
 import com.inda.hacksmack.model.HeatAndBatteryBar;
 import com.inda.hacksmack.model.Item;
 import com.inda.hacksmack.model.Item.ItemType;
+import com.inda.hacksmack.model.cutscene.DeathCutScene;
+import com.inda.hacksmack.model.cutscene.IntroCutScene;
 import com.inda.hacksmack.model.Player;
 import com.inda.hacksmack.model.Projectile;
+
 
 public class LogicMaster {
 
@@ -34,7 +37,6 @@ public class LogicMaster {
 	public void handleLogics(GameState state, int delta) {
 		switch (state.getGameMode()) {
 		case GAMEPLAY:
-
 			timepassed += delta;
 			Player player = state.getPlayer();
 
@@ -45,6 +47,10 @@ public class LogicMaster {
 				}
 			}
 
+			
+			//TODO: Plocka bort så att den inte krashar om en projektil träffar en fiende/spelare och vägg samtidigt.
+			//TODO: Är typ ända sättet att krasha spelet på som jag känner till, bör styras upp. ;))
+			
 			//
 			// Kollar om spelaren krockar
 			//
@@ -80,7 +86,7 @@ public class LogicMaster {
 						}
 						if (!gem) {
 							// TODO: inga fler gems pï¿½ kartan och man stï¿½r pï¿½ mï¿½let, klara banan!
-
+							state.nextMap();
 						}
 					}
 
@@ -196,21 +202,24 @@ public class LogicMaster {
 						break;
 					}
 				}
+
 				// Kollar krock med vï¿½ggen
 				if (!state.getMap().collidesWithMap(proj.getPosition(), proj.getRadius())) {
 					proj.explode();
 					it.remove();
+					continue;
 				}
 				
 				// Kollar krock med spelaren!
 				if (proj.getSource() != player && proj.getPosition().distance(player.getPosition()) < proj.getRadius() + player.getRadius()) {
-					System.out.println(player.getHealth() + " " + proj.getDamage());
+					//System.out.println(player.getHealth() + " " + proj.getDamage());
 					player.setHealth((int) (player.getHealth() - proj.getDamage()));
-					System.out.println("Hit!");
+					//System.out.println("Hit!");
 					if (player.getHealth() <= 0) {
-						System.out.println("DU DOG!");
+						//System.out.println("DU DOG!");
 					// 	TODO: spelaren dï¿½r, game over.
-						
+						state.setGameMode(GameMode.DEATH_SCENE);
+						state.setCutScene(new DeathCutScene());
 					}
 					proj.explode();
 					it.remove();
@@ -244,13 +253,25 @@ public class LogicMaster {
 			}
 			
 			break;
-
+		case END_SCENE:
+		case DEATH_SCENE:
 		case CUT_SCENE:
-			if (state.getCutScene().done()) { // if a cutscene is done, go to gameplay
+			if(state.getCutScene().done()){
+				//TODO: ladda om om jox för spelet.
 				state.setGameMode(GameMode.GAMEPLAY);
+				Main.gameState = new GameState("level_1");
+				
 			}
 			break;
-
+			
+		case SPLASH_SCREEN:
+			if(state.getCutScene().done()) {
+				state.setGameMode(GameMode.CUT_SCENE);
+				state.setCutScene(new IntroCutScene());
+			}
+			break;
+			
+			
 		default:
 			break;
 		}

@@ -14,9 +14,12 @@ import com.inda.hacksmack.HackSmackConstants;
 import com.inda.hacksmack.ResourceManager;
 import com.inda.hacksmack.factory.EnemyFactory;
 import com.inda.hacksmack.factory.ItemFactory;
+import com.inda.hacksmack.input.InputHandler;
 import com.inda.hacksmack.model.Item.ItemType;
 import com.inda.hacksmack.model.cutscene.CutScene;
+import com.inda.hacksmack.model.cutscene.EndCutScene;
 import com.inda.hacksmack.model.cutscene.IntroCutScene;
+import com.inda.hacksmack.model.cutscene.IntroSplashCutScene;
 
 /**
  * Contains the GameState - this can be momentarily dumped and loaded to save/retrieve gamestate
@@ -26,7 +29,7 @@ import com.inda.hacksmack.model.cutscene.IntroCutScene;
 public class GameState {
 
 	private GameMode gameMode = GameMode.GAMEPLAY;
-	private CutScene cutScene = new IntroCutScene();
+	private CutScene cutScene;
 	private Map map;
 	private List<Enemy> enemies = new ArrayList<Enemy>();
 	private List<Item> items = new ArrayList<Item>();
@@ -35,23 +38,27 @@ public class GameState {
 	private HealthBar healthBar = new HealthBar();
 	private HeatAndBatteryBar heatAndBatteryBar = new HeatAndBatteryBar();
 	int mapNr = 0;
-	String[] mapNames = new String[]{"level_1", "level_2"};
+	String[] mapNames = new String[]{"level_1"};//, "level_2"};
 
-	
+	static int gamestates = 0;
+	int gamestate = gamestates;
 	/**
 	 * Loads a default map
 	 */
 	public GameState() {
 		this("level_1");
 	}
-
+	public int getGameStateNO(){
+		return gamestate;
+	}
 	public GameState(String mapName) {
 		setUpMap(mapName);	
 		player = new Player();
+		InputHandler.getInstance().addEvent(player);
 		player.setGameState(this);
 		player.setSpeed(200);
 		player.setWeaponDamage(50);
-		//player.setHealth(100);
+		player.setHealth(100);
 		Image []frame = new Image[1];
 		frame[0] = ResourceManager.getInstance().getImage("player");
 		player.setAnimation(new Animation(frame, 1));
@@ -186,8 +193,17 @@ public class GameState {
 	public void nextMap() {
 		
 		mapNr ++;
+		if(mapNr == mapNames.length){ //klarat spelet woho! :D
+			this.setCutScene(new EndCutScene());
+			this.setGameMode(GameMode.CUT_SCENE);
+		}
 		String mapName = mapNames[mapNr % mapNames.length];
 		setUpMap(mapName);
+		
+	}
+
+	public void reset() {
+		//this = new GameState("level_1");
 		
 	}
 }

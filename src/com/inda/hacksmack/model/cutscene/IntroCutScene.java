@@ -35,7 +35,7 @@ public class IntroCutScene implements CutScene {
 
 	public IntroCutScene() {
 		if (HackSmackConstants.devMode) {
-			totalTime = 1000;
+			totalTime = 0;
 		}
 
 		startTime = System.currentTimeMillis();

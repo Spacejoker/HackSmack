@@ -2,6 +2,8 @@ package com.inda.hacksmack.model;
 
 import org.newdawn.slick.Animation;
 
+import com.inda.hacksmack.ResourceManager;
+
 
 /**
  * An enemy in the game which is alive and kicking (hopefully!)
@@ -58,7 +60,7 @@ public class Enemy extends Entity {
 			
 			if(player.position.distance(position) < 300){
 				playerNoticed = true;
-				System.out.print("Hittad!");
+				ResourceManager.getInstance().getSound("scream").play();
 			}
 		}
 	}

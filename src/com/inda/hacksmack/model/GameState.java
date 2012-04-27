@@ -45,6 +45,14 @@ public class GameState {
 
 	public GameState(String mapName) {
 		setUpMap(mapName);	
+		player = new Player();
+		player.setGameState(this);
+		player.setSpeed(200);
+		player.setWeaponDamage(50);
+		Image []frame = new Image[1];
+		frame[0] = ResourceManager.getInstance().getImage("player");
+		player.setAnimation(new Animation(frame, 1));
+		player.setPosition(new Vector2f(200, 200));
 	}
 
 	public void setUpMap(String mapName) {
@@ -64,15 +72,9 @@ public class GameState {
 				items.add(item);
 			}
 		}
-		
-		player = new Player();
-		player.setGameState(this);
-		player.setSpeed(200);
-		player.setWeaponDamage(50);
-		Image []frame = new Image[1];
-		frame[0] = ResourceManager.getInstance().getImage("player");
-		player.setAnimation(new Animation(frame, 1));
-		player.setPosition(new Vector2f(200, 200));
+		if(player!=null){
+			player.setPosition(new Vector2f(200, 200));
+		}
 	}
 
 	public Map getMap() {
@@ -171,6 +173,6 @@ public class GameState {
 				cnt ++;
 			}
 		}
-		return cnt > 0;
+		return cnt > 3;
 	}
 }

@@ -35,7 +35,10 @@ public class GameState {
 	private Player player;
 	private HealthBar healthBar = new HealthBar();
 	private HeatAndBatteryBar heatAndBatteryBar = new HeatAndBatteryBar();
+	int mapNr = 0;
+	String[] mapNames = new String[]{"level_1", "level_2"};
 
+	
 	/**
 	 * Loads a default map
 	 */
@@ -61,6 +64,10 @@ public class GameState {
 		//Load all enemies from tilefile:
 		TiledMap tileMap = map.getTileMap();
 		int objcnt = tileMap.getObjectCount(0);
+		
+		items.clear();
+		enemies.clear();
+		
 		for (int i = 0; i < objcnt; i++) {
 			String type = tileMap.getObjectProperty(0, i, "type", "");
 			String id = tileMap.getObjectProperty(0, i, "id", "");
@@ -174,5 +181,13 @@ public class GameState {
 			}
 		}
 		return cnt > 3;
+	}
+
+	public void nextMap() {
+		
+		mapNr ++;
+		String mapName = mapNames[mapNr % mapNames.length];
+		setUpMap(mapName);
+		
 	}
 }

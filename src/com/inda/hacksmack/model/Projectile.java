@@ -8,9 +8,7 @@ public class Projectile extends Entity {
 	double damage;
 	Entity source;
 	{
-		if (!HackSmackConstants.devMode) {
 			ResourceManager.getInstance().getSound("fireball_0").play();
-		}
 	}
 
 	public Projectile(Entity source, double damage) {
@@ -19,9 +17,7 @@ public class Projectile extends Entity {
 	}
 
 	public void explode() {
-		if (!HackSmackConstants.devMode) {
 			ResourceManager.getInstance().getSound("fireball_1").play();
-		}
 	}
 
 	public Entity getSource() {

@@ -233,7 +233,8 @@ public class LogicMaster {
 			
 			//change level?
 			if(!state.getHasGemsLeft()){
-				state.setUpMap("level_1");
+				state.nextMap();
+				
 			}
 			
 			break;

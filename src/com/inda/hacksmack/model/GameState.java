@@ -35,16 +35,27 @@ public class GameState {
 	private Player player;
 	private HealthBar healthBar = new HealthBar();
 	private HeatAndBatteryBar heatAndBatteryBar = new HeatAndBatteryBar();
+	int mapNr = 0;
+	String[] mapNames = new String[]{"level_1", "level_2"};
 
+	
 	/**
 	 * Loads a default map
 	 */
 	public GameState() {
-		this("level_2");
+		this("level_1");
 	}
 
 	public GameState(String mapName) {
 		setUpMap(mapName);	
+		player = new Player();
+		player.setGameState(this);
+		player.setSpeed(200);
+		player.setWeaponDamage(50);
+		Image []frame = new Image[1];
+		frame[0] = ResourceManager.getInstance().getImage("player");
+		player.setAnimation(new Animation(frame, 1));
+		player.setPosition(new Vector2f(200, 200));
 	}
 
 	public void setUpMap(String mapName) {
@@ -53,6 +64,10 @@ public class GameState {
 		//Load all enemies from tilefile:
 		TiledMap tileMap = map.getTileMap();
 		int objcnt = tileMap.getObjectCount(0);
+		
+		items.clear();
+		enemies.clear();
+		
 		for (int i = 0; i < objcnt; i++) {
 			String type = tileMap.getObjectProperty(0, i, "type", "");
 			String id = tileMap.getObjectProperty(0, i, "id", "");
@@ -64,15 +79,9 @@ public class GameState {
 				items.add(item);
 			}
 		}
-		
-		player = new Player();
-		player.setGameState(this);
-		player.setSpeed(200);
-		player.setWeaponDamage(50);
-		Image []frame = new Image[1];
-		frame[0] = ResourceManager.getInstance().getImage("player");
-		player.setAnimation(new Animation(frame, 1));
-		player.setPosition(new Vector2f(200, 200));
+		if(player!=null){
+			player.setPosition(new Vector2f(200, 200));
+		}
 	}
 
 	public Map getMap() {
@@ -171,6 +180,14 @@ public class GameState {
 				cnt ++;
 			}
 		}
-		return cnt > 0;
+		return cnt > 3;
+	}
+
+	public void nextMap() {
+		
+		mapNr ++;
+		String mapName = mapNames[mapNr % mapNames.length];
+		setUpMap(mapName);
+		
 	}
 }

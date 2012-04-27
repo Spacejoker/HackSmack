@@ -59,7 +59,6 @@ public class Enemy extends Entity {
 			}
 			
 			if(time > 1000){
-				System.out.println("Pang" + this.toString());
 				Projectile proj = new Projectile(this, getWeaponDamage());
 				
 				proj.setSpeed(400);
@@ -73,7 +72,6 @@ public class Enemy extends Entity {
 				time = 0;
 			} else {
 				time +=tick;
-				// overheated gun, break it?
 			}
 			
 		} else {

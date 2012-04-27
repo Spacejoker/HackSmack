@@ -204,11 +204,13 @@ public class LogicMaster {
 				
 				// Kollar krock med spelaren!
 				if (proj.getSource() != player && proj.getPosition().distance(player.getPosition()) < proj.getRadius() + player.getRadius()) {
+					System.out.println(player.getHealth() + " " + proj.getDamage());
 					player.setHealth((int) (player.getHealth() - proj.getDamage()));
 					System.out.println("Hit!");
 					if (player.getHealth() <= 0) {
 						System.out.println("DU DOG!");
 					// 	TODO: spelaren d�r, game over.
+						
 					}
 					proj.explode();
 					it.remove();

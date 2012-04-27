@@ -38,6 +38,7 @@ public class Main extends BasicGame {
 		lm = LogicMaster.getInstance();
 		gameState.setGameMode(GameMode.CUT_SCENE);
 		container.setMouseCursor(ResourceManager.getInstance().getImage("crosshair"), 0, 0);
+		ResourceManager.getInstance().getSound("music").loop();
 	}
 
 	/**

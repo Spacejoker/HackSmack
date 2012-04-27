@@ -51,6 +51,7 @@ public class GameState {
 		player.setGameState(this);
 		player.setSpeed(200);
 		player.setWeaponDamage(50);
+		//player.setHealth(100);
 		Image []frame = new Image[1];
 		frame[0] = ResourceManager.getInstance().getImage("player");
 		player.setAnimation(new Animation(frame, 1));

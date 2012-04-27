@@ -22,7 +22,7 @@ public class Player extends Entity implements InputEvent {
 	private int ammoLeft;
 	private Vector2f mouseposition = new Vector2f();
 	private Vector2f lookdirection = new Vector2f();
-	private float shield, maxShield, heatLevel = 100, batteryPower = 100;
+	private float shield, maxShield, heatLevel, batteryPower = 100;
 	private long lastHeatDecrease = System.currentTimeMillis();
 	//add more properties as needed
 	

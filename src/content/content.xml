@@ -60,7 +60,7 @@
  	<content type="sound" id="silence">sounds/silence.wav</content> 
  	<content type="sound" id="scream">sounds/scream.wav</content> 
 	
-	<content type="sound" id="music">sounds/DST-ElectriKaos.wav</content> 
+	<content type="sound" id="music">sounds/DST_ElectriKaos.ogg</content> 
 	
   <!-- ENEMY -->
 	<content type="enemy" id="enemy_giant" maxhealth="100" speed="100" radius="16" animationimages="enemy_giant;enemy_giant" walkimages="gem;enemy_giant"/>

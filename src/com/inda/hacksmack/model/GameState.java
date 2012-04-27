@@ -3,7 +3,6 @@ package com.inda.hacksmack.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.lwjgl.util.Rectangle;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;

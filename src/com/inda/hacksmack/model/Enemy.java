@@ -1,6 +1,8 @@
 package com.inda.hacksmack.model;
 
 import org.newdawn.slick.Animation;
+import org.newdawn.slick.Image;
+import org.newdawn.slick.geom.Vector2f;
 
 import com.inda.hacksmack.ResourceManager;
 
@@ -13,7 +15,7 @@ public class Enemy extends Entity {
 	private double defaultspeed;
 	private Animation walkAnimation;
 	boolean playerNoticed = false;
-	
+	int time = 0;
 	public Enemy(){
 		passable = false;
 	}
@@ -28,7 +30,7 @@ public class Enemy extends Entity {
 	 * @param player
 	 */
 
-	public void updateDirection(Player player) {
+	public void updateDirection(Player player, GameState state, int tick) {
 		
 		
 		if(playerNoticed){
@@ -55,6 +57,25 @@ public class Enemy extends Entity {
 			} else {
 				speed = defaultspeed;
 			}
+			
+			if(time > 1000){
+				System.out.println("Pang" + this.toString());
+				Projectile proj = new Projectile(this, getWeaponDamage());
+				
+				proj.setSpeed(400);
+				Image []frame2 = new Image[1];
+				frame2[0] = ResourceManager.getInstance().getImage("ball");
+				proj.setAnimation(new Animation(frame2, 1));
+				proj.setPosition(new Vector2f(position));
+				proj.setDirection(new Vector2f(direction));
+				state.getProjectiles().add(proj);
+				
+				time = 0;
+			} else {
+				time +=tick;
+				// overheated gun, break it?
+			}
+			
 		} else {
 			speed = 0;
 			
@@ -76,6 +97,11 @@ public class Enemy extends Entity {
 		return animation;
 	}
 
+	int getWeaponDamage(){
+		return 50;
+		
+	}
+	
 	public Animation getWalkAnimation() {
 		return walkAnimation;
 	}

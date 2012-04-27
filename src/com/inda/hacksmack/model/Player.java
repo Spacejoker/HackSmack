@@ -3,12 +3,10 @@ package com.inda.hacksmack.model;
 import java.util.ArrayList;
 
 
-import org.lwjgl.Sys;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.geom.Vector2f;
 
-import sun.net.www.content.text.plain;
 
 import java.util.List;
 
@@ -24,7 +22,7 @@ public class Player extends Entity implements InputEvent {
 	private int ammoLeft;
 	private Vector2f mouseposition = new Vector2f();
 	private Vector2f lookdirection = new Vector2f();
-	private float shield, maxShield, heatLevel = 0, batteryPower = 100;
+	private float shield, maxShield, heatLevel = 100, batteryPower = 100;
 	private long lastHeatDecrease = System.currentTimeMillis();
 	//add more properties as needed
 	

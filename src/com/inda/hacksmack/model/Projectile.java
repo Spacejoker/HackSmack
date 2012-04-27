@@ -1,6 +1,5 @@
 package com.inda.hacksmack.model;
 
-import com.inda.hacksmack.HackSmackConstants;
 import com.inda.hacksmack.ResourceManager;
 
 public class Projectile extends Entity {

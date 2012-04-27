@@ -3,11 +3,15 @@ package com.inda.hacksmack.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.lwjgl.util.Rectangle;
 import org.newdawn.slick.Animation;
+import org.newdawn.slick.Color;
+import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.tiled.TiledMap;
 
+import com.inda.hacksmack.HackSmackConstants;
 import com.inda.hacksmack.ResourceManager;
 import com.inda.hacksmack.factory.EnemyFactory;
 import com.inda.hacksmack.factory.ItemFactory;
@@ -40,6 +44,10 @@ public class GameState {
 	}
 
 	public GameState(String mapName) {
+		setUpMap(mapName);	
+	}
+
+	public void setUpMap(String mapName) {
 		this.map = new Map(ResourceManager.getInstance().getTiledMap(mapName));
 		
 		//Load all enemies from tilefile:
@@ -64,7 +72,7 @@ public class GameState {
 		Image []frame = new Image[1];
 		frame[0] = ResourceManager.getInstance().getImage("player");
 		player.setAnimation(new Animation(frame, 1));
-		player.setPosition(new Vector2f(200, 200));	
+		player.setPosition(new Vector2f(200, 200));
 	}
 
 	public Map getMap() {
@@ -78,7 +86,6 @@ public class GameState {
 	public List<Enemy> getEnemies() {
 		return enemies;
 	}
-
 
 	public void setEnemies(List<Enemy> enemies) {
 		this.enemies = enemies;
@@ -138,5 +145,32 @@ public class GameState {
 
 	public void setHeatAndBatteryBar(HeatAndBatteryBar heatAndBatteryBar) {
 		this.heatAndBatteryBar = heatAndBatteryBar;
+	}
+
+	public void drawFogOfWar(Graphics graphics) {
+		graphics.setColor(Color.black);
+		int tileSize = HackSmackConstants.TILE_SIZE;
+		for (int i = 0; i < HackSmackConstants.SCREEN_WIDTH; i += tileSize) {
+			for (int j = 0; j < HackSmackConstants.SCREEN_HEIGHT; j += tileSize) {
+				
+				float xdiff = player.getPosition().x - i;
+				float ydiff = player.getPosition().y - j;
+				if(xdiff*xdiff + ydiff*ydiff > HackSmackConstants.FOG_OF_WAR_DISTANCE * HackSmackConstants.FOG_OF_WAR_DISTANCE ){
+					graphics.fillRect(i, j, tileSize, tileSize);
+				}
+			}
+		}
+	}
+
+	public boolean getHasGemsLeft() {
+		int cnt = 0;
+		
+		for (int i = 0; i < items.size(); i++) {
+			Item item = items.get(i);
+			if(item.getType().equals(ItemType.GEM)){
+				cnt ++;
+			}
+		}
+		return cnt > 0;
 	}
 }

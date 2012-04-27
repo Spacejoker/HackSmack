@@ -29,7 +29,6 @@ public class EnemyFactory {
 		String[] walkImageIds = typeData.getWalkImageIds();
 		Image[] walkImages = new Image[walkImageIds.length];
 		for (int i = 0; i < walkImageIds.length; i++) {
-			System.out.println("Walk image: " + walkImageIds[i]);
 			walkImages[i] = ResourceManager.getInstance().getImage(walkImageIds[i]);
 		}
 		

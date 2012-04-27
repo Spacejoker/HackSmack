@@ -23,7 +23,7 @@ public class Main extends BasicGame {
 
 	private InputHandler ih;
 	
-	private GameState gameState;
+	static GameState gameState;
 	private LogicMaster lm;
 	private GraphicsMaster gm = GraphicsMaster.getInstance();
 	

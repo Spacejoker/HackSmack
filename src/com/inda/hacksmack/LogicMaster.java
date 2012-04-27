@@ -57,7 +57,6 @@ public class LogicMaster {
 			// kolla krock med fienden
 			for (Enemy enemy : state.getEnemies()) {
 				if (enemy.getPosition().distance(temp) < player.getRadius() + enemy.getRadius()) {
-					// System.out.println("Krock!");
 					krock = true;
 				}
 
@@ -87,7 +86,6 @@ public class LogicMaster {
 
 					if (!item.getPassable()) {
 						krock = true;
-						System.out.println("boink");
 					}
 					if (item.getCanBePicked()) {
 						player.getInventory().add(item);
@@ -232,6 +230,11 @@ public class LogicMaster {
 			heatAndBatteryBar.updateMe();
 			
 			player.updateHeatLevel();
+			
+			//change level?
+			if(!state.getHasGemsLeft()){
+				state.setUpMap("level_1");
+			}
 			
 			break;
 

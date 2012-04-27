@@ -44,6 +44,10 @@ public class GameState {
 	}
 
 	public GameState(String mapName) {
+		setUpMap(mapName);	
+	}
+
+	public void setUpMap(String mapName) {
 		this.map = new Map(ResourceManager.getInstance().getTiledMap(mapName));
 		
 		//Load all enemies from tilefile:
@@ -68,7 +72,7 @@ public class GameState {
 		Image []frame = new Image[1];
 		frame[0] = ResourceManager.getInstance().getImage("player");
 		player.setAnimation(new Animation(frame, 1));
-		player.setPosition(new Vector2f(200, 200));	
+		player.setPosition(new Vector2f(200, 200));
 	}
 
 	public Map getMap() {
@@ -82,7 +86,6 @@ public class GameState {
 	public List<Enemy> getEnemies() {
 		return enemies;
 	}
-
 
 	public void setEnemies(List<Enemy> enemies) {
 		this.enemies = enemies;
@@ -157,5 +160,17 @@ public class GameState {
 				}
 			}
 		}
+	}
+
+	public boolean getHasGemsLeft() {
+		int cnt = 0;
+		
+		for (int i = 0; i < items.size(); i++) {
+			Item item = items.get(i);
+			if(item.getType().equals(ItemType.GEM)){
+				cnt ++;
+			}
+		}
+		return cnt > 0;
 	}
 }

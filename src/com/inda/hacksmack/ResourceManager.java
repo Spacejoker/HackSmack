@@ -34,6 +34,7 @@ import com.inda.hacksmack.model.EnemyTypeData;
 public class ResourceManager {
 	private static final String resourceFolder = "src/content/";
 	private static ResourceManager _instance;
+	
 	static {
 		try {
 			_instance = new ResourceManager();
@@ -41,6 +42,7 @@ public class ResourceManager {
 			throw new RuntimeException("Failed to load resources." + e.getMessage());
 		}
 	}
+	
 	private Map<String, Image> imageMap;
 	private Map<String, Sound> soundMap;
 	private Map<String, SpriteSheet> tilesetMap;

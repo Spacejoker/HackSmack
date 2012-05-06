@@ -4,16 +4,16 @@
   <image source="../tilesets/test.png" width="1024" height="2016"/>
  </tileset>
  <tileset firstgid="2017" name="space" tilewidth="32" tileheight="32">
-  <image source="../tilesets/space.png" width="256" height="15000"/>
+  <image source="../tilesets/space.png" width="256" height="1000"/>
  </tileset>
  <layer name="Tile Layer 1" width="32" height="23">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2PkYWBgojHW5GRgkIZiKU6EOAsQ8wCxFAdtsSHQTmUoVuJEiPPQyX5ceNR+yuw35GVgMOIdOPsVgXYrj9o/IPaD4l57AO0H+V0SiK0GyH5LCu2mRvxTikftH7V/1H5UsWT+gbU/e4Dtp3f4C9Kh/YsLg+wHAEWgHTOACwAA
+   H4sIAAAAAAAAC2NgGHggxUFbjMs+etlPyF2j9o/qH9VPnt6Rbj+5dlPLjFH7R+0ftZ969tPTPYPR/oEI/4EEAC8ig22ACwAA
   </data>
  </layer>
  <layer name="Tile Layer 2" width="32" height="23">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGAXDEbRw01ffKBgFo4AysJqTgWENAbyWk3r60MFmoJotBPBWLOaQq2+kgYEuWwfa/lEw8GA0DQwuAADsg7E/gAsAAA==
+   H4sIAAAAAAAAC+2UYQqAMAiF/ekluv+FqvP0p2gsm896w4oePJDh/MQxRb6vUUWm1bNmd4Nr0N1Z7Dpu5fVg1+dWHrM3707JrH1WI9IDkmtxvbfy6kZnZfHR2TH0hL9B5yvmAx81WVnzL/mZeiOf9Wbo7m3tybvsLY70xWRbzB5cpH72X/x1TQv1CyFqgAsAAA==
   </data>
  </layer>
  <objectgroup name="Object Layer 1" width="32" height="23">
@@ -52,7 +52,7 @@
     <property name="type" value="gem"/>
    </properties>
   </object>
-  <object name="slime_1" type="slime" x="957" y="37" width="32" height="32">
+  <object name="slime_1" type="slime" x="941" y="119" width="32" height="32">
    <properties>
     <property name="id" value="gem"/>
     <property name="level" value="1"/>
@@ -73,7 +73,7 @@
     <property name="type" value="enemy"/>
    </properties>
   </object>
-  <object name="slime_1" type="slime" x="919" y="83" width="32" height="32">
+  <object name="slime_1" type="slime" x="889" y="123" width="32" height="32">
    <properties>
     <property name="id" value="enemy_giant"/>
     <property name="level" value="1"/>
@@ -90,7 +90,7 @@
  </objectgroup>
  <layer name="Tile Layer 3" width="32" height="23">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC3vEzsDwaIDxQIFR+0ftH7V/ZNrPOAjtJ7e8JEffYPQ/vcGo/aP2D2X7GYeZ/YxYMD3sH0gMAKNAmp6ACwAA
+   H4sIAAAAAAAAC3vEzsDwaIDxQIFR+0ftH7V/ZNrPOAjtJ7e8JEffYPQ/vcGo/aP2Dzb7SXEP4zCznxELpof9A4kBajajUYALAAA=
   </data>
  </layer>
 </map>

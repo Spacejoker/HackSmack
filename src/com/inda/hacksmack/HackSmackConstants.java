@@ -17,4 +17,5 @@ public interface HackSmackConstants {
 	public boolean devMode = true;
 	public boolean noSound = false;
 	public boolean fullscreen = false;
+	public boolean invurnable = true;
 }

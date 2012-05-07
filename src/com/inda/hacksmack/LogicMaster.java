@@ -48,8 +48,6 @@ public class LogicMaster {
 			}
 
 			
-			//TODO: Plocka bort så att den inte krashar om en projektil träffar en fiende/spelare och vägg samtidigt.
-			//TODO: Är typ ända sättet att krasha spelet på som jag känner till, bör styras upp. ;))
 			
 			//
 			// Kollar om spelaren krockar
@@ -177,10 +175,11 @@ public class LogicMaster {
 			}
 			// !!!!!!!!!!!!!!!!!!!!!!!!!!!!
 			for (Iterator<Projectile> it = state.getProjectiles().iterator(); it.hasNext();) {
+				boolean removed = false;
 				Projectile proj = it.next();
 				proj.getPosition().add(new Vector2f(proj.getDirection()).normalise().scale((float) (proj.getSpeed() * delta / (float) 1000)));
 				// Kollar krock med fienderna
-				for (Iterator<Enemy> e = state.getEnemies().iterator(); e.hasNext();) {
+				for (Iterator<Enemy> e = state.getEnemies().iterator(); e.hasNext() && !removed;) {
 					Enemy enemy = e.next();
 					if (enemy == proj.getSource())
 						continue;
@@ -190,6 +189,7 @@ public class LogicMaster {
 						enemy.setHealth((int) (enemy.getHealth() - proj.getDamage()));
 						proj.explode();
 						it.remove();
+						removed = true;
 						if (enemy.getHealth() <= 0) {
 							e.remove();
 							// add death animation, let the remains be on the floor for a while after as well
@@ -204,25 +204,26 @@ public class LogicMaster {
 				}
 
 				// Kollar krock med vï¿½ggen
-				if (!state.getMap().collidesWithMap(proj.getPosition(), proj.getRadius())) {
+				if (!state.getMap().collidesWithMap(proj.getPosition(), proj.getRadius()) && !removed) {
 					proj.explode();
 					it.remove();
+					removed = true;
 					continue;
 				}
 				
 				// Kollar krock med spelaren!
-				if (proj.getSource() != player && proj.getPosition().distance(player.getPosition()) < proj.getRadius() + player.getRadius()) {
-					//System.out.println(player.getHealth() + " " + proj.getDamage());
-					player.setHealth((int) (player.getHealth() - proj.getDamage()));
-					//System.out.println("Hit!");
+				if (proj.getSource() != player && proj.getPosition().distance(player.getPosition()) < proj.getRadius() + player.getRadius() && !removed) {
+
+					if(!HackSmackConstants.invurnable)
+						player.setHealth((int) (player.getHealth() - proj.getDamage()));
+
 					if (player.getHealth() <= 0) {
-						//System.out.println("DU DOG!");
-					// 	TODO: spelaren dï¿½r, game over.
 						state.setGameMode(GameMode.DEATH_SCENE);
 						state.setCutScene(new DeathCutScene());
 					}
 					proj.explode();
 					it.remove();
+					removed = true;
 				}
 				
 			}

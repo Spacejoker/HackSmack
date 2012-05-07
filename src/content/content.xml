@@ -5,7 +5,7 @@
 	<content type="tileset" id="test">tilesets/test.png</content>
 	
 	<content type="map" id="test">maps/test.tmx</content>
-	<content type="map" id="level_6">maps/level_6.tmx</content>
+	<content type="map" id="level_0">maps/level_0.tmx</content>
 	<content type="map" id="level_1">maps/level_1.tmx</content>
 	<content type="map" id="level_2">maps/level_2.tmx</content>
 	<content type="map" id="level_3">maps/level_3.tmx</content>

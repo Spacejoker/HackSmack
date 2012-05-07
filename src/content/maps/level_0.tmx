@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="32" height="23" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="test" tilewidth="32" tileheight="32">
+  <image source="../tilesets/test.png" width="1024" height="2016"/>
+ </tileset>
+ <tileset firstgid="2017" name="space" tilewidth="32" tileheight="32">
+  <image source="../tilesets/space.png" width="256" height="1000"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="32" height="23">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGHggxUFbjMs+etlPyF2j9uPHggwI7MVCPfeTYj+MPVLtH8jwx6d3pNtPrt3UMmPU/lH7R+2nnv30dM9gtH8gwn8gAQAkq3IggAsAAA==
+  </data>
+ </layer>
+ <layer name="Tile Layer 2" width="32" height="23">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGP7gCgcDw1UovsYx0K4hHshyIPBA2Y3OxqeOFnaDgCAS9mLBVEdNt2HTI4jEBtmPbC82N2Djk2I/OiBkP7I+XH4m5AZ8YYUt/LHZTyi8qZlWBkPeoLr9HMRhDPuJxVQGAxX+yPYPJBiK9lMrzogte/GVk5TaDWOT4i5q2o3NTlrYS4z5A50XRwF5AAA1tAkygAsAAA==
+  </data>
+ </layer>
+ <objectgroup name="Object Layer 1" width="32" height="23">
+  <object name="slime_1" type="slime" x="946" y="654" width="32" height="32">
+   <properties>
+    <property name="id" value="gem"/>
+    <property name="level" value="1"/>
+    <property name="type" value="gem"/>
+   </properties>
+  </object>
+  <object name="slime_1" type="slime" x="42" y="36" width="32" height="32">
+   <properties>
+    <property name="id" value="gem"/>
+    <property name="level" value="1"/>
+    <property name="type" value="gem"/>
+   </properties>
+  </object>
+  <object name="slime_1" type="slime" x="45" y="659" width="32" height="32">
+   <properties>
+    <property name="id" value="gem"/>
+    <property name="level" value="1"/>
+    <property name="type" value="gem"/>
+   </properties>
+  </object>
+  <object name="slime_1" type="slime" x="334" y="211" width="32" height="32">
+   <properties>
+    <property name="id" value="enemy_giant"/>
+    <property name="level" value="1"/>
+    <property name="type" value="enemy"/>
+   </properties>
+  </object>
+  <object name="slime_1" type="slime" x="61" y="598" width="32" height="32">
+   <properties>
+    <property name="id" value="gem"/>
+    <property name="level" value="1"/>
+    <property name="type" value="gem"/>
+   </properties>
+  </object>
+  <object name="slime_1" type="slime" x="196" y="649" width="32" height="32">
+   <properties>
+    <property name="id" value="gem"/>
+    <property name="level" value="1"/>
+    <property name="type" value="gem"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <layer name="Tile Layer 3" width="32" height="23">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC3vEzsDwaIDxQIFR+4eG/YJIeKDspwUYSvYPZPjTAjAOQvvJLS/J0TcY/U9vMGr/qP2DzX5S3MM4zOxnxILpYf9AYgBs8LKWgAsAAA==
+  </data>
+ </layer>
+</map>

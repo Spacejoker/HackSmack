@@ -67,7 +67,7 @@ public class LogicMaster {
 			}
 
 			// Kollar om man krockar med banan.
-			if (!state.getMap().collidesWithMap(temp, player.getRadius())) {
+			if (state.getMap().collidesWithMap(temp, player.getRadius())) {
 				krock = true;
 			}
 
@@ -131,7 +131,7 @@ public class LogicMaster {
 				}
 
 				// Kollar om man krockar med banan.
-				if (!state.getMap().collidesWithMap(temp, enemy.getRadius())) {
+				if (state.getMap().collidesWithMap(temp, enemy.getRadius())) {
 					krock = true;
 
 				}
@@ -168,7 +168,7 @@ public class LogicMaster {
 				}
 
 				// Kollar om man krockar med banan.
-				if (!state.getMap().collidesWithMap(temp, enemy.getRadius())) {
+				if (state.getMap().collidesWithMap(temp, enemy.getRadius())) {
 					krock = true;
 
 				}
@@ -178,8 +178,11 @@ public class LogicMaster {
 				boolean removed = false;
 				Projectile proj = it.next();
 				proj.getPosition().add(new Vector2f(proj.getDirection()).normalise().scale((float) (proj.getSpeed() * delta / (float) 1000)));
+				System.out.println(proj.getPosition());
 				// Kollar krock med fienderna
+				
 				for (Iterator<Enemy> e = state.getEnemies().iterator(); e.hasNext() && !removed;) {
+				
 					Enemy enemy = e.next();
 					if (enemy == proj.getSource())
 						continue;
@@ -204,7 +207,7 @@ public class LogicMaster {
 				}
 
 				// Kollar krock med v�ggen
-				if (!state.getMap().collidesWithMap(proj.getPosition(), proj.getRadius()) && !removed) {
+				if (state.getMap().collidesWithMap(proj.getPosition(), proj.getRadius()) && !removed) {
 					proj.explode();
 					it.remove();
 					removed = true;

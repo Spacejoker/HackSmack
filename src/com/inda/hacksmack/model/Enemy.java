@@ -4,6 +4,7 @@ import org.newdawn.slick.Animation;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.geom.Vector2f;
 
+import com.inda.hacksmack.HackSmackConstants;
 import com.inda.hacksmack.ResourceManager;
 
 
@@ -32,7 +33,7 @@ public class Enemy extends Entity {
 
 	private void updateDirectionPlayerSeen(Player player, GameState state, int tick){
 	
-		if(playerNoticed){
+		
 			float py = player.getPosition().y;
 			float px = player.getPosition().x;
 			float ey = position.y;
@@ -56,7 +57,6 @@ public class Enemy extends Entity {
 			} else {
 				speed = defaultspeed;
 			}
-			
 			if(time > 1000){
 				Projectile proj = new Projectile(this, getWeaponDamage());
 				
@@ -69,35 +69,39 @@ public class Enemy extends Entity {
 				state.getProjectiles().add(proj);
 				
 				time = 0;
-			} else {
-				time +=tick;
 			}
 			
-		} else {
-			speed = 0;
-			
-			if(player.position.distance(position) < 300){
-				playerNoticed = true;
-				ResourceManager.getInstance().getSound("scream").play();
-			}
-		}
+		
 
 	}
 	
 	private boolean canSeePlayer(Player player, GameState state){
 		boolean collidesWithMap = false;
-		for(Vector2f pos = new Vector2f(getPosition()); pos.distance(player.getPosition()) < player.getRadius() + radius; 
-				pos.add((new Vector2f(player.getPosition()).sub(pos).normalise().scale(10))))
+		for(Vector2f pos = new Vector2f(getPosition()); pos.distance(player.getPosition()) > player.getRadius() + radius; 
+				pos.add((new Vector2f(player.getPosition()).sub(pos).normalise().scale(10)))){
+		
 		collidesWithMap |= state.getMap().collidesWithMap(pos, getRadius());
+		}
 		return !collidesWithMap;
 	}
 	
 	public void updateDirection(Player player, GameState state, int tick) {
-		
-		if(canSeePlayer(player, state))
-			updateDirectionPlayerSeen(player, state, tick);
+		time += tick;
+		if(playerNoticed){
+			if(canSeePlayer(player, state)){
+				updateDirectionPlayerSeen(player, state, tick);
+			}else{
+				speed = 0;
+			}
+		}
 		else
-			System.out.println("Player out of sight");
+		{
+			if(player.position.distance(position) < HackSmackConstants.FOG_OF_WAR_DISTANCE + 20){
+				playerNoticed = true;
+				ResourceManager.getInstance().getSound("scream").play();
+			}
+		}
+		
 	}
 	
 	/**

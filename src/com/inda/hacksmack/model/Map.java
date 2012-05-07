@@ -15,12 +15,13 @@ public class Map {
 	int width;
 	int height;
 	boolean[][] passableTile;
-	
+	int []shortestPath;
 	public Map(TiledMap map) {
 		tileMap = map;
 		width = map.getWidth();
 		height = map.getHeight();
 		passableTile = new boolean[width][height];
+		shortestPath = new int[width*height];
 		for (int i = 0; i < height; i++) {
 			for (int j = 0; j < width; j++) {
 				int tileId = tileMap.getTileId(j, i, HackSmackConstants.MAP_LAYER_COLLISSION);
@@ -38,18 +39,24 @@ public class Map {
 		float y = v.y;
 
 		if(!isPassableTile((int)(width*(x)/HackSmackConstants.SCREEN_WIDTH), (int)(height*(y)/HackSmackConstants.SCREEN_HEIGHT)))
-			return false;
+			return true;
 		if(!isPassableTile((int)(width*(x+2*r)/HackSmackConstants.SCREEN_WIDTH), (int)(height*(y+2*r)/HackSmackConstants.SCREEN_HEIGHT)))
-			return false;
+			return true;
 		if(!isPassableTile((int)(width*(x+2*r)/HackSmackConstants.SCREEN_WIDTH), (int)(height*(y)/HackSmackConstants.SCREEN_HEIGHT)))
-			return false;
+			return true;
 		if(!isPassableTile((int)(width*(x)/HackSmackConstants.SCREEN_WIDTH), (int)(height*(y+2*r)/HackSmackConstants.SCREEN_HEIGHT)))
-			return false;
-		
-		return true;
+			return true;
+		return false;
 		
 		
 	}
+	
+	public void shortestPathGenerator(Vector2f v){
+		
+		
+	}
+	
+	
 	
 	public TiledMap getTileMap() {
 		return tileMap;

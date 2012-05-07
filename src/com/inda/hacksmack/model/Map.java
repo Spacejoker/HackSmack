@@ -45,7 +45,7 @@ public class Map {
 			return false;
 		if(!isPassableTile((int)(width*(x)/HackSmackConstants.SCREEN_WIDTH), (int)(height*(y+2*r)/HackSmackConstants.SCREEN_HEIGHT)))
 			return false;
-			
+		
 		return true;
 		
 		

@@ -30,9 +30,8 @@ public class Enemy extends Entity {
 	 * @param player
 	 */
 
-	public void updateDirection(Player player, GameState state, int tick) {
-		
-		
+	private void updateDirectionPlayerSeen(Player player, GameState state, int tick){
+	
 		if(playerNoticed){
 			float py = player.getPosition().y;
 			float px = player.getPosition().x;
@@ -82,6 +81,23 @@ public class Enemy extends Entity {
 				ResourceManager.getInstance().getSound("scream").play();
 			}
 		}
+
+	}
+	
+	private boolean canSeePlayer(Player player, GameState state){
+		boolean collidesWithMap = false;
+		for(Vector2f pos = new Vector2f(getPosition()); pos.distance(player.getPosition()) < player.getRadius() + radius; 
+				pos.add((new Vector2f(player.getPosition()).sub(pos).normalise().scale(10))))
+		collidesWithMap |= state.getMap().collidesWithMap(pos, getRadius());
+		return !collidesWithMap;
+	}
+	
+	public void updateDirection(Player player, GameState state, int tick) {
+		
+		if(canSeePlayer(player, state))
+			updateDirectionPlayerSeen(player, state, tick);
+		else
+			System.out.println("Player out of sight");
 	}
 	
 	/**

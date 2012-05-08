@@ -202,6 +202,7 @@ public class LogicMaster {
 							item.setDestroyTime((long) (System.currentTimeMillis() + 4000));
 							item.setPassable(true);
 							state.getItems().add(item);
+							ResourceManager.getInstance().getSound("explosion").play(1.0f, 0.5f);
 						}
 						break;
 					}
@@ -222,6 +223,7 @@ public class LogicMaster {
 						player.setHealth((int) (player.getHealth() - proj.getDamage()));
 
 					if (player.getHealth() <= 0) {
+						ResourceManager.getInstance().getSound("explosion").play(1.0f, 0.5f);
 						state.setGameMode(GameMode.DEATH_SCENE);
 						state.setCutScene(new DeathCutScene());
 					}

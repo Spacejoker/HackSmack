@@ -62,7 +62,7 @@ public class Enemy extends Entity {
 				
 				proj.setSpeed(400);
 				Image []frame2 = new Image[1];
-				frame2[0] = ResourceManager.getInstance().getImage("ball");
+				frame2[0] = ResourceManager.getInstance().getImage("beam");
 				proj.setAnimation(new Animation(frame2, 1));
 				proj.setPosition(new Vector2f(position));
 				proj.setDirection(new Vector2f(direction));
@@ -93,7 +93,7 @@ public class Enemy extends Entity {
 			}else{
 				state.getMap().whereAmI(getPosition());
 				direction = state.getMap().shortestPath(getPosition());
-				System.out.println("Cant see: " + direction);
+				//System.out.println("Cant see: " + direction);
 			}
 		}
 		else

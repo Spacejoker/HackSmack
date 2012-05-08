@@ -65,7 +65,7 @@ public class Map {
 		nx = shortestPath[x+y*width]%width;
 		ny = shortestPath[x+y*width]/width;
 		
-		System.out.println(x + " " + y + " : " + nx + " " + ny);
+//		System.out.println(x + " " + y + " : " + nx + " " + ny);
 		return new Vector2f((float)nx-x, (float)ny-y).normalise();
 		
 	}
@@ -74,7 +74,7 @@ public class Map {
 			int x,y;
 			x = (int)v.x*width/HackSmackConstants.SCREEN_WIDTH;
 			y = (int)v.y*height/HackSmackConstants.SCREEN_HEIGHT;
-			System.out.println("I am at: " + x + "," + y);
+//			System.out.println("I am at: " + x + "," + y);
 		}
 	}
 	public void shortestPathGenerator(Vector2f v){
@@ -88,7 +88,7 @@ public class Map {
 	LinkedList <Integer> list = new LinkedList<Integer>();
 	list.add(new Integer(current));
 	shortestPath[current] = -1;
-	System.out.println(width + " " + height+ " "+ "Start: " + x + "," + y + " " + current +" "+ current%width + " " + current/width + " " + shortestPath[current]%width + "," + shortestPath[current]/width+ " ");
+//	System.out.println(width + " " + height+ " "+ "Start: " + x + "," + y + " " + current +" "+ current%width + " " + current/width + " " + shortestPath[current]%width + "," + shortestPath[current]/width+ " ");
 
 	
 	while(!list.isEmpty()){
@@ -120,14 +120,14 @@ public class Map {
 			}
 		}
 	}
-	for(int i = 0; i < shortestPath.length; i++){
-		if(shortestPath[i]== -1)
-			System.out.print("start");
-		else
-			System.out.print(shortestPath[i]%width + "," + shortestPath[i]/width+ " ");
-		if(i%width == 0 && i != 0)
-			System.out.println();
-	}		
+//	for(int i = 0; i < shortestPath.length; i++){
+//		if(shortestPath[i]== -1)
+//			System.out.print("start");
+//		else
+//			System.out.print(shortestPath[i]%width + "," + shortestPath[i]/width+ " ");
+//		if(i%width == 0 && i != 0)
+//			System.out.println();
+//	}		
 		
 	}
 	

@@ -7,7 +7,7 @@ public class Projectile extends Entity {
 	double damage;
 	Entity source;
 	{
-			ResourceManager.getInstance().getSound("fireball_0").play(1.0f, 0.5f);
+			ResourceManager.getInstance().getSound("laser").play(1.0f, 0.5f);
 	}
 
 	public Projectile(Entity source, double damage) {
@@ -16,7 +16,7 @@ public class Projectile extends Entity {
 	}
 
 	public void explode() {
-			ResourceManager.getInstance().getSound("fireball_1").play(1.0f, 0.5f);
+//			ResourceManager.getInstance().getSound("fireball_1").play(1.0f, 0.5f);
 	}
 
 	public Entity getSource() {

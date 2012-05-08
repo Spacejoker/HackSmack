@@ -36,7 +36,7 @@ public class GameState {
 	private HealthBar healthBar = new HealthBar();
 	private HeatAndBatteryBar heatAndBatteryBar = new HeatAndBatteryBar();
 	int mapNr = 0;
-	String[] mapNames = new String[]{"level_1", "level_2"};
+	String[] mapNames = new String[]{"level_0", "level_1", "level_2", "level_3", "level_4", "level_5"};
 
 	static int gamestates = 0;
 	int gamestate = gamestates;

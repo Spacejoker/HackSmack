@@ -59,7 +59,8 @@ public class GraphicsMaster {
 			}
 
 			//draw fog of war:
-			gameState.drawFogOfWar(graphics);
+			if(HackSmackConstants.fogofwar)
+				gameState.drawFogOfWar(graphics);
 			
 			/**
 			 * Draw the healthbar and heat/battery bar - fancy stuff from ugly code

@@ -8,12 +8,12 @@
  </tileset>
  <layer name="Tile Layer 1" width="32" height="23">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGHggxUFbjMs+etlPyF2j9uPHggwI7MVCPfeTYj+MPVLtH8jwx6d3pNtPrt3UMmPU/lH7R+2nnv30dM9gtH8gwn8gAQAkq3IggAsAAA==
+   H4sIAAAAAAAAC2NgGHggxUFbjMs+etlPyF2j9g9u/YJIap6xj0z7YXgg7Mend6TbT67d1DJj1P5R+0ftp5799HTPYLR/IMJ/IAEA+xCiK4ALAAA=
   </data>
  </layer>
  <layer name="Tile Layer 2" width="32" height="23">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGP7gCgcDw1UovsYx0K4hHshyIPBA2Y3OxqeOFnaDgCAS9mLBVEdNt2HTI4jEBtmPbC82N2Djk2I/OiBkP7I+XH4m5AZ8YYUt/LHZTyi8qZlWBkPeoLr9HMRhDPuJxVQGAxX+yPYPJBiK9lMrzogte/GVk5TaDWOT4i5q2o3NTlrYS4z5A50XRwF5AAA1tAkygAsAAA==
+   H4sIAAAAAAAAC+2UUQqAIAyG99ZefQ26/4Wqe3SDEBKHqZsyG0Uf/KBEfnNmAN9nRYDtyo7W1chZMMbK7TmmGMqMMaPcwU9dpXDr9Lg9joxTZ+6McvMWfwrnp++V9szVUOuVI6n5uX5rfMsl/5MM86MsN780ylj9m6jfkjf6tc6Mu+/0eRotdxi31KXpzjlHeCXrW9/Fnz5OjhRVVYALAAA=
   </data>
  </layer>
  <objectgroup name="Object Layer 1" width="32" height="23">
@@ -38,7 +38,7 @@
     <property name="type" value="gem"/>
    </properties>
   </object>
-  <object name="slime_1" type="slime" x="334" y="211" width="32" height="32">
+  <object name="slime_1" type="slime" x="357" y="198" width="32" height="32">
    <properties>
     <property name="id" value="enemy_giant"/>
     <property name="level" value="1"/>
@@ -62,7 +62,7 @@
  </objectgroup>
  <layer name="Tile Layer 3" width="32" height="23">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC3vEzsDwaIDxQIFR+4eG/YJIeKDspwUYSvYPZPjTAjAOQvvJLS/J0TcY/U9vMGr/qP2DzX5S3MM4zOxnxILpYf9AYgBs8LKWgAsAAA==
+   H4sIAAAAAAAAC3vEzsDwaIDxQIFR+4mz/yM7Ag+U/bQAxNovSBvrh5T9MDwQ9tMCMA5C+8ktL8nRNxj9T28wav+o/YPNflLcwzjM7GfEgulh/0BiAIxM6c6ACwAA
   </data>
  </layer>
 </map>

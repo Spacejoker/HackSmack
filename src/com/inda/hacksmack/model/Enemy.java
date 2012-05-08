@@ -91,7 +91,9 @@ public class Enemy extends Entity {
 			if(canSeePlayer(player, state)){
 				updateDirectionPlayerSeen(player, state, tick);
 			}else{
-				speed = 0;
+				state.getMap().whereAmI(getPosition());
+				direction = state.getMap().shortestPath(getPosition());
+				System.out.println("Cant see: " + direction);
 			}
 		}
 		else

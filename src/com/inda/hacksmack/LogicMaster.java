@@ -39,7 +39,8 @@ public class LogicMaster {
 		case GAMEPLAY:
 			timepassed += delta;
 			Player player = state.getPlayer();
-
+			state.getMap().shortestPathGenerator(player.getPosition());
+			
 			for (Iterator<Item> iterator = state.getItems().iterator(); iterator.hasNext();) {
 				Item item = iterator.next();
 				if (System.currentTimeMillis() > item.getDestroyTime()) {
@@ -178,7 +179,7 @@ public class LogicMaster {
 				boolean removed = false;
 				Projectile proj = it.next();
 				proj.getPosition().add(new Vector2f(proj.getDirection()).normalise().scale((float) (proj.getSpeed() * delta / (float) 1000)));
-				System.out.println(proj.getPosition());
+				
 				// Kollar krock med fienderna
 				
 				for (Iterator<Enemy> e = state.getEnemies().iterator(); e.hasNext() && !removed;) {

@@ -5,7 +5,7 @@ public interface HackSmackConstants {
 	public final static int MAP_LAYER_COLLISSION = 2;
 	
 	public final static int SCREEN_WIDTH = 1024;
-	public final static int SCREEN_HEIGHT = 720;
+	public final static int SCREEN_HEIGHT = 736;
 
 	public static final float WEAPON_HEAT_PER_SHOT = 25;
 	public static final float MILLIS_BETWEEN_HEAT_DECREASE = 80;
@@ -15,7 +15,8 @@ public interface HackSmackConstants {
 	public static final int TILE_SIZE = 32;
 	
 	public boolean devMode = true;
-	public boolean noSound = true;
+	public boolean noSound = false;
 	public boolean fullscreen = false;
-	public boolean invurnable = true;
+	public boolean invurnable = false;
+	public boolean fogofwar = true;
 }

@@ -75,9 +75,6 @@ public class GraphicsMaster {
 			healthBar.getBg().draw();
 			
 			HeatAndBatteryBar batteryBar = gameState.getHeatAndBatteryBar();
-			if(batteryBar.getShieldPart() != null){
-				graphics.fill(batteryBar.getShieldPart(),GraphUtil.getColorAsGradient(Color.blue));
-			}
 			if(batteryBar.getRedPart() != null){
 				graphics.fill(batteryBar.getRedPart(), GraphUtil.getColorAsGradient(Color.red));
 			}

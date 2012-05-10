@@ -17,13 +17,12 @@ public class HeatAndBatteryBar {
 	float battery = 100;
 
 	float height = 182;
-	float heatx = 5, heatWidth = 20;
+	float heatx = 5, heatWidth = 18;
 	float batteryx = 120, batteryWidth = 49;
 
 	Vector2f position = new Vector2f(40, 450);
 
 	Polygon heatPart = new Polygon();
-	Polygon batteryPart = new Polygon();
 
 	Image bg = null;
 
@@ -35,7 +34,6 @@ public class HeatAndBatteryBar {
 	public void updateMe() {
 		
 		heatPart = new Polygon();
-		batteryPart = new Polygon();
 
 		if (heat > 0) {
 			float initx = position.x + 19;
@@ -46,16 +44,6 @@ public class HeatAndBatteryBar {
 			heatPart.addPoint(initx, inity + height);
 		} else {
 			heatPart = null;
-		}
-		if (battery > 0) {
-			float initx = position.x + 39;
-			float inity = position.y + 57;
-			batteryPart.addPoint(initx , inity);
-			batteryPart.addPoint(initx + batteryWidth, inity);
-			batteryPart.addPoint(initx + batteryWidth, inity + height);
-			batteryPart.addPoint(initx , inity + height);
-		} else {
-			batteryPart = null;
 		}
 	}
 
@@ -101,14 +89,6 @@ public class HeatAndBatteryBar {
 
 	public double getShieldPercentage() {
 		return battery;
-	}
-
-	public Polygon getShieldPart() {
-		return batteryPart;
-	}
-
-	public void setShieldPart(Polygon shieldPart) {
-		this.batteryPart = shieldPart;
 	}
 
 	public float getHeat() {

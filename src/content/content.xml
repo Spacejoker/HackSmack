@@ -4,13 +4,13 @@
   <!-- TILESET -->
 	<content type="tileset" id="test">tilesets/test.png</content>
 	
+  <!-- MAPS -->
 	<content type="map" id="test">maps/test.tmx</content>
 	<content type="map" id="level_0">maps/level_0.tmx</content>
 	<content type="map" id="level_1">maps/level_1.tmx</content>
 	<content type="map" id="level_2">maps/level_2.tmx</content>
 	<content type="map" id="level_3">maps/level_3.tmx</content>
 	<content type="map" id="level_4">maps/level_4.tmx</content>
-	<content type="map" id="level_5">maps/level_5.tmx</content>
 	
   <!-- BACKGROUND -->
 	<content type="image" id="background">images/tmp.png</content>

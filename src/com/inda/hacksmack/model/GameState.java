@@ -36,7 +36,7 @@ public class GameState {
 	private HealthBar healthBar = new HealthBar();
 	private HeatAndBatteryBar heatAndBatteryBar = new HeatAndBatteryBar();
 	int mapNr = 0;
-	String[] mapNames = new String[]{"level_0", "level_1", "level_2", "level_3", "level_4", "level_5"};
+	String[] mapNames = new String[]{"level_4", "level_1", "level_2", "level_3", "level_4"};
 
 	static int gamestates = 0;
 	int gamestate = gamestates;
@@ -44,12 +44,15 @@ public class GameState {
 	 * Loads a default map
 	 */
 	public GameState() {
-		this("level_1");
+		this("");
 	}
 	public int getGameStateNO(){
 		return gamestate;
 	}
 	public GameState(String mapName) {
+		if(mapName.length() == 0){
+			mapName = mapNames[0];
+		}
 		setUpMap(mapName);	
 		player = new Player();
 		InputHandler.getInstance().addEvent(player);
@@ -64,6 +67,7 @@ public class GameState {
 	}
 
 	public void setUpMap(String mapName) {
+		System.out.println("setting up map "  + mapName);
 		this.map = new Map(ResourceManager.getInstance().getTiledMap(mapName));
 		
 		//Load all enemies from tilefile:
@@ -185,7 +189,7 @@ public class GameState {
 				cnt ++;
 			}
 		}
-		return cnt > 3;
+		return cnt > 0;
 	}
 
 	public void nextMap() {

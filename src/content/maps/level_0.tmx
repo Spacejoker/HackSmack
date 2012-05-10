@@ -24,7 +24,7 @@
     <property name="type" value="gem"/>
    </properties>
   </object>
-  <object name="slime_1" type="slime" x="42" y="36" width="32" height="32">
+  <object name="slime_1" type="slime" x="216" y="292" width="32" height="32">
    <properties>
     <property name="id" value="gem"/>
     <property name="level" value="1"/>
@@ -57,6 +57,34 @@
     <property name="id" value="gem"/>
     <property name="level" value="1"/>
     <property name="type" value="gem"/>
+   </properties>
+  </object>
+  <object name="slime_1" type="slime" x="279" y="644" width="32" height="32">
+   <properties>
+    <property name="id" value="enemy_ship"/>
+    <property name="level" value="1"/>
+    <property name="type" value="enemy"/>
+   </properties>
+  </object>
+  <object name="slime_1" type="slime" x="903" y="86" width="32" height="32">
+   <properties>
+    <property name="id" value="enemy_ship"/>
+    <property name="level" value="1"/>
+    <property name="type" value="enemy"/>
+   </properties>
+  </object>
+  <object name="slime_1" type="slime" x="825" y="86" width="32" height="32">
+   <properties>
+    <property name="id" value="enemy_ship"/>
+    <property name="level" value="1"/>
+    <property name="type" value="enemy"/>
+   </properties>
+  </object>
+  <object name="slime_1" type="slime" x="863" y="148" width="32" height="32">
+   <properties>
+    <property name="id" value="enemy_ship"/>
+    <property name="level" value="1"/>
+    <property name="type" value="enemy"/>
    </properties>
   </object>
  </objectgroup>

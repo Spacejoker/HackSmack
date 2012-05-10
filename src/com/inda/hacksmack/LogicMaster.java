@@ -266,7 +266,7 @@ public class LogicMaster {
 			if(state.getCutScene().done()){
 				//TODO: ladda om om jox för spelet.
 				state.setGameMode(GameMode.GAMEPLAY);
-				Main.gameState = new GameState("level_0");
+				Main.gameState = new GameState();
 				
 			}
 			break;

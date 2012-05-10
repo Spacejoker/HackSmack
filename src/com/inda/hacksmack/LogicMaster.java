@@ -20,7 +20,6 @@ import com.inda.hacksmack.model.Projectile;
 
 public class LogicMaster {
 
-	private double timepassed = 0;
 	private static LogicMaster _instance;
 
 	private LogicMaster() {
@@ -36,7 +35,6 @@ public class LogicMaster {
 	public void handleLogics(GameState state, int delta) {
 		switch (state.getGameMode()) {
 		case GAMEPLAY:
-			timepassed += delta;
 			Player player = state.getPlayer();
 			state.getMap().shortestPathGenerator(player.getPosition());
 			
@@ -83,7 +81,6 @@ public class LogicMaster {
 								gem = true;
 						}
 						if (!gem) {
-							// TODO: inga fler gems pï¿½ kartan och man stï¿½r pï¿½ mï¿½let, klara banan!
 							state.nextMap();
 						}
 					}
@@ -218,13 +215,15 @@ public class LogicMaster {
 				// Kollar krock med spelaren!
 				if (proj.getSource() != player && proj.getPosition().distance(player.getPosition()) < proj.getRadius() + player.getRadius() && !removed) {
 
-					if(!HackSmackConstants.invurnable)
+					if(!HackSmackConstants.invurnable){
 						player.setHealth((int) (player.getHealth() - proj.getDamage()));
-
+					}
 					if (player.getHealth() <= 0) {
-						ResourceManager.getInstance().getSound("explosion").play(1.0f, 0.5f);
+						ResourceManager.getInstance().getSound("explosion").play(1.0f, 1.0f);
 						state.setGameMode(GameMode.DEATH_SCENE);
 						state.setCutScene(new DeathCutScene(state));
+					} else {
+						ResourceManager.getInstance().getSound("pain").play(1.0f, 0.25f);
 					}
 					proj.explode();
 					it.remove();
@@ -264,7 +263,6 @@ public class LogicMaster {
 		case CUT_SCENE:
 			state.getPlayer().setAcceptsEvents(false);
 			if(state.getCutScene().done()){
-				//TODO: ladda om om jox för spelet.
 				state.setGameMode(GameMode.GAMEPLAY);
 				Main.gameState = new GameState();
 				

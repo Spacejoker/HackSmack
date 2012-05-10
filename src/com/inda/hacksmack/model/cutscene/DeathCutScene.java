@@ -6,25 +6,17 @@ import java.util.Random;
 import java.util.List;
 
 
-import org.lwjgl.Sys;
-import org.newdawn.slick.Image;
 import org.newdawn.slick.geom.Vector2f;
-
 import com.inda.hacksmack.HackSmackConstants;
-import com.inda.hacksmack.ResourceManager;
-
 import com.inda.hacksmack.factory.AnimationFactory;
 import com.inda.hacksmack.factory.ImageEntityFactory;
-import com.inda.hacksmack.factory.ItemFactory;
 import com.inda.hacksmack.input.InputEvent;
 import com.inda.hacksmack.input.InputHandler;
 import com.inda.hacksmack.model.Entity;
 import com.inda.hacksmack.model.GameState;
 import com.inda.hacksmack.model.ImageEntity;
 import com.inda.hacksmack.model.Item;
-import com.inda.hacksmack.model.Item.ItemType;
 import com.inda.hacksmack.util.RandomUtil;
-import com.sun.org.apache.bcel.internal.generic.DADD;
 
 public class DeathCutScene implements CutScene, InputEvent{
 	

@@ -26,7 +26,7 @@ public class IntroCutScene implements CutScene, InputEvent {
 	List<Entity> ret = new ArrayList<Entity>();
 	private long startTime;
 	Entity bg;
-
+	boolean explosionplayed = false;
 	Entity playerWalking;
 	int characterStartX = HackSmackConstants.SCREEN_WIDTH + 100, characterStartY = HackSmackConstants.SCREEN_HEIGHT - 550;
 	Entity text1, text2, spaceArtifact;
@@ -103,8 +103,12 @@ public class IntroCutScene implements CutScene, InputEvent {
 		if (time < exptime+50) {
 			ret.add(spaceArtifact);
 		}
-
+		
 		if (time > exptime) {
+			if(!explosionplayed){
+				ResourceManager.getInstance().getSound("explosion").play(1.0f, 1.0f);
+				explosionplayed = true;
+			}
 			if (!addedSmall) {
 				for (int i = 0; i < 44; i++) {
 					Item item = ItemFactory.newItemEntity("gem", new Vector2f(gemMid), ItemType.GEM, true);

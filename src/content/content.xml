@@ -70,6 +70,7 @@
 	<content type="image" id="battery-bg">images/battery.png</content>
 	
   <!-- SOUND -->
+	<content type="sound" id="pain">sounds/pain.wav</content>
 	<content type="sound" id="laser">sounds/laser.wav</content>
 	<content type="sound" id="fireball_0">sounds/fireball.wav</content>
 	<content type="sound" id="explosion">sounds/explosion.wav</content>

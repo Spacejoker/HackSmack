@@ -80,7 +80,7 @@ public class Enemy extends Entity {
 		for(Vector2f pos = new Vector2f(getPosition()); pos.distance(player.getPosition()) > player.getRadius() + radius; 
 				pos.add((new Vector2f(player.getPosition()).sub(pos).normalise().scale(10)))){
 		
-		collidesWithMap |= state.getMap().collidesWithMap(pos, getRadius());
+		collidesWithMap |= state.getMap().collidesWithMap(pos, getRadius()+2);
 		}
 		return !collidesWithMap;
 	}

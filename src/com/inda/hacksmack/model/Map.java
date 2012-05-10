@@ -56,6 +56,7 @@ public class Map {
 	private boolean isPassableTileCrude(int i, int j) {
 			return isPassableTile(i,j) && isPassableTile(i,j+1) && isPassableTile(i+1,j) && isPassableTile(i+1,j+1);
 	}
+
 	public Vector2f shortestPath(Vector2f v){
 		int x,y;
 		x = (int)v.x*width/HackSmackConstants.SCREEN_WIDTH;
@@ -92,7 +93,7 @@ public class Map {
 	
 	while(!list.isEmpty()){
 		current = list.remove().intValue();
-		
+		//lodrätt och vågrätt
 		if(isPassableTileCrude((current+1)%width, (current+1)/width)){
 			
 			if(shortestPath[current+1] == -2){
@@ -118,15 +119,17 @@ public class Map {
 				shortestPath[current+width] = current;
 			}
 		}
+
+		
 	}
-//	for(int i = 0; i < shortestPath.length; i++){
-//		if(shortestPath[i]== -1)
-//			System.out.print("start");
-//		else
-//			System.out.print(shortestPath[i]%width + "," + shortestPath[i]/width+ " ");
-//		if(i%width == 0 && i != 0)
-//			System.out.println();
-//	}		
+	for(int i = 0; i < shortestPath.length; i++){
+		if(shortestPath[i]== -1)
+			System.out.print("start");
+		else
+			System.out.print(shortestPath[i]%width + "," + shortestPath[i]/width+ " ");
+		if(i%width == 0 && i != 0)
+			System.out.println();
+	}		
 		
 	}
 	

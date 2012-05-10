@@ -14,7 +14,7 @@ public interface HackSmackConstants {
 
 	public static final int TILE_SIZE = 32;
 	
-	public boolean devMode = true;
+	public boolean skipIntro = false;
 	public boolean noSound = false;
 	public boolean fullscreen = false;
 	public boolean invurnable = false;

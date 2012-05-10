@@ -225,7 +225,7 @@ public class LogicMaster {
 					if (player.getHealth() <= 0) {
 						ResourceManager.getInstance().getSound("explosion").play(1.0f, 0.5f);
 						state.setGameMode(GameMode.DEATH_SCENE);
-						state.setCutScene(new DeathCutScene());
+						state.setCutScene(new DeathCutScene(state));
 					}
 					proj.explode();
 					it.remove();

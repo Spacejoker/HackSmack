@@ -70,7 +70,7 @@ public class Map {
 		
 	}
 	public void whereAmI(Vector2f v){
-		if(HackSmackConstants.devMode){
+		if(HackSmackConstants.skipIntro){
 			int x,y;
 			x = (int)v.x*width/HackSmackConstants.SCREEN_WIDTH;
 			y = (int)v.y*height/HackSmackConstants.SCREEN_HEIGHT;

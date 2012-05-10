@@ -13,19 +13,22 @@ import com.inda.hacksmack.factory.ImageEntityFactory;
 import com.inda.hacksmack.input.InputEvent;
 import com.inda.hacksmack.input.InputHandler;
 import com.inda.hacksmack.model.Entity;
+import com.inda.hacksmack.model.GameState;
 
 public class IntroSplashCutScene implements CutScene, InputEvent{
 	
 	boolean done = false;
 	Entity text1;
+	private GameState state;
 
 	@Override
 	public boolean done() {
 		return done;
 	}
 
-	public IntroSplashCutScene() {
+	public IntroSplashCutScene(GameState state) {
 		super();
+		this.state = state;
 		InputHandler.getInstance().addEvent(this);
 		
 		
@@ -46,10 +49,11 @@ public class IntroSplashCutScene implements CutScene, InputEvent{
 
 	@Override
 	public void keyPressed(int key, char c) {
-		
 		//System.out.println(key + " " + c);
-		if(c == ' ')
+		if(c == ' '){
 			done = true;
+			state.setCutScene(new IntroCutScene());
+		}
 	}
 
 	@Override

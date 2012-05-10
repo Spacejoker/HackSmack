@@ -13,12 +13,14 @@ import com.inda.hacksmack.ResourceManager;
 import com.inda.hacksmack.factory.AnimationFactory;
 import com.inda.hacksmack.factory.ImageEntityFactory;
 import com.inda.hacksmack.factory.ItemFactory;
+import com.inda.hacksmack.input.InputEvent;
+import com.inda.hacksmack.input.InputHandler;
 import com.inda.hacksmack.model.Entity;
 import com.inda.hacksmack.model.Item;
 import com.inda.hacksmack.model.Item.ItemType;
 import com.inda.hacksmack.util.RandomUtil;
 
-public class IntroCutScene implements CutScene {
+public class IntroCutScene implements CutScene, InputEvent {
 
 	long totalTime = 14000;
 	List<Entity> ret = new ArrayList<Entity>();
@@ -34,10 +36,11 @@ public class IntroCutScene implements CutScene {
 	Vector2f gemMid = new Vector2f(250+50, HackSmackConstants.SCREEN_HEIGHT - 520);
 
 	public IntroCutScene() {
-		if (HackSmackConstants.devMode) {
+		if (HackSmackConstants.skipIntro) {
 			totalTime = 0;
 		}
 
+		InputHandler.getInstance().addEvent(this);
 		startTime = System.currentTimeMillis();
 		playerWalking = ImageEntityFactory.newImageEntity(new String[] { "intro_walk_1", "intro_walk_2", "intro_walk_3", "intro_walk_2" }, new Vector2f(100, 100), 250);
 		playerWalking.setDirection(new Vector2f(90));
@@ -144,5 +147,59 @@ public class IntroCutScene implements CutScene {
 
 	private long getPassedTime() {
 		return System.currentTimeMillis() - startTime;
+	}
+
+	@Override
+	public void keyPressed(int key, char c) {
+		if(c == ' ' && getPassedTime() > 1000 ){
+			totalTime = 0;
+		}
+	}
+
+	@Override
+	public void keyReleased(int key, char c) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseClicked(int button, int x, int y, int clickCount) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseDragged(int oldx, int oldy, int newx, int newy) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseMoved(int oldx, int oldy, int newx, int newy) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(int button, int x, int y) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(int button, int x, int y) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseWheelMoved(int change) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean isAcceptingEvents() {
+		return !done();
 	}
 }

@@ -25,6 +25,7 @@ public class IntroCutScene implements CutScene, InputEvent {
 	long totalTime = 14000;
 	List<Entity> ret = new ArrayList<Entity>();
 	private long startTime;
+	Entity bg;
 
 	Entity playerWalking;
 	int characterStartX = HackSmackConstants.SCREEN_WIDTH + 100, characterStartY = HackSmackConstants.SCREEN_HEIGHT - 550;
@@ -64,6 +65,9 @@ public class IntroCutScene implements CutScene, InputEvent {
 		spaceArtifact = ImageEntityFactory.newImageEntity(new String[] { "space_artifact" }, gemPosition, 1);
 		spaceArtifact.setDirection(new Vector2f(90));
 		ret.add(playerWalking);
+		
+		bg = ImageEntityFactory.newImageEntity(new String[] { "space_bg" }, new Vector2f(0, 0), 1);
+		bg.setDirection(new Vector2f(90));
 	}
 
 	@Override
@@ -78,6 +82,7 @@ public class IntroCutScene implements CutScene, InputEvent {
 
 		long time = getPassedTime();
 		ret.clear();
+		ret.add(bg);
 		if (time < 4000) {
 			playerWalking.setPosition(new Vector2f((float) (characterStartX - time * 0.15), characterStartY));
 			ret.add(playerWalking);

@@ -20,7 +20,6 @@ import com.inda.hacksmack.model.Projectile;
 
 public class LogicMaster {
 
-	@SuppressWarnings("unused")
 	private double timepassed = 0;
 	private static LogicMaster _instance;
 

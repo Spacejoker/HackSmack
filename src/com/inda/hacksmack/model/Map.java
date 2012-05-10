@@ -1,6 +1,5 @@
 package com.inda.hacksmack.model;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 import org.newdawn.slick.geom.Vector2f;

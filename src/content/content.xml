@@ -52,6 +52,8 @@
 	<content type="image" id="splashscreen">images/splashscreen.png</content>
 	<content type="image" id="deathscreen">images/deathscreen.png</content>
 	<content type="image" id="endscreen">images/endscreen.png</content>
+	<content type="image" id="space_bg">images/deathAnimationBg.png</content>
+	<content type="image" id="death_text">images/death_text.png</content>
 	<content type="image" id="gem">images/gem.png</content>
 	<content type="image" id="exp_0">images/explosion/0.png</content>
 	<content type="image" id="exp_1">images/explosion/1.png</content>
